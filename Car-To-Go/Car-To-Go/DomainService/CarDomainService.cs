@@ -39,7 +39,7 @@ namespace Car_To_Go.DomainService
             {
                 return "La Condicion no existe";
             }
-            if (purchase.Car.Year < 1950)
+            if (purchase.Car.Year < 1990)
             {
                 return "El vehiculo debe ser año 1950 en adelante";
             }
