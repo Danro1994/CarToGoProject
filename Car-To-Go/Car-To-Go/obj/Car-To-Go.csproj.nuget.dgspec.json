@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\source\\repos\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj": {}
+    "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\source\\repos\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj": {
+    "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\source\\repos\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj",
         "projectName": "Car-To-Go",
-        "projectPath": "C:\\Users\\user\\source\\repos\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj",
+        "projectPath": "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\source\\repos\\Car-To-Go\\Car-To-Go\\obj\\",
+        "outputPath": "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\Car-To-Go\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

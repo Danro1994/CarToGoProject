@@ -6945,11 +6945,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\source\\repos\\Car-To-Go\\UnitTestCar-To-Go\\UnitTestCar-To-Go.csproj",
+      "projectUniqueName": "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\UnitTestCar-To-Go\\UnitTestCar-To-Go.csproj",
       "projectName": "UnitTestCar-To-Go",
-      "projectPath": "C:\\Users\\user\\source\\repos\\Car-To-Go\\UnitTestCar-To-Go\\UnitTestCar-To-Go.csproj",
+      "projectPath": "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\UnitTestCar-To-Go\\UnitTestCar-To-Go.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\source\\repos\\Car-To-Go\\UnitTestCar-To-Go\\obj\\",
+      "outputPath": "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\UnitTestCar-To-Go\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -6968,8 +6968,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\user\\source\\repos\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj": {
-              "projectPath": "C:\\Users\\user\\source\\repos\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj"
+            "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj": {
+              "projectPath": "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj"
             }
           }
         }
