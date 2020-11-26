@@ -24,5 +24,33 @@ namespace UnitTestCar_To_Go
             // Assert
             Assert.AreEqual("No se encontro la Marca", resultado);
         }
+        [TestMethod]
+        public void PruebaParaValidarQueSeEncuentraUnaMarca2()
+        {
+            // Arrange
+            var brand = new Brand();
+            var id = new int();
+            brand = null;
+            // Act
+            var brandDomainService = new BrandDomainService();
+            var resultado = brandDomainService.PutBrandDomainService(id, brand);
+
+            // Assert
+            Assert.AreEqual("No se encontro la Marca", resultado);
+        }
+        [TestMethod]
+        public void PruebaParaValidarQueSeEncuentraUnaMarca3()
+        {
+            // Arrange
+            var brand = new Brand();
+            var id = new int();
+            brand = null;
+            // Act
+            var brandDomainService = new BrandDomainService();
+            var resultado = brandDomainService.DeleteBrandDomainService(id, brand);
+
+            // Assert
+            Assert.AreEqual("No se encontro la Marca", resultado);
+        }
     }
 }

@@ -24,5 +24,33 @@ namespace UnitTestCar_To_Go
             // Assert
             Assert.AreEqual("No se encontro este Estado", resultado);
         }
+        [TestMethod]
+        public void PruebaParaValidarQueSeEncuentraUnEstado2()
+        {
+            // Arrange
+            var status = new Status();
+            var id = new int();
+            status = null;
+            // Act
+            var statusDomainService = new StatusDomainService();
+            var resultado = statusDomainService.PutStatusDomainService(id, status);
+
+            // Assert
+            Assert.AreEqual("No se encontro este Estado", resultado);
+        }
+        [TestMethod]
+        public void PruebaParaValidarQueSeEncuentraUnEstado3()
+        {
+            // Arrange
+            var status = new Status();
+            var id = new int();
+            status = null;
+            // Act
+            var statusDomainService = new StatusDomainService();
+            var resultado = statusDomainService.DeleteStatusDomainService(id, status);
+
+            // Assert
+            Assert.AreEqual("No se encontro este Estado", resultado);
+        }
     }
 }

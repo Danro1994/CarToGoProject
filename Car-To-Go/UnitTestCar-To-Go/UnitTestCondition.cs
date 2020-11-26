@@ -24,5 +24,36 @@ namespace UnitTestCar_To_Go
             // Assert
             Assert.AreEqual("No se encontro la Condicion", resultado);
         }
+
+
+        [TestMethod]
+        public void PruebaParaValidarQueSeEncuentraUnaCondicion2()
+        {
+            // Arrange
+            var condition = new Condition();
+            var id = new int();
+            condition = null;
+            // Act
+            var conditionDomainService = new ConditionDomainService();
+            var resultado = conditionDomainService.PutConditionDomainService(id, condition);
+
+            // Assert
+            Assert.AreEqual("No se encontro la Condicion", resultado);
+        }
+
+        [TestMethod]
+        public void PruebaParaValidarQueSeEncuentraUnaCondicion3()
+        {
+            // Arrange
+            var condition = new Condition();
+            var id = new int();
+            condition = null;
+            // Act
+            var conditionDomainService = new ConditionDomainService();
+            var resultado = conditionDomainService.DeleteConditionDomainService(id, condition);
+
+            // Assert
+            Assert.AreEqual("No se encontro la Condicion", resultado);
+        }
     }
 }
