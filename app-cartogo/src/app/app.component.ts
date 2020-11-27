@@ -13,32 +13,36 @@ export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'Inbox',
+      title: 'Home',
+      url: '',
+      icon: 'home'
+    },{
+      title: 'Carros nuevos',
       url: '/folder/Inbox',
       icon: 'mail'
     },
     {
-      title: 'Outbox',
+      title: 'Carros usados',
       url: '/folder/Outbox',
       icon: 'paper-plane'
     },
     {
-      title: 'Favorites',
+      title: 'Concesionarias',
       url: '/folder/Favorites',
       icon: 'heart'
     },
     {
-      title: 'Archived',
+      title: 'Videos instructivos',
       url: '/folder/Archived',
       icon: 'archive'
     },
     {
-      title: 'Trash',
+      title: 'Empty',
       url: '/folder/Trash',
       icon: 'trash'
     },
     {
-      title: 'Spam',
+      title: 'Empty',
       url: '/folder/Spam',
       icon: 'warning'
     }
