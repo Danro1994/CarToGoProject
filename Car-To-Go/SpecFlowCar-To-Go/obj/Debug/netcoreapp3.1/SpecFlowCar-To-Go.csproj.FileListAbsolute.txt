@@ -1,0 +1,4 @@
+D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCar-To-Go\obj\Debug\netcoreapp3.1\SpecFlowCar-To-Go.csprojAssemblyReference.cache
+D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCar-To-Go\obj\Debug\netcoreapp3.1\SpecFlowCar-To-Go.AssemblyInfoInputs.cache
+D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCar-To-Go\obj\Debug\netcoreapp3.1\SpecFlowCar-To-Go.AssemblyInfo.cs
+D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCar-To-Go\obj\Debug\netcoreapp3.1\SpecFlowCar-To-Go.csproj.CoreCompileInputs.cache
