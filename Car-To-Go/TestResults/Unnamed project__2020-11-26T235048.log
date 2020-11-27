@@ -1,0 +1,231 @@
+﻿2020-11-26T23:50:47.9422322-06:00;VSTestExecutionThread;Info;SpecFlow+Runner execution started
+2020-11-26T23:50:47.9425395-06:00;VSTestExecutionThread;Info;SpecFlow+Runner 3.4.19 in Framework netcore31 in x64 mode execution started
+2020-11-26T23:50:47.9425444-06:00;VSTestExecutionThread;Info;TestAdapter Location: D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\TechTalk.SpecRun.VisualStudio.TestAdapter.dll
+2020-11-26T23:50:47.9451999-06:00;VSTestExecutionThread;Info;Current UserName: 'Elizabeth Ordoñez', MachineName: 'DESKTOP-P1J30VH'
+2020-11-26T23:50:47.9966199-06:00;VSTestExecutionThread;Info;SpecRun: running tests in D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowCarToGo.dll
+2020-11-26T23:50:47.9969395-06:00;VSTestExecutionThread;Info;Output folder configured to "D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\TestResults" (default)
+2020-11-26T23:50:47.9971102-06:00;VSTestExecutionThread;Info;Profile: 
+2020-11-26T23:50:48.1070412-06:00;VSTestExecutionThread;Info;Log file path: D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\TestResults\Unnamed project__2020-11-26T235048.log
+2020-11-26T23:50:48.1181709-06:00;Thread#12;Info;Checking activation
+2020-11-26T23:50:48.2982663-06:00;Thread#12;Info;Activated.
+2020-11-26T23:50:48.2986558-06:00;Thread#12;Info;Activation check completed
+2020-11-26T23:50:48.2988154-06:00;Thread#12;Info;Starting test run
+2020-11-26T23:50:48.4417384-06:00;Thread#12;Info;Discovering target: Default
+2020-11-26T23:50:48.4420665-06:00;Thread#12;Info;Discovering tests from assembly: D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowCarToGo.dll
+2020-11-26T23:50:48.6051407-06:00;Thread#12;Info;Discovered tests from assembly: D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowCarToGo.dll
+2020-11-26T23:50:48.6085484-06:00:Test Suite Dump
+2020-11-26T23:50:48.6118514-06:00:#0: Unnamed project/ - 
+2020-11-26T23:50:48.6118839-06:00:#1: Default - 
+2020-11-26T23:50:48.6118882-06:00:#2: SpecFlowCarToGo - 
+2020-11-26T23:50:48.6118911-06:00:#15: Estados de CarToGo - 
+2020-11-26T23:50:48.6137478-06:00:#17: Validar que se encuentra un estado para actualizar - TestAssembly:SpecFlowCarToGo/Feature:Estados+de+CarToGo/Scenario:Validar+que+se+encuentra+un+estado+para+actualizar
+2020-11-26T23:50:48.6138117-06:00:#18: Validar que se encuentra un estado para eliminar - TestAssembly:SpecFlowCarToGo/Feature:Estados+de+CarToGo/Scenario:Validar+que+se+encuentra+un+estado+para+eliminar
+2020-11-26T23:50:48.6139029-06:00:End: Test Suite Dump
+2020-11-26T23:50:48.6479807-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-26T23:50:48.6512076-06:00:Thread#:Scheduler: testitem #17 from normal test queue 
+2020-11-26T23:50:48.6513215-06:00:Thread#0:Scheduler: considering testitem #17 for thread 0
+2020-11-26T23:50:48.6571920-06:00:Thread#0:TestItem#17:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-26T23:50:48.6572161-06:00:Thread#0:TestItem#17:runsOnOneOtherThreadSpecific:False
+2020-11-26T23:50:48.6572269-06:00:Thread#0:TestItem#17:runsOnOneOtherThreadUnspecific:False
+2020-11-26T23:50:48.6572346-06:00:Thread#0:Scheduler: using testitem #17 for thread 0
+2020-11-26T23:50:48.6592295-06:00:Thread#0:Scheduler: Test #17 is scheduled for thread
+2020-11-26T23:50:48.6619910-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-26T23:50:48.6660234-06:00:Thread #0: creating new test thread executor for SpecFlowCarToGo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null (target: Default)
+2020-11-26T23:50:48.6724200-06:00:Thread #0: Creating test assembly executor for execution model OutProc
+2020-11-26T23:50:48.6728190-06:00:Thread #0: Creating test assembly executor for execution model OutProc
+2020-11-26T23:50:48.6789126-06:00:Thread #0: using TechTalk.SpecRun.Framework.Execution.OutOfProc.StreamJsonRPC.OutOfProcessTestAssemblyExecutorHost to execute tests
+2020-11-26T23:50:48.6818267-06:00:starting Out Of Process Executor
+2020-11-26T23:50:48.6843978-06:00:Assembly resolving Microsoft.VisualStudio.Validation, Version=15.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+2020-11-26T23:50:48.6895640-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' from .deps.json file
+2020-11-26T23:50:48.6895997-06:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' from .deps.json
+2020-11-26T23:50:48.6922140-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-26T23:50:48.6942245-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Validation.dll'
+2020-11-26T23:50:48.6943376-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Validation.exe'
+2020-11-26T23:50:48.6943748-06:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-26T23:50:48.6948190-06:00:TargetFramework: .NETCoreApp,Version=v3.1
+2020-11-26T23:50:48.6957992-06:00:Tfm: netcoreapp3.1
+2020-11-26T23:50:48.6958139-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1'
+2020-11-26T23:50:48.6958164-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\Microsoft.VisualStudio.Validation.dll'
+2020-11-26T23:50:48.6958683-06:00:[AssemblyCache] Found file 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\Microsoft.VisualStudio.Validation.dll' for assembly 'Microsoft.VisualStudio.Validation'
+2020-11-26T23:50:48.6964735-06:00:[AssemblyCache] Resolved 'Microsoft.VisualStudio.Validation' to D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\Microsoft.VisualStudio.Validation.dll
+2020-11-26T23:50:48.6978839-06:00:Starting callback TCP Rpc server
+2020-11-26T23:50:48.7333691-06:00:Asynchronously starting background TCP Rpc Server on port 32768
+2020-11-26T23:50:48.7334265-06:00:Started callback TCP Rpc server on port 32768
+2020-11-26T23:50:48.7334309-06:00:Starting logger TCP Rpc server
+2020-11-26T23:50:48.7394262-06:00:Asynchronously starting background TCP Rpc Server on port 32769
+2020-11-26T23:50:48.7394820-06:00:Started logger TCP Rpc server on port 32769
+2020-11-26T23:50:48.9039848-06:00:Executing test executor at 'dotnet' 'exec "D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\TechTalk.SpecRun.Framework.Executor.anycpu.netcoreapp3_1.dll" --remoteRunnerPid 17352 --uniqueId "2020-11-26T235047" --outputFolder "D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\TestResults" --callbackPort 32768 --loggerPort 32769' in 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-26T23:50:48.9254693-06:00:Executor with PID 10560 has been started successfully.
+2020-11-26T23:50:48.9321663-06:00:Out of Process Executor 10560 started
+2020-11-26T23:50:48.9321893-06:00:Waiting for endpoint
+2020-11-26T23:50:49.5123420-06:00:Assembly resolving StreamJsonRpc.resources, Version=1.4.0.0, Culture=es-MX, PublicKeyToken=b03f5f7f11d50a3a
+2020-11-26T23:50:49.5123698-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' from .deps.json file
+2020-11-26T23:50:49.5123768-06:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' from .deps.json
+2020-11-26T23:50:49.5123872-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-26T23:50:49.5123925-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\StreamJsonRpc.resources.dll'
+2020-11-26T23:50:49.5124416-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\StreamJsonRpc.resources.exe'
+2020-11-26T23:50:49.5124896-06:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-26T23:50:49.5124968-06:00:TargetFramework: .NETCoreApp,Version=v3.1
+2020-11-26T23:50:49.5125360-06:00:Tfm: netcoreapp3.1
+2020-11-26T23:50:49.5125445-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1'
+2020-11-26T23:50:49.5125490-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\StreamJsonRpc.resources.dll'
+2020-11-26T23:50:49.5126056-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\StreamJsonRpc.resources.exe'
+2020-11-26T23:50:49.5126803-06:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1'
+2020-11-26T23:50:49.5279364-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.7'
+2020-11-26T23:50:49.5279635-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.7\StreamJsonRpc.resources.dll'
+2020-11-26T23:50:49.5280863-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.7\StreamJsonRpc.resources.exe'
+2020-11-26T23:50:49.5281691-06:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.7'
+2020-11-26T23:50:49.5284925-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.7'
+2020-11-26T23:50:49.5285058-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.7\StreamJsonRpc.resources.dll'
+2020-11-26T23:50:49.5285950-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.7\StreamJsonRpc.resources.exe'
+2020-11-26T23:50:49.5286733-06:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.7'
+2020-11-26T23:50:49.5289835-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.7'
+2020-11-26T23:50:49.5290000-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.7\StreamJsonRpc.resources.dll'
+2020-11-26T23:50:49.5291007-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.7\StreamJsonRpc.resources.exe'
+2020-11-26T23:50:49.5291871-06:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.7'
+2020-11-26T23:50:49.5308285-06:00:Assembly resolving StreamJsonRpc.resources, Version=1.4.0.0, Culture=es, PublicKeyToken=b03f5f7f11d50a3a
+2020-11-26T23:50:49.5321499-06:00:Assembly resolving Microsoft.VisualStudio.Threading, Version=15.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+2020-11-26T23:50:49.5321691-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' from .deps.json file
+2020-11-26T23:50:49.5321757-06:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' from .deps.json
+2020-11-26T23:50:49.5321981-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-26T23:50:49.5322026-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Threading.dll'
+2020-11-26T23:50:49.5322490-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Threading.exe'
+2020-11-26T23:50:49.5322935-06:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-26T23:50:49.5322995-06:00:TargetFramework: .NETCoreApp,Version=v3.1
+2020-11-26T23:50:49.5323225-06:00:Tfm: netcoreapp3.1
+2020-11-26T23:50:49.5323291-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1'
+2020-11-26T23:50:49.5323331-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\Microsoft.VisualStudio.Threading.dll'
+2020-11-26T23:50:49.5323767-06:00:[AssemblyCache] Found file 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\Microsoft.VisualStudio.Threading.dll' for assembly 'Microsoft.VisualStudio.Threading'
+2020-11-26T23:50:49.5332656-06:00:[AssemblyCache] Resolved 'Microsoft.VisualStudio.Threading' to D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\Microsoft.VisualStudio.Threading.dll
+2020-11-26T23:50:50.2045034-06:00:Remote executor port received: 32770
+2020-11-26T23:50:50.2062024-06:00:Creating executor TCP client on port 32770
+2020-11-26T23:50:50.2111702-06:00:Created executor TCP client on port 32770
+2020-11-26T23:50:50.2112488-06:00:Connecting to remote executor TCP server
+2020-11-26T23:50:50.2165662-06:00:Connected remote executor TCP server
+2020-11-26T23:50:50.2178555-06:00:trying to connect to Out of Process Executor the 1 attempt
+2020-11-26T23:50:50.2178884-06:00:Connection to Out of Process Executor established in the 1 attempt
+2020-11-26T23:50:50.4975623-06:00:2020-11-26T23:50:50.4931428-06:00:OutOfProcessTestAssemblyExecutor: initialized for D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowCarToGo.dll on test thread #0
+2020-11-26T23:50:50.5079180-06:00:Endpoint 10560 started
+2020-11-26T23:50:50.5437837-06:00:2020-11-26T23:50:50.5426389-06:00:OutOfProcessTestAssemblyExecutor: running tests...
+2020-11-26T23:50:50.7669244-06:00:2020-11-26T23:50:50.7663970-06:00:Assembly resolving TechTalk.SpecFlow, Version=3.4.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41
+2020-11-26T23:50:50.7722208-06:00:2020-11-26T23:50:50.7717417-06:00:[AssemblyCache] Trying to resolve 'TechTalk.SpecFlow' from .deps.json file
+2020-11-26T23:50:50.7795831-06:00:2020-11-26T23:50:50.7788582-06:00:[AssemblyCache] Resolved 'TechTalk.SpecFlow' to 'C:\Users\Elizabeth Ordoñez\.nuget\packages\specflow\3.4.8\lib\netstandard2.0\TechTalk.SpecFlow.dll'
+2020-11-26T23:50:50.9736732-06:00:2020-11-26T23:50:50.9713023-06:00:Thread#0:T:-> Loading plugin D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\LivingDoc.SpecFlowPlugin.dll
+2020-11-26T23:50:50.9783547-06:00:2020-11-26T23:50:50.9760641-06:00:Assembly resolving TechTalk.SpecFlow, Version=3.4.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41
+2020-11-26T23:50:50.9872541-06:00:2020-11-26T23:50:50.9810245-06:00:Assembly resolving LivingDoc.Dtos, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null
+2020-11-26T23:50:50.9983170-06:00:2020-11-26T23:50:50.9880410-06:00:[AssemblyCache] Trying to resolve 'LivingDoc.Dtos' from .deps.json file
+2020-11-26T23:50:51.0176512-06:00:2020-11-26T23:50:50.9997384-06:00:[AssemblyCache] Resolved 'LivingDoc.Dtos' to 'C:\Users\Elizabeth Ordoñez\.nuget\packages\specflow.plus.livingdocplugin\3.4.211\lib\netstandard2.0\LivingDoc.Dtos.dll'
+2020-11-26T23:50:51.0239297-06:00:2020-11-26T23:50:51.0227931-06:00:Thread#0:T:-> Loading plugin D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecRun.Runtime.SpecFlowPlugin.dll
+2020-11-26T23:50:51.0265947-06:00:2020-11-26T23:50:51.0250225-06:00:Assembly resolving TechTalk.SpecFlow, Version=3.4.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41
+2020-11-26T23:50:51.0350464-06:00:2020-11-26T23:50:51.0345111-06:00:Thread#0:T:-> Using default config
+2020-11-26T23:50:51.0564502-06:00:2020-11-26T23:50:51.0559732-06:00:Assembly resolving Cucumber.Messages, Version=6.0.1.0, Culture=neutral, PublicKeyToken=b10c5988214f940c
+2020-11-26T23:50:51.0571543-06:00:2020-11-26T23:50:51.0568204-06:00:[AssemblyCache] Trying to resolve 'Cucumber.Messages' from .deps.json file
+2020-11-26T23:50:51.0581057-06:00:2020-11-26T23:50:51.0577031-06:00:[AssemblyCache] Resolved 'Cucumber.Messages' to 'C:\Users\Elizabeth Ordoñez\.nuget\packages\cucumber.messages\6.0.1\lib\netstandard2.0\Cucumber.Messages.dll'
+2020-11-26T23:50:51.0603446-06:00:2020-11-26T23:50:51.0598620-06:00:Assembly resolving Google.Protobuf, Version=3.7.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604
+2020-11-26T23:50:51.0610471-06:00:2020-11-26T23:50:51.0606677-06:00:[AssemblyCache] Trying to resolve 'Google.Protobuf' from .deps.json file
+2020-11-26T23:50:51.0621909-06:00:2020-11-26T23:50:51.0617306-06:00:[AssemblyCache] Resolved 'Google.Protobuf' to 'C:\Users\Elizabeth Ordoñez\.nuget\packages\google.protobuf\3.7.0\lib\netstandard1.0\Google.Protobuf.dll'
+2020-11-26T23:50:51.0828583-06:00:2020-11-26T23:50:51.0823345-06:00:Assembly resolving Microsoft.VisualStudio.TestPlatform.ObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+2020-11-26T23:50:51.0835432-06:00:2020-11-26T23:50:51.0832404-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.TestPlatform.ObjectModel' from .deps.json file
+2020-11-26T23:50:51.0846036-06:00:2020-11-26T23:50:51.0842521-06:00:[AssemblyCache] Resolved 'Microsoft.VisualStudio.TestPlatform.ObjectModel' to 'C:\Users\Elizabeth Ordoñez\.nuget\packages\microsoft.testplatform.objectmodel\16.5.0\lib\netstandard2.0\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll'
+2020-11-26T23:50:51.1457860-06:00:2020-11-26T23:50:51.1452246-06:00:Assembly resolving Utf8Json, Version=1.3.7.0, Culture=neutral, PublicKeyToken=8a73d3ba7e392e27
+2020-11-26T23:50:51.1465364-06:00:2020-11-26T23:50:51.1461708-06:00:[AssemblyCache] Trying to resolve 'Utf8Json' from .deps.json file
+2020-11-26T23:50:51.1474742-06:00:2020-11-26T23:50:51.1471333-06:00:[AssemblyCache] Resolved 'Utf8Json' to 'C:\Users\Elizabeth Ordoñez\.nuget\packages\utf8json\1.3.7\lib\netstandard2.0\Utf8Json.dll'
+2020-11-26T23:50:51.4979524-06:00:Thread#0: Test #17/0 is started on thread #0
+2020-11-26T23:50:51.5602267-06:00:2020-11-26T23:50:51.5594268-06:00:Thread#0:B:Given ingresar el estado null
+2020-11-26T23:50:51.5860211-06:00:2020-11-26T23:50:51.5854639-06:00:Assembly resolving Car-To-Go, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+2020-11-26T23:50:51.5867975-06:00:2020-11-26T23:50:51.5864339-06:00:[AssemblyCache] Trying to resolve 'Car-To-Go' from .deps.json file
+2020-11-26T23:50:51.5895291-06:00:2020-11-26T23:50:51.5887974-06:00:[DependencyContextAssemblyCache.ResolveManagedAssembly] Resolving 'Car-To-Go', found in dependency map, but unable to resolve a path in ['Car-To-Go.dll']
+2020-11-26T23:50:51.5902998-06:00:2020-11-26T23:50:51.5899218-06:00:[AssemblyCache] Could not resolve 'Car-To-Go' from .deps.json
+2020-11-26T23:50:51.5940276-06:00:2020-11-26T23:50:51.5934721-06:00:[AssemblyCache] Trying to resolve 'Car-To-Go' in folder 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-26T23:50:51.6022022-06:00:2020-11-26T23:50:51.6016201-06:00:[AssemblyCache] Trying to resolve 'Car-To-Go' to 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\Car-To-Go.dll'
+2020-11-26T23:50:51.6029615-06:00:2020-11-26T23:50:51.6026084-06:00:[AssemblyCache] Found file 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\Car-To-Go.dll' for assembly 'Car-To-Go'
+2020-11-26T23:50:51.6046642-06:00:2020-11-26T23:50:51.6041477-06:00:[AssemblyCache] Resolved 'Car-To-Go' to D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\Car-To-Go.dll
+2020-11-26T23:50:51.6176269-06:00:2020-11-26T23:50:51.6170716-06:00:Thread#0:T:done: StatusSteps.GivenIngresarElEstadoNull() (0.0s)
+2020-11-26T23:50:52.1927649-06:00:2020-11-26T23:50:51.6215185-06:00:Thread#0:B:When actualizar el estado
+2020-11-26T23:50:52.2134487-06:00:2020-11-26T23:50:52.2117211-06:00:Thread#0:T:done: StatusSteps.WhenActualizarElEstado() (0.0s)
+2020-11-26T23:50:52.2163169-06:00:2020-11-26T23:50:52.2157343-06:00:Thread#0:B:Then muestra el estado "No se encontro este Estado"
+2020-11-26T23:50:52.2238775-06:00:2020-11-26T23:50:52.2232997-06:00:Assembly resolving FluentAssertions, Version=5.10.3.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a
+2020-11-26T23:50:52.2246417-06:00:2020-11-26T23:50:52.2242737-06:00:[AssemblyCache] Trying to resolve 'FluentAssertions' from .deps.json file
+2020-11-26T23:50:52.2257948-06:00:2020-11-26T23:50:52.2253915-06:00:[AssemblyCache] Resolved 'FluentAssertions' to 'C:\Users\Elizabeth Ordoñez\.nuget\packages\fluentassertions\5.10.3\lib\netcoreapp2.1\FluentAssertions.dll'
+2020-11-26T23:50:52.2415439-06:00:2020-11-26T23:50:52.2409613-06:00:Thread#0:T:done: StatusSteps.ThenMuestraElEstado("No se encontro es...") (0.0s)
+2020-11-26T23:50:52.2595532-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-26T23:50:52.2596588-06:00:Thread#:Scheduler: testitem #18 from normal test queue 
+2020-11-26T23:50:52.2596928-06:00:Thread#0:Scheduler: considering testitem #18 for thread 0
+2020-11-26T23:50:52.2598795-06:00:Thread#0:TestItem#18:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-26T23:50:52.2599017-06:00:Thread#0:TestItem#18:runsOnOneOtherThreadSpecific:False
+2020-11-26T23:50:52.2599298-06:00:Thread#0:TestItem#18:runsOnOneOtherThreadUnspecific:False
+2020-11-26T23:50:52.2599372-06:00:Thread#0:Scheduler: using testitem #18 for thread 0
+2020-11-26T23:50:52.2600943-06:00:Thread#0:Scheduler: Test #18 is scheduled for thread
+2020-11-26T23:50:52.2606931-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-26T23:50:52.3472302-06:00:Thread#0: Test #17/0 is finished on thread #0 as Succeeded within 0.8464157 seconds
+2020-11-26T23:50:52.3525064-06:00:Thread#0: Test #18/0 is started on thread #0
+2020-11-26T23:50:52.3555266-06:00:2020-11-26T23:50:52.3550451-06:00:Thread#0:B:Given ingresar el estado null
+2020-11-26T23:50:52.3568651-06:00:2020-11-26T23:50:52.3564116-06:00:Thread#0:T:done: StatusSteps.GivenIngresarElEstadoNull() (0.0s)
+2020-11-26T23:50:52.3576426-06:00:2020-11-26T23:50:52.3572908-06:00:Thread#0:B:When eliminar el estado
+2020-11-26T23:50:52.3597772-06:00:2020-11-26T23:50:52.3592219-06:00:Thread#0:T:done: StatusSteps.WhenEliminarElEstado() (0.0s)
+2020-11-26T23:50:52.3606949-06:00:2020-11-26T23:50:52.3602723-06:00:Thread#0:B:Then muestra el estado "No se encontro este Estado"
+2020-11-26T23:50:52.3618710-06:00:2020-11-26T23:50:52.3614290-06:00:Thread#0:T:done: StatusSteps.ThenMuestraElEstado("No se encontro es...") (0.0s)
+2020-11-26T23:50:52.3764744-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-26T23:50:52.3765220-06:00:Thread#:Scheduler: at the end of normal test queue
+2020-11-26T23:50:52.3765324-06:00:Thread#0:Scheduler: enumerator for thread is at end
+2020-11-26T23:50:52.3765385-06:00:Thread#0:Scheduler: No more tests for thread
+2020-11-26T23:50:52.3873559-06:00:Thread#0: Test #18/0 is finished on thread #0 as Succeeded within 0.0347515 seconds
+2020-11-26T23:50:52.4085630-06:00:2020-11-26T23:50:52.4081821-06:00:Got Deinitialize Signal
+2020-11-26T23:50:52.4182379-06:00:RPC Server disconnected, because 'Disposed'. 
+LastMessage: 
+Description:Reached end of stream.
+Exception:<none>
+2020-11-26T23:50:52.4185696-06:00:RPC Client disconnected, because 'Disposed'. 
+LastMessage: 
+Description:Stream has been disposed
+Exception:<none>
+2020-11-26T23:50:52.4213180-06:00:RPC Server disconnected, because 'Disposed'. 
+LastMessage: 
+Description:Reached end of stream.
+Exception:<none>
+2020-11-26T23:50:52.4252143-06:00:Assembly resolving System.Diagnostics.Process.resources, Version=4.2.2.0, Culture=es-MX, PublicKeyToken=b03f5f7f11d50a3a
+2020-11-26T23:50:52.4252551-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' from .deps.json file
+2020-11-26T23:50:52.4252705-06:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' from .deps.json
+2020-11-26T23:50:52.4252851-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-26T23:50:52.4252943-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\System.Diagnostics.Process.resources.dll'
+2020-11-26T23:50:52.4255880-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\System.Diagnostics.Process.resources.exe'
+2020-11-26T23:50:52.4256526-06:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-26T23:50:52.4256736-06:00:TargetFramework: .NETCoreApp,Version=v3.1
+2020-11-26T23:50:52.4257707-06:00:Tfm: netcoreapp3.1
+2020-11-26T23:50:52.4257811-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1'
+2020-11-26T23:50:52.4257878-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\System.Diagnostics.Process.resources.dll'
+2020-11-26T23:50:52.4258422-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\System.Diagnostics.Process.resources.exe'
+2020-11-26T23:50:52.4259058-06:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1'
+2020-11-26T23:50:52.4271855-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.7'
+2020-11-26T23:50:52.4272001-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.7\System.Diagnostics.Process.resources.dll'
+2020-11-26T23:50:52.4273065-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.7\System.Diagnostics.Process.resources.exe'
+2020-11-26T23:50:52.4273931-06:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.7'
+2020-11-26T23:50:52.4277309-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.7'
+2020-11-26T23:50:52.4277456-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.7\System.Diagnostics.Process.resources.dll'
+2020-11-26T23:50:52.4278356-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.7\System.Diagnostics.Process.resources.exe'
+2020-11-26T23:50:52.4279241-06:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.7'
+2020-11-26T23:50:52.4282344-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.7'
+2020-11-26T23:50:52.4282503-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.7\System.Diagnostics.Process.resources.dll'
+2020-11-26T23:50:52.4283516-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.7\System.Diagnostics.Process.resources.exe'
+2020-11-26T23:50:52.4284443-06:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.7'
+2020-11-26T23:50:52.4291284-06:00:Assembly resolving System.Diagnostics.Process.resources, Version=4.2.2.0, Culture=es, PublicKeyToken=b03f5f7f11d50a3a
+2020-11-26T23:50:52.4450216-06:00:Thread#-1:Scheduler: get next test for thread -1
+2020-11-26T23:50:52.4450536-06:00:Thread#:Scheduler: at the end of normal test queue
+2020-11-26T23:50:52.4450632-06:00:Thread#-1:Scheduler: enumerator for thread is at end
+2020-11-26T23:50:52.4509759-06:00;Thread#12;Info;test run finished
+2020-11-26T23:50:52.4516669-06:00;Thread#12;Info;publishing test results
+2020-11-26T23:50:52.4529536-06:00;Thread#12;Info;Not publishing results.
+2020-11-26T23:50:52.4532440-06:00;Thread#12;Info;test results published
+2020-11-26T23:50:52.4533609-06:00;Thread#12;Info;generating reports
+2020-11-26T23:50:52.6596279-06:00;Thread#12;Info;Starting external report generation process
+2020-11-26T23:50:55.0333841-06:00;Thread#12;Info;Successfully generated reports.
+2020-11-26T23:50:55.0378845-06:00;Thread#12;Info;Successfully generated reports
+2020-11-26T23:50:55.0483716-06:00:Total: 2
+2020-11-26T23:50:55.0513670-06:00:Succeeded: 2
+2020-11-26T23:50:55.0518714-06:00:Ignored: 0
+2020-11-26T23:50:55.0523227-06:00:Pending: 0
+2020-11-26T23:50:55.0523335-06:00:Skipped: 0
+2020-11-26T23:50:55.0528398-06:00:Failed: 0
+2020-11-26T23:50:55.0647974-06:00;VSTestExecutionThread;Info;Adding attachments to VSTest
+2020-11-26T23:50:55.0651978-06:00;VSTestExecutionThread;Info;adding Test Execution Report 'D:\PROYECTO_VANGUARDIA\CarToGoProject\Car-To-Go\TestResults\Unnamed project__2020-11-26T235048.html'
+========== End of log file ==========
