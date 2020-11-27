@@ -34,7 +34,7 @@ namespace Car_To_Go.DomainService
             }
             if (purchase.Brand == null)
             {
-                return "No se encuentra esta Marca";
+                return "No se encuentra la Marca";
             }
             return null;
         }

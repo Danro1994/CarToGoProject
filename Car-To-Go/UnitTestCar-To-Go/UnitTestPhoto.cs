@@ -24,5 +24,33 @@ namespace UnitTestCar_To_Go
             // Assert
             Assert.AreEqual("No se encontraron las Fotografias", resultado);
         }
+        [TestMethod]
+        public void PruebaParaValidarQueSeEncuentraUnaFoto2()
+        {
+            // Arrange
+            var photo = new Photo();
+            var id = new int();
+            photo = null;
+            // Act
+            var photoDomainService = new PhotoDomainService();
+            var resultado = photoDomainService.PutPhotoDomainService(id, photo);
+
+            // Assert
+            Assert.AreEqual("No se encontraron las Fotografias", resultado);
+        }
+        [TestMethod]
+        public void PruebaParaValidarQueSeEncuentraUnaFoto3()
+        {
+            // Arrange
+            var photo = new Photo();
+            var id = new int();
+            photo = null;
+            // Act
+            var photoDomainService = new PhotoDomainService();
+            var resultado = photoDomainService.DeletePhotoDomainService(id, photo);
+
+            // Assert
+            Assert.AreEqual("No se encontraron las Fotografias", resultado);
+        }
     }
 }

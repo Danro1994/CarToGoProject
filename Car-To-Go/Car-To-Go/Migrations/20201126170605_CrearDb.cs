@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Car_To_Go.Migrations
 {
-    public partial class CrearDB2 : Migration
+    public partial class CrearDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -7,13 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20201029192010_CrearDB.cs" />
-    <Compile Remove="Migrations\20201029192010_CrearDB.Designer.cs" />
-    <Compile Remove="Migrations\20201029194206_CrearDB2.cs" />
-    <Compile Remove="Migrations\20201029194206_CrearDB2.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />

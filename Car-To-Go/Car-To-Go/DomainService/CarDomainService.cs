@@ -39,9 +39,9 @@ namespace Car_To_Go.DomainService
             {
                 return "La Condicion no existe";
             }
-            if (purchase.Car.Year < 1990)
+            if (purchase.Car.Year <= 1990)
             {
-                return "El vehiculo debe ser año 1950 en adelante";
+                return "El vehiculo debe ser año 1990 en adelante";
             }
 
             return null;
@@ -73,7 +73,10 @@ namespace Car_To_Go.DomainService
             {
                 return "La Condicion no existe";
             }
-
+            if (purchase.Car.Year <= 1990)
+            {
+                return "El vehiculo debe ser año 1990 en adelante";
+            }
             return null;
         }
 
@@ -82,9 +85,8 @@ namespace Car_To_Go.DomainService
 
             if (car == null)
             {
-                return "No se encontro el Vehiculo";
+                return "No se encuentra el Vehiculo";
             }
-
             return null;
         }
     }

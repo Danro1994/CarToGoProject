@@ -24,5 +24,33 @@ namespace UnitTestCar_To_Go
             // Assert
             Assert.AreEqual("No se encontro el Vendedor", resultado);
         }
+        [TestMethod]
+        public void PruebaParaValidarQueSeEncuentraUnVendedor2()
+        {
+            // Arrange
+            var seller = new Seller();
+            var id = new int();
+            seller = null;
+            // Act
+            var sellerDomainService = new SellerDomainService();
+            var resultado = sellerDomainService.PutSellerDomainService(id, seller);
+
+            // Assert
+            Assert.AreEqual("No se encontro el Vendedor", resultado);
+        }
+        [TestMethod]
+        public void PruebaParaValidarQueSeEncuentraUnVendedor3()
+        {
+            // Arrange
+            var seller = new Seller();
+            var id = new int();
+            seller = null;
+            // Act
+            var sellerDomainService = new SellerDomainService();
+            var resultado = sellerDomainService.DeleteSellerDomainService(id, seller);
+
+            // Assert
+            Assert.AreEqual("No se encontro el Vendedor", resultado);
+        }
     }
 }
