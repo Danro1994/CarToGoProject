@@ -3,6 +3,17 @@ padding: 0;
 margin: 0;
 }
 
-.imagen-catalogo{
-    --border-color: black;
+.imagen-catalogo img {
+    border-radius: 5%;
+    box-shadow: 0 0 5px gray;
+}
+
+.fondo-titulo {
+    --ion-toolbar-background: #62ceff;
+    font-family: 'Oswald', sans-serif;
+}
+
+ion-content{
+    --background: linear-gradient(#4786ef, #f4f5f8);
+    font-family: 'Oswald', sans-serif;
 }
