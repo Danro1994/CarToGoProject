@@ -1,0 +1,918 @@
+﻿2020-11-27T10:21:34.7440070-06:00;VSTestExecutionThread;Info;SpecFlow+Runner execution started
+2020-11-27T10:21:34.7441827-06:00;VSTestExecutionThread;Info;SpecFlow+Runner 3.4.19 in Framework netcore31 in x64 mode execution started
+2020-11-27T10:21:34.7441862-06:00;VSTestExecutionThread;Info;TestAdapter Location: C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\TechTalk.SpecRun.VisualStudio.TestAdapter.dll
+2020-11-27T10:21:34.7467402-06:00;VSTestExecutionThread;Info;Current UserName: 'user', MachineName: 'KEVIN-PC'
+2020-11-27T10:21:34.7840253-06:00;VSTestExecutionThread;Info;SpecRun: running tests in C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowCarToGo.dll
+2020-11-27T10:21:34.7842597-06:00;VSTestExecutionThread;Info;Output folder configured to "C:\Users\user\Desktop\CarToGo\Car-To-Go\TestResults" (default)
+2020-11-27T10:21:34.7843217-06:00;VSTestExecutionThread;Info;Profile: 
+2020-11-27T10:21:34.8584760-06:00;VSTestExecutionThread;Info;Log file path: C:\Users\user\Desktop\CarToGo\Car-To-Go\TestResults\Unnamed project__2020-11-27T102134.log
+2020-11-27T10:21:34.8683338-06:00;Thread#12;Info;Checking activation
+2020-11-27T10:21:34.9994327-06:00;Thread#12;Info;Activated.
+2020-11-27T10:21:34.9997672-06:00;Thread#12;Info;Activation check completed
+2020-11-27T10:21:34.9999352-06:00;Thread#12;Info;Starting test run
+2020-11-27T10:21:35.1420952-06:00;Thread#12;Info;Discovering target: Default
+2020-11-27T10:21:35.1423456-06:00;Thread#12;Info;Discovering tests from assembly: C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowCarToGo.dll
+2020-11-27T10:21:35.2809087-06:00;Thread#12;Info;Discovered tests from assembly: C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowCarToGo.dll
+2020-11-27T10:21:35.2825880-06:00:Test Suite Dump
+2020-11-27T10:21:35.2847516-06:00:#0: Unnamed project/ - 
+2020-11-27T10:21:35.2847704-06:00:#1: Default - 
+2020-11-27T10:21:35.2847721-06:00:#2: SpecFlowCarToGo - 
+2020-11-27T10:21:35.2847747-06:00:#3: Marca de CarToGo - 
+2020-11-27T10:21:35.2847765-06:00:#7: Car de CarToGo - 
+2020-11-27T10:21:35.2847791-06:00:#23: Condicion de CarToGo - 
+2020-11-27T10:21:35.2847807-06:00:#27: Modelos de CarToGo - 
+2020-11-27T10:21:35.2847822-06:00:#33: Fotografias de CarToGo - 
+2020-11-27T10:21:35.2847836-06:00:#37: Vendedor de CarToGo - 
+2020-11-27T10:21:35.2847854-06:00:#41: Estados de CarToGo - 
+2020-11-27T10:21:35.2858906-06:00:#4: Validar que se encuentra una marca - TestAssembly:SpecFlowCarToGo/Feature:Marca+de+CarToGo/Scenario:Validar+que+se+encuentra+una+marca
+2020-11-27T10:21:35.2859232-06:00:#5: Validar que se encuentra una marca para actualizar - TestAssembly:SpecFlowCarToGo/Feature:Marca+de+CarToGo/Scenario:Validar+que+se+encuentra+una+marca+para+actualizar
+2020-11-27T10:21:35.2859442-06:00:#6: Validar que se encuentra una marca para eliminar - TestAssembly:SpecFlowCarToGo/Feature:Marca+de+CarToGo/Scenario:Validar+que+se+encuentra+una+marca+para+eliminar
+2020-11-27T10:21:35.2859517-06:00:#8: Validar que se encuentra el carro - TestAssembly:SpecFlowCarToGo/Feature:Car+de+CarToGo/Scenario:Validar+que+se+encuentra+el+carro
+2020-11-27T10:21:35.2859573-06:00:#9: Postear un carro cuando el modelo no existe - TestAssembly:SpecFlowCarToGo/Feature:Car+de+CarToGo/Scenario:Postear+un+carro+cuando+el+modelo+no+existe
+2020-11-27T10:21:35.2859672-06:00:#10: Postear un carro cuando no existen fotografias - TestAssembly:SpecFlowCarToGo/Feature:Car+de+CarToGo/Scenario:Postear+un+carro+cuando+no+existen+fotografias
+2020-11-27T10:21:35.2859724-06:00:#11: Postear un carro cuando el estado no existe - TestAssembly:SpecFlowCarToGo/Feature:Car+de+CarToGo/Scenario:Postear+un+carro+cuando+el+estado+no+existe
+2020-11-27T10:21:35.2859775-06:00:#12: Postear un carro cuando el vendedor no existe - TestAssembly:SpecFlowCarToGo/Feature:Car+de+CarToGo/Scenario:Postear+un+carro+cuando+el+vendedor+no+existe
+2020-11-27T10:21:35.2859867-06:00:#13: Postear un carro cuando la condicion no existe - TestAssembly:SpecFlowCarToGo/Feature:Car+de+CarToGo/Scenario:Postear+un+carro+cuando+la+condicion+no+existe
+2020-11-27T10:21:35.2859923-06:00:#14: Postear un carro cuando el anio sea 1990 o inferior - TestAssembly:SpecFlowCarToGo/Feature:Car+de+CarToGo/Scenario:Postear+un+carro+cuando+el+anio+sea+1990+o+inferior
+2020-11-27T10:21:35.2859977-06:00:#15: Actualizar cuando el carro no existe - TestAssembly:SpecFlowCarToGo/Feature:Car+de+CarToGo/Scenario:Actualizar+cuando+el+carro+no+existe
+2020-11-27T10:21:35.2860071-06:00:#16: Actualizar cuando el modelo del carro no existe - TestAssembly:SpecFlowCarToGo/Feature:Car+de+CarToGo/Scenario:Actualizar+cuando+el+modelo+del+carro+no+existe
+2020-11-27T10:21:35.2860127-06:00:#17: Actualizar cuando el carro no tiene fotografias registradas - TestAssembly:SpecFlowCarToGo/Feature:Car+de+CarToGo/Scenario:Actualizar+cuando+el+carro+no+tiene+fotografias+registradas
+2020-11-27T10:21:35.2860176-06:00:#18: Actualizar cuando el carro no tiene estado - TestAssembly:SpecFlowCarToGo/Feature:Car+de+CarToGo/Scenario:Actualizar+cuando+el+carro+no+tiene+estado
+2020-11-27T10:21:35.2860270-06:00:#19: Actualizar el carro cuando no existe el vendedor - TestAssembly:SpecFlowCarToGo/Feature:Car+de+CarToGo/Scenario:Actualizar+el+carro+cuando+no+existe+el+vendedor
+2020-11-27T10:21:35.2860323-06:00:#20: Actualizar el carro cuando no existe condicion - TestAssembly:SpecFlowCarToGo/Feature:Car+de+CarToGo/Scenario:Actualizar+el+carro+cuando+no+existe+condicion
+2020-11-27T10:21:35.2860380-06:00:#21: Actualizar un carro cuando el anio sea 1990 o inferior - TestAssembly:SpecFlowCarToGo/Feature:Car+de+CarToGo/Scenario:Actualizar+un+carro+cuando+el+anio+sea+1990+o+inferior
+2020-11-27T10:21:35.2860472-06:00:#22: Validar que se encuentra el carro para eliminarlo - TestAssembly:SpecFlowCarToGo/Feature:Car+de+CarToGo/Scenario:Validar+que+se+encuentra+el+carro+para+eliminarlo
+2020-11-27T10:21:35.2860530-06:00:#24: Validar que se encuentra una condicion - TestAssembly:SpecFlowCarToGo/Feature:Condicion+de+CarToGo/Scenario:Validar+que+se+encuentra+una+condicion
+2020-11-27T10:21:35.2860584-06:00:#25: Validar que se encuentra una condicion para actualizar - TestAssembly:SpecFlowCarToGo/Feature:Condicion+de+CarToGo/Scenario:Validar+que+se+encuentra+una+condicion+para+actualizar
+2020-11-27T10:21:35.2860723-06:00:#26: Validar que se encuentra una condicion para eliminar - TestAssembly:SpecFlowCarToGo/Feature:Condicion+de+CarToGo/Scenario:Validar+que+se+encuentra+una+condicion+para+eliminar
+2020-11-27T10:21:35.2860785-06:00:#28: Validar que se encuentra el modelo - TestAssembly:SpecFlowCarToGo/Feature:Modelos+de+CarToGo/Scenario:Validar+que+se+encuentra+el+modelo
+2020-11-27T10:21:35.2860837-06:00:#29: Validar que se encuentra el modelo para actualizar - TestAssembly:SpecFlowCarToGo/Feature:Modelos+de+CarToGo/Scenario:Validar+que+se+encuentra+el+modelo+para+actualizar
+2020-11-27T10:21:35.2860931-06:00:#30: Validar en el modelo la marca vacia para actualizar - TestAssembly:SpecFlowCarToGo/Feature:Modelos+de+CarToGo/Scenario:Validar+en+el+modelo+la+marca+vacia+para+actualizar
+2020-11-27T10:21:35.2860983-06:00:#31: Postear un modelo con marca vacia - TestAssembly:SpecFlowCarToGo/Feature:Modelos+de+CarToGo/Scenario:Postear+un+modelo+con+marca+vacia
+2020-11-27T10:21:35.2861034-06:00:#32: Validar que se encuentra el modelo para eliminar - TestAssembly:SpecFlowCarToGo/Feature:Modelos+de+CarToGo/Scenario:Validar+que+se+encuentra+el+modelo+para+eliminar
+2020-11-27T10:21:35.2861127-06:00:#34: Validar que se encuentra una fotografia - TestAssembly:SpecFlowCarToGo/Feature:Fotografias+de+CarToGo/Scenario:Validar+que+se+encuentra+una+fotografia
+2020-11-27T10:21:35.2861183-06:00:#35: Validar que se encuentra una fotografia para actualizar - TestAssembly:SpecFlowCarToGo/Feature:Fotografias+de+CarToGo/Scenario:Validar+que+se+encuentra+una+fotografia+para+actualizar
+2020-11-27T10:21:35.2861262-06:00:#36: Validar que se encuentra una fotografia para eliminar - TestAssembly:SpecFlowCarToGo/Feature:Fotografias+de+CarToGo/Scenario:Validar+que+se+encuentra+una+fotografia+para+eliminar
+2020-11-27T10:21:35.2861363-06:00:#38: Validar que se encuentra un vendedor - TestAssembly:SpecFlowCarToGo/Feature:Vendedor+de+CarToGo/Scenario:Validar+que+se+encuentra+un+vendedor
+2020-11-27T10:21:35.2861417-06:00:#39: Validar que se encuentra un vendedor para actualizar - TestAssembly:SpecFlowCarToGo/Feature:Vendedor+de+CarToGo/Scenario:Validar+que+se+encuentra+un+vendedor+para+actualizar
+2020-11-27T10:21:35.2861467-06:00:#40: Validar que se encuentra un vendedor eliminar - TestAssembly:SpecFlowCarToGo/Feature:Vendedor+de+CarToGo/Scenario:Validar+que+se+encuentra+un+vendedor+eliminar
+2020-11-27T10:21:35.2861561-06:00:#42: Validar que se encuentra un estado - TestAssembly:SpecFlowCarToGo/Feature:Estados+de+CarToGo/Scenario:Validar+que+se+encuentra+un+estado
+2020-11-27T10:21:35.2861613-06:00:#43: Validar que se encuentra un estado para actualizar - TestAssembly:SpecFlowCarToGo/Feature:Estados+de+CarToGo/Scenario:Validar+que+se+encuentra+un+estado+para+actualizar
+2020-11-27T10:21:35.2861664-06:00:#44: Validar que se encuentra un estado para eliminar - TestAssembly:SpecFlowCarToGo/Feature:Estados+de+CarToGo/Scenario:Validar+que+se+encuentra+un+estado+para+eliminar
+2020-11-27T10:21:35.2862311-06:00:End: Test Suite Dump
+2020-11-27T10:21:35.3052030-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:35.3070978-06:00:Thread#:Scheduler: testitem #4 from normal test queue 
+2020-11-27T10:21:35.3071753-06:00:Thread#0:Scheduler: considering testitem #4 for thread 0
+2020-11-27T10:21:35.3103060-06:00:Thread#0:TestItem#4:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:35.3103181-06:00:Thread#0:TestItem#4:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:35.3103196-06:00:Thread#0:TestItem#4:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:35.3103219-06:00:Thread#0:Scheduler: using testitem #4 for thread 0
+2020-11-27T10:21:35.3110597-06:00:Thread#0:Scheduler: Test #4 is scheduled for thread
+2020-11-27T10:21:35.3147812-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:35.3172125-06:00:Thread #0: creating new test thread executor for SpecFlowCarToGo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null (target: Default)
+2020-11-27T10:21:35.3199935-06:00:Thread #0: Creating test assembly executor for execution model OutProc
+2020-11-27T10:21:35.3201920-06:00:Thread #0: Creating test assembly executor for execution model OutProc
+2020-11-27T10:21:35.3233342-06:00:Thread #0: using TechTalk.SpecRun.Framework.Execution.OutOfProc.StreamJsonRPC.OutOfProcessTestAssemblyExecutorHost to execute tests
+2020-11-27T10:21:35.3252463-06:00:starting Out Of Process Executor
+2020-11-27T10:21:35.3272595-06:00:Assembly resolving Microsoft.VisualStudio.Validation, Version=15.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+2020-11-27T10:21:35.3306789-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' from .deps.json file
+2020-11-27T10:21:35.3306984-06:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' from .deps.json
+2020-11-27T10:21:35.3319887-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-27T10:21:35.3323792-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Validation.dll'
+2020-11-27T10:21:35.3324886-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Validation.exe'
+2020-11-27T10:21:35.3325250-06:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-27T10:21:35.3328517-06:00:TargetFramework: .NETCoreApp,Version=v3.1
+2020-11-27T10:21:35.3339537-06:00:Tfm: netcoreapp3.1
+2020-11-27T10:21:35.3339710-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1'
+2020-11-27T10:21:35.3339726-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\Microsoft.VisualStudio.Validation.dll'
+2020-11-27T10:21:35.3340667-06:00:[AssemblyCache] Found file 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\Microsoft.VisualStudio.Validation.dll' for assembly 'Microsoft.VisualStudio.Validation'
+2020-11-27T10:21:35.3354319-06:00:[AssemblyCache] Resolved 'Microsoft.VisualStudio.Validation' to C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\Microsoft.VisualStudio.Validation.dll
+2020-11-27T10:21:35.3361148-06:00:Starting callback TCP Rpc server
+2020-11-27T10:21:35.3644403-06:00:Asynchronously starting background TCP Rpc Server on port 32768
+2020-11-27T10:21:35.3645163-06:00:Started callback TCP Rpc server on port 32768
+2020-11-27T10:21:35.3645289-06:00:Starting logger TCP Rpc server
+2020-11-27T10:21:35.3687530-06:00:Asynchronously starting background TCP Rpc Server on port 32769
+2020-11-27T10:21:35.3687780-06:00:Started logger TCP Rpc server on port 32769
+2020-11-27T10:21:35.4727972-06:00:Executing test executor at 'dotnet' 'exec "C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\TechTalk.SpecRun.Framework.Executor.anycpu.netcoreapp3_1.dll" --remoteRunnerPid 5724 --uniqueId "2020-11-27T102134" --outputFolder "C:\Users\user\Desktop\CarToGo\Car-To-Go\TestResults" --callbackPort 32768 --loggerPort 32769' in 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-27T10:21:35.5037059-06:00:Executor with PID 5132 has been started successfully.
+2020-11-27T10:21:35.5073973-06:00:Out of Process Executor 5132 started
+2020-11-27T10:21:35.5074148-06:00:Waiting for endpoint
+2020-11-27T10:21:35.8887890-06:00:Assembly resolving StreamJsonRpc.resources, Version=1.4.0.0, Culture=es-MX, PublicKeyToken=b03f5f7f11d50a3a
+2020-11-27T10:21:35.8888052-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' from .deps.json file
+2020-11-27T10:21:35.8888072-06:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' from .deps.json
+2020-11-27T10:21:35.8888100-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-27T10:21:35.8888113-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\StreamJsonRpc.resources.dll'
+2020-11-27T10:21:35.8888402-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\StreamJsonRpc.resources.exe'
+2020-11-27T10:21:35.8888670-06:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-27T10:21:35.8888690-06:00:TargetFramework: .NETCoreApp,Version=v3.1
+2020-11-27T10:21:35.8888889-06:00:Tfm: netcoreapp3.1
+2020-11-27T10:21:35.8888910-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1'
+2020-11-27T10:21:35.8888919-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\StreamJsonRpc.resources.dll'
+2020-11-27T10:21:35.8889270-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\StreamJsonRpc.resources.exe'
+2020-11-27T10:21:35.8889946-06:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1'
+2020-11-27T10:21:35.8977509-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.9'
+2020-11-27T10:21:35.8977704-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.9\StreamJsonRpc.resources.dll'
+2020-11-27T10:21:35.8978277-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.9\StreamJsonRpc.resources.exe'
+2020-11-27T10:21:35.8978576-06:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.9'
+2020-11-27T10:21:35.8980054-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.9'
+2020-11-27T10:21:35.8980124-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.9\StreamJsonRpc.resources.dll'
+2020-11-27T10:21:35.8980469-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.9\StreamJsonRpc.resources.exe'
+2020-11-27T10:21:35.8980720-06:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.9'
+2020-11-27T10:21:35.8981947-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.9'
+2020-11-27T10:21:35.8982017-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.9\StreamJsonRpc.resources.dll'
+2020-11-27T10:21:35.8982453-06:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.9\StreamJsonRpc.resources.exe'
+2020-11-27T10:21:35.8982711-06:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.9'
+2020-11-27T10:21:35.8991372-06:00:Assembly resolving StreamJsonRpc.resources, Version=1.4.0.0, Culture=es, PublicKeyToken=b03f5f7f11d50a3a
+2020-11-27T10:21:35.8998002-06:00:Assembly resolving Microsoft.VisualStudio.Threading, Version=15.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+2020-11-27T10:21:35.8998124-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' from .deps.json file
+2020-11-27T10:21:35.8998159-06:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' from .deps.json
+2020-11-27T10:21:35.8998185-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-27T10:21:35.8998195-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Threading.dll'
+2020-11-27T10:21:35.8998521-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Threading.exe'
+2020-11-27T10:21:35.8998835-06:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-27T10:21:35.8998867-06:00:TargetFramework: .NETCoreApp,Version=v3.1
+2020-11-27T10:21:35.8998985-06:00:Tfm: netcoreapp3.1
+2020-11-27T10:21:35.8999017-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1'
+2020-11-27T10:21:35.8999026-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\Microsoft.VisualStudio.Threading.dll'
+2020-11-27T10:21:35.8999577-06:00:[AssemblyCache] Found file 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\Microsoft.VisualStudio.Threading.dll' for assembly 'Microsoft.VisualStudio.Threading'
+2020-11-27T10:21:35.9004479-06:00:[AssemblyCache] Resolved 'Microsoft.VisualStudio.Threading' to C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\Microsoft.VisualStudio.Threading.dll
+2020-11-27T10:21:36.7095364-06:00:Remote executor port received: 32770
+2020-11-27T10:21:36.7103895-06:00:Creating executor TCP client on port 32770
+2020-11-27T10:21:36.7110846-06:00:Created executor TCP client on port 32770
+2020-11-27T10:21:36.7111040-06:00:Connecting to remote executor TCP server
+2020-11-27T10:21:36.7139232-06:00:Connected remote executor TCP server
+2020-11-27T10:21:36.7142675-06:00:trying to connect to Out of Process Executor the 1 attempt
+2020-11-27T10:21:36.7142814-06:00:Connection to Out of Process Executor established in the 1 attempt
+2020-11-27T10:21:36.9121952-06:00:2020-11-27T10:21:36.9107373-06:00:OutOfProcessTestAssemblyExecutor: initialized for C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowCarToGo.dll on test thread #0
+2020-11-27T10:21:36.9183153-06:00:Endpoint 5132 started
+2020-11-27T10:21:36.9382290-06:00:2020-11-27T10:21:36.9378126-06:00:OutOfProcessTestAssemblyExecutor: running tests...
+2020-11-27T10:21:37.1240728-06:00:2020-11-27T10:21:37.1236691-06:00:Assembly resolving TechTalk.SpecFlow, Version=3.4.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41
+2020-11-27T10:21:37.1282805-06:00:2020-11-27T10:21:37.1278221-06:00:[AssemblyCache] Trying to resolve 'TechTalk.SpecFlow' from .deps.json file
+2020-11-27T10:21:37.1317570-06:00:2020-11-27T10:21:37.1313442-06:00:[AssemblyCache] Resolved 'TechTalk.SpecFlow' to 'C:\Users\user\.nuget\packages\specflow\3.4.8\lib\netstandard2.0\TechTalk.SpecFlow.dll'
+2020-11-27T10:21:37.2621923-06:00:2020-11-27T10:21:37.2605082-06:00:Thread#0:T:-> Loading plugin C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\LivingDoc.SpecFlowPlugin.dll
+2020-11-27T10:21:37.2666753-06:00:2020-11-27T10:21:37.2649248-06:00:Assembly resolving TechTalk.SpecFlow, Version=3.4.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41
+2020-11-27T10:21:37.2698735-06:00:2020-11-27T10:21:37.2681046-06:00:Assembly resolving LivingDoc.Dtos, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null
+2020-11-27T10:21:37.2753576-06:00:2020-11-27T10:21:37.2705646-06:00:[AssemblyCache] Trying to resolve 'LivingDoc.Dtos' from .deps.json file
+2020-11-27T10:21:37.2841906-06:00:2020-11-27T10:21:37.2766187-06:00:[AssemblyCache] Resolved 'LivingDoc.Dtos' to 'C:\Users\user\.nuget\packages\specflow.plus.livingdocplugin\3.4.211\lib\netstandard2.0\LivingDoc.Dtos.dll'
+2020-11-27T10:21:37.2962657-06:00:2020-11-27T10:21:37.2881795-06:00:Thread#0:T:-> Loading plugin C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecRun.Runtime.SpecFlowPlugin.dll
+2020-11-27T10:21:37.3013494-06:00:2020-11-27T10:21:37.2974585-06:00:Assembly resolving TechTalk.SpecFlow, Version=3.4.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41
+2020-11-27T10:21:37.3223947-06:00:2020-11-27T10:21:37.3062724-06:00:Thread#0:T:-> Using default config
+2020-11-27T10:21:37.3366702-06:00:2020-11-27T10:21:37.3357606-06:00:Assembly resolving Cucumber.Messages, Version=6.0.1.0, Culture=neutral, PublicKeyToken=b10c5988214f940c
+2020-11-27T10:21:37.3376085-06:00:2020-11-27T10:21:37.3372537-06:00:[AssemblyCache] Trying to resolve 'Cucumber.Messages' from .deps.json file
+2020-11-27T10:21:37.3383683-06:00:2020-11-27T10:21:37.3380378-06:00:[AssemblyCache] Resolved 'Cucumber.Messages' to 'C:\Users\user\.nuget\packages\cucumber.messages\6.0.1\lib\netstandard2.0\Cucumber.Messages.dll'
+2020-11-27T10:21:37.3404313-06:00:2020-11-27T10:21:37.3400416-06:00:Assembly resolving Google.Protobuf, Version=3.7.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604
+2020-11-27T10:21:37.3416334-06:00:2020-11-27T10:21:37.3407624-06:00:[AssemblyCache] Trying to resolve 'Google.Protobuf' from .deps.json file
+2020-11-27T10:21:37.3425675-06:00:2020-11-27T10:21:37.3421637-06:00:[AssemblyCache] Resolved 'Google.Protobuf' to 'C:\Users\user\.nuget\packages\google.protobuf\3.7.0\lib\netstandard1.0\Google.Protobuf.dll'
+2020-11-27T10:21:37.3563042-06:00:2020-11-27T10:21:37.3559118-06:00:Assembly resolving Microsoft.VisualStudio.TestPlatform.ObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+2020-11-27T10:21:37.3568524-06:00:2020-11-27T10:21:37.3565717-06:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.TestPlatform.ObjectModel' from .deps.json file
+2020-11-27T10:21:37.3575653-06:00:2020-11-27T10:21:37.3572877-06:00:[AssemblyCache] Resolved 'Microsoft.VisualStudio.TestPlatform.ObjectModel' to 'C:\Users\user\.nuget\packages\microsoft.testplatform.objectmodel\16.5.0\lib\netstandard2.0\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll'
+2020-11-27T10:21:37.3978842-06:00:2020-11-27T10:21:37.3974984-06:00:Assembly resolving Utf8Json, Version=1.3.7.0, Culture=neutral, PublicKeyToken=8a73d3ba7e392e27
+2020-11-27T10:21:37.3983948-06:00:2020-11-27T10:21:37.3981866-06:00:[AssemblyCache] Trying to resolve 'Utf8Json' from .deps.json file
+2020-11-27T10:21:37.3990819-06:00:2020-11-27T10:21:37.3987912-06:00:[AssemblyCache] Resolved 'Utf8Json' to 'C:\Users\user\.nuget\packages\utf8json\1.3.7\lib\netstandard2.0\Utf8Json.dll'
+2020-11-27T10:21:37.6366843-06:00:Thread#0: Test #4/0 is started on thread #0
+2020-11-27T10:21:37.6818574-06:00:2020-11-27T10:21:37.6774663-06:00:Thread#0:B:Given ingresar la marca null
+2020-11-27T10:21:37.7103242-06:00:2020-11-27T10:21:37.7099282-06:00:Assembly resolving Car-To-Go, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+2020-11-27T10:21:37.7141749-06:00:2020-11-27T10:21:37.7134238-06:00:[AssemblyCache] Trying to resolve 'Car-To-Go' from .deps.json file
+2020-11-27T10:21:37.7157765-06:00:2020-11-27T10:21:37.7153756-06:00:[DependencyContextAssemblyCache.ResolveManagedAssembly] Resolving 'Car-To-Go', found in dependency map, but unable to resolve a path in ['Car-To-Go.dll']
+2020-11-27T10:21:37.7164226-06:00:2020-11-27T10:21:37.7160837-06:00:[AssemblyCache] Could not resolve 'Car-To-Go' from .deps.json
+2020-11-27T10:21:37.7192630-06:00:2020-11-27T10:21:37.7186284-06:00:[AssemblyCache] Trying to resolve 'Car-To-Go' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-27T10:21:37.7255378-06:00:2020-11-27T10:21:37.7249555-06:00:[AssemblyCache] Trying to resolve 'Car-To-Go' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\Car-To-Go.dll'
+2020-11-27T10:21:38.7058165-06:00:2020-11-27T10:21:37.7259461-06:00:[AssemblyCache] Found file 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\Car-To-Go.dll' for assembly 'Car-To-Go'
+2020-11-27T10:21:38.7100393-06:00:2020-11-27T10:21:38.7082188-06:00:[AssemblyCache] Resolved 'Car-To-Go' to C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\Car-To-Go.dll
+2020-11-27T10:21:38.7209500-06:00:2020-11-27T10:21:38.7197954-06:00:Thread#0:T:done: BrandSteps.GivenIngresarLaMarcaNull() (1,0s)
+2020-11-27T10:21:38.7253049-06:00:2020-11-27T10:21:38.7248851-06:00:Thread#0:B:When busca la marca
+2020-11-27T10:21:38.7286972-06:00:2020-11-27T10:21:38.7282791-06:00:Thread#0:T:done: BrandSteps.WhenBuscaLaMarca() (0,0s)
+2020-11-27T10:21:38.7312759-06:00:2020-11-27T10:21:38.7307478-06:00:Thread#0:B:Then el resultado debe ser "No se encontro la Marca"
+2020-11-27T10:21:38.7347293-06:00:2020-11-27T10:21:38.7343342-06:00:Assembly resolving FluentAssertions, Version=5.10.3.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a
+2020-11-27T10:21:38.7352735-06:00:2020-11-27T10:21:38.7350313-06:00:[AssemblyCache] Trying to resolve 'FluentAssertions' from .deps.json file
+2020-11-27T10:21:38.7360774-06:00:2020-11-27T10:21:38.7357704-06:00:[AssemblyCache] Resolved 'FluentAssertions' to 'C:\Users\user\.nuget\packages\fluentassertions\5.10.3\lib\netcoreapp2.1\FluentAssertions.dll'
+2020-11-27T10:21:38.7439313-06:00:2020-11-27T10:21:38.7434193-06:00:Thread#0:T:done: BrandSteps.ThenElResultadoDebeSer("No se encontro la...") (0,0s)
+2020-11-27T10:21:38.7582519-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:38.7582975-06:00:Thread#:Scheduler: testitem #5 from normal test queue 
+2020-11-27T10:21:38.7583011-06:00:Thread#0:Scheduler: considering testitem #5 for thread 0
+2020-11-27T10:21:38.7583608-06:00:Thread#0:TestItem#5:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:38.7583649-06:00:Thread#0:TestItem#5:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:38.7583661-06:00:Thread#0:TestItem#5:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:38.7583674-06:00:Thread#0:Scheduler: using testitem #5 for thread 0
+2020-11-27T10:21:38.7583942-06:00:Thread#0:Scheduler: Test #5 is scheduled for thread
+2020-11-27T10:21:38.7584728-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:38.8209273-06:00:Thread#0: Test #4/0 is finished on thread #0 as Succeeded within 1,1830708 seconds
+2020-11-27T10:21:38.8237914-06:00:Thread#0: Test #5/0 is started on thread #0
+2020-11-27T10:21:38.8260481-06:00:2020-11-27T10:21:38.8256874-06:00:Thread#0:B:Given ingresar la marca null
+2020-11-27T10:21:38.8268948-06:00:2020-11-27T10:21:38.8265218-06:00:Thread#0:T:done: BrandSteps.GivenIngresarLaMarcaNull() (0,0s)
+2020-11-27T10:21:38.8276582-06:00:2020-11-27T10:21:38.8273081-06:00:Thread#0:B:When actualizar la marca
+2020-11-27T10:21:38.8311141-06:00:2020-11-27T10:21:38.8307059-06:00:Thread#0:T:done: BrandSteps.WhenActualizarLaMarca() (0,0s)
+2020-11-27T10:21:38.8319043-06:00:2020-11-27T10:21:38.8315745-06:00:Thread#0:B:Then el resultado debe ser "No se encontro la Marca"
+2020-11-27T10:21:38.8333841-06:00:2020-11-27T10:21:38.8324897-06:00:Thread#0:T:done: BrandSteps.ThenElResultadoDebeSer("No se encontro la...") (0,0s)
+2020-11-27T10:21:38.8350420-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:38.8350704-06:00:Thread#:Scheduler: testitem #6 from normal test queue 
+2020-11-27T10:21:38.8350741-06:00:Thread#0:Scheduler: considering testitem #6 for thread 0
+2020-11-27T10:21:38.8351541-06:00:Thread#0:TestItem#6:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:38.8351581-06:00:Thread#0:TestItem#6:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:38.8351602-06:00:Thread#0:TestItem#6:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:38.8351626-06:00:Thread#0:Scheduler: using testitem #6 for thread 0
+2020-11-27T10:21:38.8351790-06:00:Thread#0:Scheduler: Test #6 is scheduled for thread
+2020-11-27T10:21:38.8351903-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:38.8375515-06:00:Thread#0: Test #5/0 is finished on thread #0 as Succeeded within 0,013689 seconds
+2020-11-27T10:21:38.8395218-06:00:Thread#0: Test #6/0 is started on thread #0
+2020-11-27T10:21:38.8422281-06:00:2020-11-27T10:21:38.8416703-06:00:Thread#0:B:Given ingresar la marca null
+2020-11-27T10:21:38.8435592-06:00:2020-11-27T10:21:38.8431377-06:00:Thread#0:T:done: BrandSteps.GivenIngresarLaMarcaNull() (0,0s)
+2020-11-27T10:21:38.8442328-06:00:2020-11-27T10:21:38.8439076-06:00:Thread#0:B:When eliminar la marca
+2020-11-27T10:21:38.8462506-06:00:2020-11-27T10:21:38.8458350-06:00:Thread#0:T:done: BrandSteps.WhenEliminarLaMarca() (0,0s)
+2020-11-27T10:21:38.8468518-06:00:2020-11-27T10:21:38.8465806-06:00:Thread#0:B:Then el resultado debe ser "No se encontro la Marca"
+2020-11-27T10:21:38.8476551-06:00:2020-11-27T10:21:38.8473341-06:00:Thread#0:T:done: BrandSteps.ThenElResultadoDebeSer("No se encontro la...") (0,0s)
+2020-11-27T10:21:38.8489328-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:38.8489543-06:00:Thread#:Scheduler: testitem #8 from normal test queue 
+2020-11-27T10:21:38.8489588-06:00:Thread#0:Scheduler: considering testitem #8 for thread 0
+2020-11-27T10:21:38.8489812-06:00:Thread#0:TestItem#8:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:38.8489839-06:00:Thread#0:TestItem#8:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:38.8489857-06:00:Thread#0:TestItem#8:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:38.8489877-06:00:Thread#0:Scheduler: using testitem #8 for thread 0
+2020-11-27T10:21:38.8490038-06:00:Thread#0:Scheduler: Test #8 is scheduled for thread
+2020-11-27T10:21:38.8490210-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:38.8518221-06:00:Thread#0: Test #6/0 is finished on thread #0 as Succeeded within 0,0122737 seconds
+2020-11-27T10:21:38.8528183-06:00:Thread#0: Test #8/0 is started on thread #0
+2020-11-27T10:21:38.8560295-06:00:2020-11-27T10:21:38.8556471-06:00:Thread#0:B:Given ingresar el carro null
+2020-11-27T10:21:38.8575425-06:00:2020-11-27T10:21:38.8571617-06:00:Thread#0:T:done: CarSteps.GivenIngresarElCarroNull() (0,0s)
+2020-11-27T10:21:38.8581409-06:00:2020-11-27T10:21:38.8578563-06:00:Thread#0:B:When buscar el carro
+2020-11-27T10:21:38.8597380-06:00:2020-11-27T10:21:38.8593781-06:00:Thread#0:T:done: CarSteps.WhenBuscarElCarro() (0,0s)
+2020-11-27T10:21:38.8604098-06:00:2020-11-27T10:21:38.8600455-06:00:Thread#0:B:Then debe mostrar "No se Encontro el Vehiculo"
+2020-11-27T10:21:38.9428500-06:00:2020-11-27T10:21:38.9424362-06:00:Assembly resolving nspec, Culture=neutral, PublicKeyToken=null
+2020-11-27T10:21:38.9433968-06:00:2020-11-27T10:21:38.9431284-06:00:[AssemblyCache] Trying to resolve 'nspec' from .deps.json file
+2020-11-27T10:21:38.9440830-06:00:2020-11-27T10:21:38.9437673-06:00:[AssemblyCache] Could not resolve 'nspec' from .deps.json
+2020-11-27T10:21:38.9449092-06:00:2020-11-27T10:21:38.9444268-06:00:[AssemblyCache] Trying to resolve 'nspec' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-27T10:21:38.9455727-06:00:2020-11-27T10:21:38.9452878-06:00:[AssemblyCache] Trying to resolve 'nspec' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\nspec.dll'
+2020-11-27T10:21:38.9462612-06:00:2020-11-27T10:21:38.9459122-06:00:[AssemblyCache] Trying to resolve 'nspec' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\nspec.exe'
+2020-11-27T10:21:38.9468826-06:00:2020-11-27T10:21:38.9465755-06:00:[AssemblyCache] Could not resolve 'nspec' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-27T10:21:38.9481730-06:00:2020-11-27T10:21:38.9477827-06:00:TargetFramework: .NETCoreApp,Version=v3.1
+2020-11-27T10:21:38.9492966-06:00:2020-11-27T10:21:38.9488770-06:00:Tfm: netcoreapp3.1
+2020-11-27T10:21:38.9524882-06:00:2020-11-27T10:21:38.9520403-06:00:[AssemblyCache] Trying to resolve 'nspec' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1'
+2020-11-27T10:21:38.9532057-06:00:2020-11-27T10:21:38.9528351-06:00:[AssemblyCache] Trying to resolve 'nspec' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\nspec.dll'
+2020-11-27T10:21:38.9540377-06:00:2020-11-27T10:21:38.9536299-06:00:[AssemblyCache] Trying to resolve 'nspec' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\nspec.exe'
+2020-11-27T10:21:38.9546931-06:00:2020-11-27T10:21:38.9543894-06:00:[AssemblyCache] Could not resolve 'nspec' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1'
+2020-11-27T10:21:38.9660845-06:00:2020-11-27T10:21:38.9656679-06:00:[AssemblyCache] Trying to resolve 'nspec' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.9'
+2020-11-27T10:21:38.9665964-06:00:2020-11-27T10:21:38.9663190-06:00:[AssemblyCache] Trying to resolve 'nspec' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.9\nspec.dll'
+2020-11-27T10:21:38.9671429-06:00:2020-11-27T10:21:38.9668576-06:00:[AssemblyCache] Trying to resolve 'nspec' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.9\nspec.exe'
+2020-11-27T10:21:38.9677666-06:00:2020-11-27T10:21:38.9674767-06:00:[AssemblyCache] Could not resolve 'nspec' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.9'
+2020-11-27T10:21:38.9685096-06:00:2020-11-27T10:21:38.9682178-06:00:[AssemblyCache] Trying to resolve 'nspec' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.9'
+2020-11-27T10:21:38.9691166-06:00:2020-11-27T10:21:38.9687755-06:00:[AssemblyCache] Trying to resolve 'nspec' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.9\nspec.dll'
+2020-11-27T10:21:38.9699115-06:00:2020-11-27T10:21:38.9695860-06:00:[AssemblyCache] Trying to resolve 'nspec' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.9\nspec.exe'
+2020-11-27T10:21:38.9706008-06:00:2020-11-27T10:21:38.9702586-06:00:[AssemblyCache] Could not resolve 'nspec' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.9'
+2020-11-27T10:21:38.9713709-06:00:2020-11-27T10:21:38.9710307-06:00:[AssemblyCache] Trying to resolve 'nspec' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.9'
+2020-11-27T10:21:38.9718994-06:00:2020-11-27T10:21:38.9716345-06:00:[AssemblyCache] Trying to resolve 'nspec' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.9\nspec.dll'
+2020-11-27T10:21:38.9732542-06:00:2020-11-27T10:21:38.9728393-06:00:[AssemblyCache] Trying to resolve 'nspec' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.9\nspec.exe'
+2020-11-27T10:21:38.9738574-06:00:2020-11-27T10:21:38.9736149-06:00:[AssemblyCache] Could not resolve 'nspec' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.9'
+2020-11-27T10:21:38.9844870-06:00:2020-11-27T10:21:38.9840943-06:00:Assembly resolving nspec, Culture=neutral, PublicKeyToken=null
+2020-11-27T10:21:38.9926514-06:00:2020-11-27T10:21:38.9922879-06:00:Assembly resolving nspec, Culture=neutral, PublicKeyToken=null
+2020-11-27T10:21:39.0026160-06:00:2020-11-27T10:21:39.0022101-06:00:Assembly resolving xunit.assert, Culture=neutral, PublicKeyToken=null
+2020-11-27T10:21:39.0032565-06:00:2020-11-27T10:21:39.0029404-06:00:[AssemblyCache] Trying to resolve 'xunit.assert' from .deps.json file
+2020-11-27T10:21:39.0037739-06:00:2020-11-27T10:21:39.0035130-06:00:[AssemblyCache] Could not resolve 'xunit.assert' from .deps.json
+2020-11-27T10:21:39.0042959-06:00:2020-11-27T10:21:39.0040259-06:00:[AssemblyCache] Trying to resolve 'xunit.assert' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-27T10:21:39.0047106-06:00:2020-11-27T10:21:39.0044797-06:00:[AssemblyCache] Trying to resolve 'xunit.assert' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\xunit.assert.dll'
+2020-11-27T10:21:39.0052772-06:00:2020-11-27T10:21:39.0049832-06:00:[AssemblyCache] Trying to resolve 'xunit.assert' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\xunit.assert.exe'
+2020-11-27T10:21:39.0058854-06:00:2020-11-27T10:21:39.0056023-06:00:[AssemblyCache] Could not resolve 'xunit.assert' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-27T10:21:39.0063806-06:00:2020-11-27T10:21:39.0061478-06:00:TargetFramework: .NETCoreApp,Version=v3.1
+2020-11-27T10:21:39.0069008-06:00:2020-11-27T10:21:39.0066114-06:00:Tfm: netcoreapp3.1
+2020-11-27T10:21:39.0073743-06:00:2020-11-27T10:21:39.0071257-06:00:[AssemblyCache] Trying to resolve 'xunit.assert' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1'
+2020-11-27T10:21:39.0078229-06:00:2020-11-27T10:21:39.0075779-06:00:[AssemblyCache] Trying to resolve 'xunit.assert' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\xunit.assert.dll'
+2020-11-27T10:21:39.0083689-06:00:2020-11-27T10:21:39.0081118-06:00:[AssemblyCache] Trying to resolve 'xunit.assert' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\xunit.assert.exe'
+2020-11-27T10:21:39.0089771-06:00:2020-11-27T10:21:39.0086578-06:00:[AssemblyCache] Could not resolve 'xunit.assert' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1'
+2020-11-27T10:21:39.0101301-06:00:2020-11-27T10:21:39.0097497-06:00:[AssemblyCache] Trying to resolve 'xunit.assert' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.9'
+2020-11-27T10:21:39.0106279-06:00:2020-11-27T10:21:39.0103685-06:00:[AssemblyCache] Trying to resolve 'xunit.assert' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.9\xunit.assert.dll'
+2020-11-27T10:21:39.0114474-06:00:2020-11-27T10:21:39.0110181-06:00:[AssemblyCache] Trying to resolve 'xunit.assert' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.9\xunit.assert.exe'
+2020-11-27T10:21:39.0122425-06:00:2020-11-27T10:21:39.0118388-06:00:[AssemblyCache] Could not resolve 'xunit.assert' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.9'
+2020-11-27T10:21:39.0137309-06:00:2020-11-27T10:21:39.0133434-06:00:[AssemblyCache] Trying to resolve 'xunit.assert' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.9'
+2020-11-27T10:21:39.0142839-06:00:2020-11-27T10:21:39.0139789-06:00:[AssemblyCache] Trying to resolve 'xunit.assert' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.9\xunit.assert.dll'
+2020-11-27T10:21:39.0149036-06:00:2020-11-27T10:21:39.0146128-06:00:[AssemblyCache] Trying to resolve 'xunit.assert' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.9\xunit.assert.exe'
+2020-11-27T10:21:39.0154985-06:00:2020-11-27T10:21:39.0152218-06:00:[AssemblyCache] Could not resolve 'xunit.assert' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.9'
+2020-11-27T10:21:39.0163032-06:00:2020-11-27T10:21:39.0159534-06:00:[AssemblyCache] Trying to resolve 'xunit.assert' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.9'
+2020-11-27T10:21:39.0167690-06:00:2020-11-27T10:21:39.0165643-06:00:[AssemblyCache] Trying to resolve 'xunit.assert' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.9\xunit.assert.dll'
+2020-11-27T10:21:39.0181234-06:00:2020-11-27T10:21:39.0176461-06:00:[AssemblyCache] Trying to resolve 'xunit.assert' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.9\xunit.assert.exe'
+2020-11-27T10:21:39.0190016-06:00:2020-11-27T10:21:39.0185767-06:00:[AssemblyCache] Could not resolve 'xunit.assert' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.9'
+2020-11-27T10:21:39.0318936-06:00:2020-11-27T10:21:39.0315147-06:00:Thread#0:T:error: Expected _resultado to be "No se Encontro el Vehiculo", but found <null>.
+2020-11-27T10:21:39.0359639-06:00:Thread#0:TestItem#8:Scheduler: reschedule tests for testitem #8
+2020-11-27T10:21:39.0366673-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:39.0367346-06:00:Thread#:Scheduler: dequeuing a rescheduled testitem: #8
+2020-11-27T10:21:39.0367400-06:00:Thread#0:Scheduler: considering testitem #8 for thread 0
+2020-11-27T10:21:39.0367628-06:00:Thread#0:TestItem#8:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:39.0367685-06:00:Thread#0:TestItem#8:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:39.0367710-06:00:Thread#0:TestItem#8:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:39.0367730-06:00:Thread#0:Scheduler: using testitem #8 for thread 0
+2020-11-27T10:21:39.0367925-06:00:Thread#0:Scheduler: Test #8 is scheduled for thread
+2020-11-27T10:21:39.0368087-06:00:Thread#0:Scheduler: with testItemExecutionIndex 1
+2020-11-27T10:21:39.0390303-06:00:Thread#0: Test #8/0 is finished on thread #0 as Failed within 0,1861801 seconds
+2020-11-27T10:21:39.0396767-06:00:Thread#0: Test #8/1 is started on thread #0
+2020-11-27T10:21:39.0414966-06:00:2020-11-27T10:21:39.0409130-06:00:Thread#0:B:Given ingresar el carro null
+2020-11-27T10:21:39.0427505-06:00:2020-11-27T10:21:39.0420433-06:00:Thread#0:T:done: CarSteps.GivenIngresarElCarroNull() (0,0s)
+2020-11-27T10:21:39.0437765-06:00:2020-11-27T10:21:39.0432122-06:00:Thread#0:B:When buscar el carro
+2020-11-27T10:21:39.0448494-06:00:2020-11-27T10:21:39.0443997-06:00:Thread#0:T:done: CarSteps.WhenBuscarElCarro() (0,0s)
+2020-11-27T10:21:39.0472646-06:00:2020-11-27T10:21:39.0462730-06:00:Thread#0:B:Then debe mostrar "No se Encontro el Vehiculo"
+2020-11-27T10:21:39.0499663-06:00:2020-11-27T10:21:39.0496121-06:00:Thread#0:T:error: Expected _resultado to be "No se Encontro el Vehiculo", but found <null>.
+2020-11-27T10:21:39.0528958-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:39.0530649-06:00:Thread#:Scheduler: dequeuing a rescheduled testitem: #8
+2020-11-27T10:21:39.0530726-06:00:Thread#0:Scheduler: considering testitem #8 for thread 0
+2020-11-27T10:21:39.0530980-06:00:Thread#0:TestItem#8:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:39.0531029-06:00:Thread#0:TestItem#8:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:39.0531047-06:00:Thread#0:TestItem#8:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:39.0531070-06:00:Thread#0:Scheduler: using testitem #8 for thread 0
+2020-11-27T10:21:39.0531252-06:00:Thread#0:Scheduler: Test #8 is scheduled for thread
+2020-11-27T10:21:39.0531371-06:00:Thread#0:Scheduler: with testItemExecutionIndex 2
+2020-11-27T10:21:39.0551264-06:00:Thread#0: Test #8/1 is finished on thread #0 as Failed within 0,0153527 seconds
+2020-11-27T10:21:39.0561116-06:00:Thread#0: Test #8/2 is started on thread #0
+2020-11-27T10:21:39.0573784-06:00:2020-11-27T10:21:39.0570703-06:00:Thread#0:B:Given ingresar el carro null
+2020-11-27T10:21:39.0582214-06:00:2020-11-27T10:21:39.0578304-06:00:Thread#0:T:done: CarSteps.GivenIngresarElCarroNull() (0,0s)
+2020-11-27T10:21:39.0589112-06:00:2020-11-27T10:21:39.0585788-06:00:Thread#0:B:When buscar el carro
+2020-11-27T10:21:39.0597588-06:00:2020-11-27T10:21:39.0594297-06:00:Thread#0:T:done: CarSteps.WhenBuscarElCarro() (0,0s)
+2020-11-27T10:21:39.0603005-06:00:2020-11-27T10:21:39.0600304-06:00:Thread#0:B:Then debe mostrar "No se Encontro el Vehiculo"
+2020-11-27T10:21:39.0709668-06:00:2020-11-27T10:21:39.0705847-06:00:Thread#0:T:error: Expected _resultado to be "No se Encontro el Vehiculo", but found <null>.
+2020-11-27T10:21:39.0730453-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:39.0730726-06:00:Thread#:Scheduler: testitem #9 from normal test queue 
+2020-11-27T10:21:39.0730823-06:00:Thread#0:Scheduler: considering testitem #9 for thread 0
+2020-11-27T10:21:39.0731210-06:00:Thread#0:TestItem#9:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:39.0731261-06:00:Thread#0:TestItem#9:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:39.0731284-06:00:Thread#0:TestItem#9:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:39.0731312-06:00:Thread#0:Scheduler: using testitem #9 for thread 0
+2020-11-27T10:21:39.0731730-06:00:Thread#0:Scheduler: Test #9 is scheduled for thread
+2020-11-27T10:21:39.0731948-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:39.0753350-06:00:Thread#0: Test #8/2 is finished on thread #0 as Failed within 0,0188811 seconds
+2020-11-27T10:21:39.0761476-06:00:Thread#0: Test #9/0 is started on thread #0
+2020-11-27T10:21:39.0796254-06:00:2020-11-27T10:21:39.0789580-06:00:Thread#0:B:Given ingresar el carro con modelo vacio
+2020-11-27T10:21:39.0818785-06:00:2020-11-27T10:21:39.0813659-06:00:Thread#0:T:done: CarSteps.GivenIngresarElCarroConModeloVacio() (0,0s)
+2020-11-27T10:21:39.0826364-06:00:2020-11-27T10:21:39.0822597-06:00:Thread#0:B:When postear el carro con modelo vacio
+2020-11-27T10:21:39.0855663-06:00:2020-11-27T10:21:39.0851365-06:00:Thread#0:T:done: CarSteps.WhenPostearElCarroConModeloVacio() (0,0s)
+2020-11-27T10:21:39.0862007-06:00:2020-11-27T10:21:39.0859151-06:00:Thread#0:B:Then debe mostrar "El Modelo no existe"
+2020-11-27T10:21:39.0868923-06:00:2020-11-27T10:21:39.0865988-06:00:Thread#0:T:done: CarSteps.ThenDebeMostrar("El Modelo no existe") (0,0s)
+2020-11-27T10:21:39.0880663-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:39.0880795-06:00:Thread#:Scheduler: testitem #10 from normal test queue 
+2020-11-27T10:21:39.0880815-06:00:Thread#0:Scheduler: considering testitem #10 for thread 0
+2020-11-27T10:21:39.0880965-06:00:Thread#0:TestItem#10:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:39.0880986-06:00:Thread#0:TestItem#10:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:39.0880998-06:00:Thread#0:TestItem#10:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:39.0881021-06:00:Thread#0:Scheduler: using testitem #10 for thread 0
+2020-11-27T10:21:39.0881140-06:00:Thread#0:Scheduler: Test #10 is scheduled for thread
+2020-11-27T10:21:39.0881286-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:39.0900424-06:00:Thread#0: Test #9/0 is finished on thread #0 as Succeeded within 0,0137857 seconds
+2020-11-27T10:21:39.0908034-06:00:Thread#0: Test #10/0 is started on thread #0
+2020-11-27T10:21:39.0929452-06:00:2020-11-27T10:21:39.0925215-06:00:Thread#0:B:Given ingresar el carro sin fotografias
+2020-11-27T10:21:39.0948018-06:00:2020-11-27T10:21:39.0944141-06:00:Thread#0:T:done: CarSteps.GivenIngresarElCarroSinFotografias() (0,0s)
+2020-11-27T10:21:39.0956375-06:00:2020-11-27T10:21:39.0952810-06:00:Thread#0:B:When postear el carro sin fotografias
+2020-11-27T10:21:39.0973680-06:00:2020-11-27T10:21:39.0969792-06:00:Thread#0:T:done: CarSteps.WhenPostearElCarroSinFotografias() (0,0s)
+2020-11-27T10:21:39.0979624-06:00:2020-11-27T10:21:39.0976810-06:00:Thread#0:B:Then debe mostrar "Estas fotografias no estan registradas"
+2020-11-27T10:21:39.0987119-06:00:2020-11-27T10:21:39.0983870-06:00:Thread#0:T:done: CarSteps.ThenDebeMostrar("Estas fotografias...") (0,0s)
+2020-11-27T10:21:39.1001401-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:39.1001626-06:00:Thread#:Scheduler: testitem #11 from normal test queue 
+2020-11-27T10:21:39.1001672-06:00:Thread#0:Scheduler: considering testitem #11 for thread 0
+2020-11-27T10:21:39.1001941-06:00:Thread#0:TestItem#11:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:39.1001986-06:00:Thread#0:TestItem#11:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:39.1002020-06:00:Thread#0:TestItem#11:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:39.1002050-06:00:Thread#0:Scheduler: using testitem #11 for thread 0
+2020-11-27T10:21:39.1002271-06:00:Thread#0:Scheduler: Test #11 is scheduled for thread
+2020-11-27T10:21:39.1002516-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:39.1018036-06:00:Thread#0: Test #10/0 is finished on thread #0 as Succeeded within 0,0109712 seconds
+2020-11-27T10:21:39.1024812-06:00:Thread#0: Test #11/0 is started on thread #0
+2020-11-27T10:21:39.1055043-06:00:2020-11-27T10:21:39.1051245-06:00:Thread#0:B:Given ingresar el carro sin estado
+2020-11-27T10:21:39.1069022-06:00:2020-11-27T10:21:39.1064565-06:00:Thread#0:T:done: CarSteps.GivenIngresarElCarroSinEstado() (0,0s)
+2020-11-27T10:21:39.1075273-06:00:2020-11-27T10:21:39.1072366-06:00:Thread#0:B:When postear el carro sin estado
+2020-11-27T10:21:39.1090443-06:00:2020-11-27T10:21:39.1086719-06:00:Thread#0:T:done: CarSteps.WhenPostearElCarroSinEstado() (0,0s)
+2020-11-27T10:21:39.1096183-06:00:2020-11-27T10:21:39.1093272-06:00:Thread#0:B:Then debe mostrar "El Estado no existe"
+2020-11-27T10:21:39.1104196-06:00:2020-11-27T10:21:39.1099892-06:00:Thread#0:T:done: CarSteps.ThenDebeMostrar("El Estado no existe") (0,0s)
+2020-11-27T10:21:39.1137786-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:39.1137999-06:00:Thread#:Scheduler: testitem #12 from normal test queue 
+2020-11-27T10:21:39.1138041-06:00:Thread#0:Scheduler: considering testitem #12 for thread 0
+2020-11-27T10:21:39.1138265-06:00:Thread#0:TestItem#12:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:39.1138311-06:00:Thread#0:TestItem#12:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:39.1138348-06:00:Thread#0:TestItem#12:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:39.1138376-06:00:Thread#0:Scheduler: using testitem #12 for thread 0
+2020-11-27T10:21:39.1138573-06:00:Thread#0:Scheduler: Test #12 is scheduled for thread
+2020-11-27T10:21:39.1139032-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:39.1154683-06:00:Thread#0: Test #11/0 is finished on thread #0 as Succeeded within 0,0129582 seconds
+2020-11-27T10:21:39.1161976-06:00:Thread#0: Test #12/0 is started on thread #0
+2020-11-27T10:21:39.1184913-06:00:2020-11-27T10:21:39.1180220-06:00:Thread#0:B:Given ingresar el carro sin vendedor
+2020-11-27T10:21:39.1202517-06:00:2020-11-27T10:21:39.1199024-06:00:Thread#0:T:done: CarSteps.GivenIngresarElCarroSinVendedor() (0,0s)
+2020-11-27T10:21:39.1208621-06:00:2020-11-27T10:21:39.1205873-06:00:Thread#0:B:When postear el carro sin vendedor
+2020-11-27T10:21:39.1223361-06:00:2020-11-27T10:21:39.1219932-06:00:Thread#0:T:done: CarSteps.WhenPostearElCarroSinVendedor() (0,0s)
+2020-11-27T10:21:39.1232081-06:00:2020-11-27T10:21:39.1226612-06:00:Thread#0:B:Then debe mostrar "El Vendedor no existe"
+2020-11-27T10:21:39.1242105-06:00:2020-11-27T10:21:39.1238859-06:00:Thread#0:T:done: CarSteps.ThenDebeMostrar("El Vendedor no ex...") (0,0s)
+2020-11-27T10:21:39.1265200-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:39.1265404-06:00:Thread#:Scheduler: testitem #13 from normal test queue 
+2020-11-27T10:21:39.1265437-06:00:Thread#0:Scheduler: considering testitem #13 for thread 0
+2020-11-27T10:21:39.1265856-06:00:Thread#0:TestItem#13:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:39.1265896-06:00:Thread#0:TestItem#13:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:39.1265917-06:00:Thread#0:TestItem#13:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:39.1265941-06:00:Thread#0:Scheduler: using testitem #13 for thread 0
+2020-11-27T10:21:39.1266110-06:00:Thread#0:Scheduler: Test #13 is scheduled for thread
+2020-11-27T10:21:39.1266233-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:39.1295345-06:00:Thread#0: Test #12/0 is finished on thread #0 as Succeeded within 0,0132992 seconds
+2020-11-27T10:21:39.1304379-06:00:Thread#0: Test #13/0 is started on thread #0
+2020-11-27T10:21:39.1319619-06:00:2020-11-27T10:21:39.1316219-06:00:Thread#0:B:Given ingresar el carro sin condicion
+2020-11-27T10:21:39.1337624-06:00:2020-11-27T10:21:39.1334341-06:00:Thread#0:T:done: CarSteps.GivenIngresarElCarroSinCondicion() (0,0s)
+2020-11-27T10:21:39.1344210-06:00:2020-11-27T10:21:39.1340975-06:00:Thread#0:B:When postear el carro sin condicion
+2020-11-27T10:21:39.1359503-06:00:2020-11-27T10:21:39.1355995-06:00:Thread#0:T:done: CarSteps.WhenPostearElCarroSinCondicion() (0,0s)
+2020-11-27T10:21:39.1369063-06:00:2020-11-27T10:21:39.1365178-06:00:Thread#0:B:Then debe mostrar "La Condicion no existe"
+2020-11-27T10:21:39.1377765-06:00:2020-11-27T10:21:39.1374111-06:00:Thread#0:T:done: CarSteps.ThenDebeMostrar("La Condicion no e...") (0,0s)
+2020-11-27T10:21:39.1391719-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:39.1391952-06:00:Thread#:Scheduler: testitem #14 from normal test queue 
+2020-11-27T10:21:39.1391996-06:00:Thread#0:Scheduler: considering testitem #14 for thread 0
+2020-11-27T10:21:39.1392327-06:00:Thread#0:TestItem#14:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:39.1392382-06:00:Thread#0:TestItem#14:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:39.1392407-06:00:Thread#0:TestItem#14:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:39.1392443-06:00:Thread#0:Scheduler: using testitem #14 for thread 0
+2020-11-27T10:21:39.1392667-06:00:Thread#0:Scheduler: Test #14 is scheduled for thread
+2020-11-27T10:21:39.1392854-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:39.1417208-06:00:Thread#0: Test #13/0 is finished on thread #0 as Succeeded within 0,0112292 seconds
+2020-11-27T10:21:39.1431549-06:00:Thread#0: Test #14/0 is started on thread #0
+2020-11-27T10:21:39.1535180-06:00:2020-11-27T10:21:39.1515599-06:00:Thread#0:B:Given ingresar el carro con anio 1990
+2020-11-27T10:21:39.1652065-06:00:2020-11-27T10:21:39.1647186-06:00:Thread#0:T:done: CarSteps.GivenIngresarElCarroConAnio(1990) (0,0s)
+2020-11-27T10:21:39.1659827-06:00:2020-11-27T10:21:39.1656506-06:00:Thread#0:B:When postear con anio inferior
+2020-11-27T10:21:39.1681816-06:00:2020-11-27T10:21:39.1676767-06:00:Thread#0:T:done: CarSteps.WhenPostearConAnioInferior() (0,0s)
+2020-11-27T10:21:39.1692246-06:00:2020-11-27T10:21:39.1686131-06:00:Thread#0:B:Then debe mostrar "El vehiculo debe ser año 1990 en adelante"
+2020-11-27T10:21:39.1701765-06:00:2020-11-27T10:21:39.1698281-06:00:Thread#0:T:done: CarSteps.ThenDebeMostrar("El vehiculo debe ...") (0,0s)
+2020-11-27T10:21:39.1716017-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:39.1716187-06:00:Thread#:Scheduler: testitem #15 from normal test queue 
+2020-11-27T10:21:39.1716226-06:00:Thread#0:Scheduler: considering testitem #15 for thread 0
+2020-11-27T10:21:39.1716502-06:00:Thread#0:TestItem#15:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:39.1716551-06:00:Thread#0:TestItem#15:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:39.1716585-06:00:Thread#0:TestItem#15:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:39.1716625-06:00:Thread#0:Scheduler: using testitem #15 for thread 0
+2020-11-27T10:21:39.1716879-06:00:Thread#0:Scheduler: Test #15 is scheduled for thread
+2020-11-27T10:21:39.1717282-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:39.1754772-06:00:Thread#0: Test #14/0 is finished on thread #0 as Succeeded within 0,0322888 seconds
+2020-11-27T10:21:39.1764678-06:00:Thread#0: Test #15/0 is started on thread #0
+2020-11-27T10:21:39.1801487-06:00:2020-11-27T10:21:39.1793068-06:00:Thread#0:B:Given actualizar cuando el carro no existe
+2020-11-27T10:21:39.1869507-06:00:2020-11-27T10:21:39.1862187-06:00:Thread#0:T:done: CarSteps.GivenActualizarCuandoElCarroNoExiste() (0,0s)
+2020-11-27T10:21:39.1909801-06:00:2020-11-27T10:21:39.1905177-06:00:Thread#0:B:When actualizar el carro
+2020-11-27T10:21:39.1962565-06:00:2020-11-27T10:21:39.1942513-06:00:Thread#0:T:done: CarSteps.WhenActualizarElCarro() (0,0s)
+2020-11-27T10:21:39.1974845-06:00:2020-11-27T10:21:39.1970761-06:00:Thread#0:B:Then debe mostrar "No se encuentra el Vehiculo"
+2020-11-27T10:21:39.1983299-06:00:2020-11-27T10:21:39.1979879-06:00:Thread#0:T:done: CarSteps.ThenDebeMostrar("No se encuentra e...") (0,0s)
+2020-11-27T10:21:39.1997512-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:39.1997677-06:00:Thread#:Scheduler: testitem #16 from normal test queue 
+2020-11-27T10:21:39.1997705-06:00:Thread#0:Scheduler: considering testitem #16 for thread 0
+2020-11-27T10:21:39.1997915-06:00:Thread#0:TestItem#16:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:39.1997947-06:00:Thread#0:TestItem#16:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:39.1997967-06:00:Thread#0:TestItem#16:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:39.1997990-06:00:Thread#0:Scheduler: using testitem #16 for thread 0
+2020-11-27T10:21:39.1998247-06:00:Thread#0:Scheduler: Test #16 is scheduled for thread
+2020-11-27T10:21:39.1998384-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:39.2023428-06:00:Thread#0: Test #15/0 is finished on thread #0 as Succeeded within 0,025838 seconds
+2020-11-27T10:21:39.2047506-06:00:Thread#0: Test #16/0 is started on thread #0
+2020-11-27T10:21:39.2069568-06:00:2020-11-27T10:21:39.2065267-06:00:Thread#0:B:Given actualizar modelo del carro
+2020-11-27T10:21:39.2086537-06:00:2020-11-27T10:21:39.2082097-06:00:Thread#0:T:done: CarSteps.GivenActualizarModeloDelCarro() (0,0s)
+2020-11-27T10:21:39.2093051-06:00:2020-11-27T10:21:39.2089973-06:00:Thread#0:B:When actualizar el modelo no encontrado
+2020-11-27T10:21:39.2130628-06:00:2020-11-27T10:21:39.2109277-06:00:Thread#0:T:done: CarSteps.WhenActualizarElModeloNoEncontrado() (0,0s)
+2020-11-27T10:21:39.2141880-06:00:2020-11-27T10:21:39.2136670-06:00:Thread#0:B:Then debe mostrar "El Modelo no existe"
+2020-11-27T10:21:39.2153250-06:00:2020-11-27T10:21:39.2149015-06:00:Thread#0:T:done: CarSteps.ThenDebeMostrar("El Modelo no existe") (0,0s)
+2020-11-27T10:21:39.2173100-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:39.2173274-06:00:Thread#:Scheduler: testitem #17 from normal test queue 
+2020-11-27T10:21:39.2173986-06:00:Thread#0:Scheduler: considering testitem #17 for thread 0
+2020-11-27T10:21:39.2174314-06:00:Thread#0:TestItem#17:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:39.2174365-06:00:Thread#0:TestItem#17:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:39.2174497-06:00:Thread#0:TestItem#17:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:39.2174528-06:00:Thread#0:Scheduler: using testitem #17 for thread 0
+2020-11-27T10:21:39.2174805-06:00:Thread#0:Scheduler: Test #17 is scheduled for thread
+2020-11-27T10:21:39.2175001-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:39.2237939-06:00:Thread#0: Test #16/0 is finished on thread #0 as Succeeded within 0,0190032 seconds
+2020-11-27T10:21:39.2261486-06:00:Thread#0: Test #17/0 is started on thread #0
+2020-11-27T10:21:39.2288732-06:00:2020-11-27T10:21:39.2284186-06:00:Thread#0:B:Given un carro sin fotografias
+2020-11-27T10:21:39.2305257-06:00:2020-11-27T10:21:39.2301870-06:00:Thread#0:T:done: CarSteps.GivenUnCarroSinFotografias() (0,0s)
+2020-11-27T10:21:39.2311108-06:00:2020-11-27T10:21:39.2308550-06:00:Thread#0:B:When actualizar carro sin fotografias
+2020-11-27T10:21:39.2325606-06:00:2020-11-27T10:21:39.2321830-06:00:Thread#0:T:done: CarSteps.WhenActualizarCarroSinFotografias() (0,0s)
+2020-11-27T10:21:39.2333310-06:00:2020-11-27T10:21:39.2330119-06:00:Thread#0:B:Then debe mostrar "Estas fotografias no estan registradas"
+2020-11-27T10:21:39.2340644-06:00:2020-11-27T10:21:39.2337731-06:00:Thread#0:T:done: CarSteps.ThenDebeMostrar("Estas fotografias...") (0,0s)
+2020-11-27T10:21:39.2351542-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:39.2351682-06:00:Thread#:Scheduler: testitem #18 from normal test queue 
+2020-11-27T10:21:39.2351702-06:00:Thread#0:Scheduler: considering testitem #18 for thread 0
+2020-11-27T10:21:39.2351875-06:00:Thread#0:TestItem#18:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:39.2351898-06:00:Thread#0:TestItem#18:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:39.2351912-06:00:Thread#0:TestItem#18:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:39.2351926-06:00:Thread#0:Scheduler: using testitem #18 for thread 0
+2020-11-27T10:21:39.2352069-06:00:Thread#0:Scheduler: Test #18 is scheduled for thread
+2020-11-27T10:21:39.2352220-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:39.2365949-06:00:Thread#0: Test #17/0 is finished on thread #0 as Succeeded within 0,0102946 seconds
+2020-11-27T10:21:39.2381447-06:00:Thread#0: Test #18/0 is started on thread #0
+2020-11-27T10:21:39.2402807-06:00:2020-11-27T10:21:39.2399116-06:00:Thread#0:B:Given un carro sin estado
+2020-11-27T10:21:39.2415598-06:00:2020-11-27T10:21:39.2412531-06:00:Thread#0:T:done: CarSteps.GivenUnCarroSinEstado() (0,0s)
+2020-11-27T10:21:39.2421514-06:00:2020-11-27T10:21:39.2419202-06:00:Thread#0:B:When actualizar carro sin estado
+2020-11-27T10:21:39.2438429-06:00:2020-11-27T10:21:39.2434558-06:00:Thread#0:T:done: CarSteps.WhenActualizarCarroSinEstado() (0,0s)
+2020-11-27T10:21:39.2446139-06:00:2020-11-27T10:21:39.2441856-06:00:Thread#0:B:Then debe mostrar "El Estado no existe"
+2020-11-27T10:21:39.2455718-06:00:2020-11-27T10:21:39.2452204-06:00:Thread#0:T:done: CarSteps.ThenDebeMostrar("El Estado no existe") (0,0s)
+2020-11-27T10:21:39.2468113-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:39.2468260-06:00:Thread#:Scheduler: testitem #19 from normal test queue 
+2020-11-27T10:21:39.2468280-06:00:Thread#0:Scheduler: considering testitem #19 for thread 0
+2020-11-27T10:21:39.2468445-06:00:Thread#0:TestItem#19:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:39.2468467-06:00:Thread#0:TestItem#19:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:39.2468481-06:00:Thread#0:TestItem#19:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:39.2468495-06:00:Thread#0:Scheduler: using testitem #19 for thread 0
+2020-11-27T10:21:39.2468630-06:00:Thread#0:Scheduler: Test #19 is scheduled for thread
+2020-11-27T10:21:39.2468772-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:39.2483105-06:00:Thread#0: Test #18/0 is finished on thread #0 as Succeeded within 0,0101334 seconds
+2020-11-27T10:21:39.2489579-06:00:Thread#0: Test #19/0 is started on thread #0
+2020-11-27T10:21:39.2511718-06:00:2020-11-27T10:21:39.2508234-06:00:Thread#0:B:Given un carro sin vendedor
+2020-11-27T10:21:39.2525534-06:00:2020-11-27T10:21:39.2521593-06:00:Thread#0:T:done: CarSteps.GivenUnCarroSinVendedor() (0,0s)
+2020-11-27T10:21:39.2532671-06:00:2020-11-27T10:21:39.2529188-06:00:Thread#0:B:When actualizar carro sin vendedor
+2020-11-27T10:21:39.2546077-06:00:2020-11-27T10:21:39.2543140-06:00:Thread#0:T:done: CarSteps.WhenActualizarCarroSinVendedor() (0,0s)
+2020-11-27T10:21:39.2551951-06:00:2020-11-27T10:21:39.2548996-06:00:Thread#0:B:Then debe mostrar "El Vendedor no existe"
+2020-11-27T10:21:39.2558494-06:00:2020-11-27T10:21:39.2555766-06:00:Thread#0:T:done: CarSteps.ThenDebeMostrar("El Vendedor no ex...") (0,0s)
+2020-11-27T10:21:39.2570419-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:39.2570621-06:00:Thread#:Scheduler: testitem #20 from normal test queue 
+2020-11-27T10:21:39.2570650-06:00:Thread#0:Scheduler: considering testitem #20 for thread 0
+2020-11-27T10:21:39.2570850-06:00:Thread#0:TestItem#20:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:39.2570880-06:00:Thread#0:TestItem#20:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:39.2570897-06:00:Thread#0:TestItem#20:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:39.2570918-06:00:Thread#0:Scheduler: using testitem #20 for thread 0
+2020-11-27T10:21:39.2571097-06:00:Thread#0:Scheduler: Test #20 is scheduled for thread
+2020-11-27T10:21:39.2571290-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:39.2589329-06:00:Thread#0: Test #19/0 is finished on thread #0 as Succeeded within 0,0098989 seconds
+2020-11-27T10:21:39.2602753-06:00:Thread#0: Test #20/0 is started on thread #0
+2020-11-27T10:21:39.2630046-06:00:2020-11-27T10:21:39.2624833-06:00:Thread#0:B:Given un carro sin condicion
+2020-11-27T10:21:39.2646443-06:00:2020-11-27T10:21:39.2642992-06:00:Thread#0:T:done: CarSteps.GivenUnCarroSinCondicion() (0,0s)
+2020-11-27T10:21:39.2651947-06:00:2020-11-27T10:21:39.2649422-06:00:Thread#0:B:When actualizar carro sin condicion
+2020-11-27T10:21:39.2666084-06:00:2020-11-27T10:21:39.2662963-06:00:Thread#0:T:done: CarSteps.WhenActualizarCarroSinCondicion() (0,0s)
+2020-11-27T10:21:39.2671795-06:00:2020-11-27T10:21:39.2669354-06:00:Thread#0:B:Then debe mostrar "La Condicion no existe"
+2020-11-27T10:21:39.2679449-06:00:2020-11-27T10:21:39.2675868-06:00:Thread#0:T:done: CarSteps.ThenDebeMostrar("La Condicion no e...") (0,0s)
+2020-11-27T10:21:39.2690288-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:39.2690442-06:00:Thread#:Scheduler: testitem #21 from normal test queue 
+2020-11-27T10:21:39.2690464-06:00:Thread#0:Scheduler: considering testitem #21 for thread 0
+2020-11-27T10:21:39.2690637-06:00:Thread#0:TestItem#21:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:39.2690659-06:00:Thread#0:TestItem#21:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:39.2690672-06:00:Thread#0:TestItem#21:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:39.2690684-06:00:Thread#0:Scheduler: using testitem #21 for thread 0
+2020-11-27T10:21:39.2690817-06:00:Thread#0:Scheduler: Test #21 is scheduled for thread
+2020-11-27T10:21:39.2690976-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:39.2724945-06:00:Thread#0: Test #20/0 is finished on thread #0 as Succeeded within 0,0121495 seconds
+2020-11-27T10:21:39.2737459-06:00:Thread#0: Test #21/0 is started on thread #0
+2020-11-27T10:21:39.2758634-06:00:2020-11-27T10:21:39.2755154-06:00:Thread#0:B:Given actualizar el carro con anio 1990
+2020-11-27T10:21:39.2776939-06:00:2020-11-27T10:21:39.2772152-06:00:Thread#0:T:done: CarSteps.GivenActualizarElCarroConAnio(1990) (0,0s)
+2020-11-27T10:21:39.2786893-06:00:2020-11-27T10:21:39.2781155-06:00:Thread#0:B:When actualizar con anio inferior
+2020-11-27T10:21:39.2803036-06:00:2020-11-27T10:21:39.2799422-06:00:Thread#0:T:done: CarSteps.WhenActualizarConAnioInferior() (0,0s)
+2020-11-27T10:21:39.2810000-06:00:2020-11-27T10:21:39.2806374-06:00:Thread#0:B:Then debe mostrar "El vehiculo debe ser año 1990 en adelante"
+2020-11-27T10:21:39.2818297-06:00:2020-11-27T10:21:39.2814584-06:00:Thread#0:T:done: CarSteps.ThenDebeMostrar("El vehiculo debe ...") (0,0s)
+2020-11-27T10:21:40.2298767-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:40.2299532-06:00:Thread#:Scheduler: testitem #22 from normal test queue 
+2020-11-27T10:21:40.2300034-06:00:Thread#0:Scheduler: considering testitem #22 for thread 0
+2020-11-27T10:21:40.2301783-06:00:Thread#0:TestItem#22:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:40.2302115-06:00:Thread#0:TestItem#22:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:40.2302712-06:00:Thread#0:TestItem#22:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:40.2303386-06:00:Thread#0:Scheduler: using testitem #22 for thread 0
+2020-11-27T10:21:40.2306062-06:00:Thread#0:Scheduler: Test #22 is scheduled for thread
+2020-11-27T10:21:40.2307601-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:40.2822502-06:00:Thread#0: Test #21/0 is finished on thread #0 as Succeeded within 1,0083833 seconds
+2020-11-27T10:21:40.3004191-06:00:Thread#0: Test #22/0 is started on thread #0
+2020-11-27T10:21:40.3125129-06:00:2020-11-27T10:21:40.3026891-06:00:Thread#0:B:Given ingresar el carro null
+2020-11-27T10:21:40.3347679-06:00:2020-11-27T10:21:40.3134414-06:00:Thread#0:T:done: CarSteps.GivenIngresarElCarroNull() (0,0s)
+2020-11-27T10:21:40.3359093-06:00:2020-11-27T10:21:40.3353620-06:00:Thread#0:B:When eliminar el carro
+2020-11-27T10:21:40.3379570-06:00:2020-11-27T10:21:40.3375591-06:00:Thread#0:T:done: CarSteps.WhenEliminarElCarro() (0,0s)
+2020-11-27T10:21:40.3386215-06:00:2020-11-27T10:21:40.3383009-06:00:Thread#0:B:Then debe mostrar "No se encuentra el Vehiculo"
+2020-11-27T10:21:40.3393006-06:00:2020-11-27T10:21:40.3390619-06:00:Thread#0:T:done: CarSteps.ThenDebeMostrar("No se encuentra e...") (0,0s)
+2020-11-27T10:21:40.3406630-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:40.3406964-06:00:Thread#:Scheduler: testitem #24 from normal test queue 
+2020-11-27T10:21:40.3407000-06:00:Thread#0:Scheduler: considering testitem #24 for thread 0
+2020-11-27T10:21:40.3408555-06:00:Thread#0:TestItem#24:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:40.3408624-06:00:Thread#0:TestItem#24:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:40.3408637-06:00:Thread#0:TestItem#24:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:40.3408660-06:00:Thread#0:Scheduler: using testitem #24 for thread 0
+2020-11-27T10:21:40.3409111-06:00:Thread#0:Scheduler: Test #24 is scheduled for thread
+2020-11-27T10:21:40.3409507-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:40.3441964-06:00:Thread#0: Test #22/0 is finished on thread #0 as Succeeded within 0,0435336 seconds
+2020-11-27T10:21:40.3462291-06:00:Thread#0: Test #24/0 is started on thread #0
+2020-11-27T10:21:40.3492314-06:00:2020-11-27T10:21:40.3488681-06:00:Thread#0:B:Given ingresar la condicion null
+2020-11-27T10:21:40.3506274-06:00:2020-11-27T10:21:40.3503110-06:00:Thread#0:T:done: ConditionSteps.GivenIngresarLaCondicionNull() (0,0s)
+2020-11-27T10:21:40.3511815-06:00:2020-11-27T10:21:40.3509581-06:00:Thread#0:B:When busca la condicion
+2020-11-27T10:21:40.3527402-06:00:2020-11-27T10:21:40.3524097-06:00:Thread#0:T:done: ConditionSteps.WhenBuscaLaCondicion() (0,0s)
+2020-11-27T10:21:40.3532868-06:00:2020-11-27T10:21:40.3530619-06:00:Thread#0:B:Then la respuesta es "No se encontro la Condicion"
+2020-11-27T10:21:40.3546426-06:00:2020-11-27T10:21:40.3543234-06:00:Thread#0:T:done: ConditionSteps.ThenLaRespuestoEs("No se encontro la...") (0,0s)
+2020-11-27T10:21:40.3560624-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:40.3560771-06:00:Thread#:Scheduler: testitem #25 from normal test queue 
+2020-11-27T10:21:40.3560789-06:00:Thread#0:Scheduler: considering testitem #25 for thread 0
+2020-11-27T10:21:40.3560945-06:00:Thread#0:TestItem#25:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:40.3560963-06:00:Thread#0:TestItem#25:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:40.3560975-06:00:Thread#0:TestItem#25:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:40.3560987-06:00:Thread#0:Scheduler: using testitem #25 for thread 0
+2020-11-27T10:21:40.3561100-06:00:Thread#0:Scheduler: Test #25 is scheduled for thread
+2020-11-27T10:21:40.3561178-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:40.3577281-06:00:Thread#0: Test #24/0 is finished on thread #0 as Succeeded within 0,0114734 seconds
+2020-11-27T10:21:40.3584127-06:00:Thread#0: Test #25/0 is started on thread #0
+2020-11-27T10:21:40.3641089-06:00:2020-11-27T10:21:40.3637022-06:00:Thread#0:B:Given ingresar la condicion null
+2020-11-27T10:21:40.3647319-06:00:2020-11-27T10:21:40.3644921-06:00:Thread#0:T:done: ConditionSteps.GivenIngresarLaCondicionNull() (0,0s)
+2020-11-27T10:21:40.3652644-06:00:2020-11-27T10:21:40.3650482-06:00:Thread#0:B:When actualizar la condicion
+2020-11-27T10:21:40.3666489-06:00:2020-11-27T10:21:40.3663319-06:00:Thread#0:T:done: ConditionSteps.WhenActualizarLaCondicion() (0,0s)
+2020-11-27T10:21:40.3672163-06:00:2020-11-27T10:21:40.3669957-06:00:Thread#0:B:Then la respuesta es "No se encontro la Condicion"
+2020-11-27T10:21:40.3677933-06:00:2020-11-27T10:21:40.3675541-06:00:Thread#0:T:done: ConditionSteps.ThenLaRespuestoEs("No se encontro la...") (0,0s)
+2020-11-27T10:21:40.3689557-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:40.3689692-06:00:Thread#:Scheduler: testitem #26 from normal test queue 
+2020-11-27T10:21:40.3689711-06:00:Thread#0:Scheduler: considering testitem #26 for thread 0
+2020-11-27T10:21:40.3689869-06:00:Thread#0:TestItem#26:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:40.3689890-06:00:Thread#0:TestItem#26:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:40.3689903-06:00:Thread#0:TestItem#26:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:40.3689917-06:00:Thread#0:Scheduler: using testitem #26 for thread 0
+2020-11-27T10:21:40.3690031-06:00:Thread#0:Scheduler: Test #26 is scheduled for thread
+2020-11-27T10:21:40.3690109-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:40.3702703-06:00:Thread#0: Test #25/0 is finished on thread #0 as Succeeded within 0,0118298 seconds
+2020-11-27T10:21:40.3709372-06:00:Thread#0: Test #26/0 is started on thread #0
+2020-11-27T10:21:40.3730486-06:00:2020-11-27T10:21:40.3727074-06:00:Thread#0:B:Given ingresar la condicion null
+2020-11-27T10:21:40.3737488-06:00:2020-11-27T10:21:40.3734812-06:00:Thread#0:T:done: ConditionSteps.GivenIngresarLaCondicionNull() (0,0s)
+2020-11-27T10:21:40.3743574-06:00:2020-11-27T10:21:40.3740358-06:00:Thread#0:B:When eliminar la condicion
+2020-11-27T10:21:40.3757473-06:00:2020-11-27T10:21:40.3753962-06:00:Thread#0:T:done: ConditionSteps.WhenEliminarLaCondicion() (0,0s)
+2020-11-27T10:21:40.3763595-06:00:2020-11-27T10:21:40.3760301-06:00:Thread#0:B:Then la respuesta es "No se encontro la Condicion"
+2020-11-27T10:21:40.3772949-06:00:2020-11-27T10:21:40.3768651-06:00:Thread#0:T:done: ConditionSteps.ThenLaRespuestoEs("No se encontro la...") (0,0s)
+2020-11-27T10:21:40.3787912-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:40.3788095-06:00:Thread#:Scheduler: testitem #28 from normal test queue 
+2020-11-27T10:21:40.3788132-06:00:Thread#0:Scheduler: considering testitem #28 for thread 0
+2020-11-27T10:21:40.3788335-06:00:Thread#0:TestItem#28:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:40.3788370-06:00:Thread#0:TestItem#28:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:40.3788394-06:00:Thread#0:TestItem#28:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:40.3788425-06:00:Thread#0:Scheduler: using testitem #28 for thread 0
+2020-11-27T10:21:40.3788628-06:00:Thread#0:Scheduler: Test #28 is scheduled for thread
+2020-11-27T10:21:40.3788791-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:40.3805775-06:00:Thread#0: Test #26/0 is finished on thread #0 as Succeeded within 0,0096134 seconds
+2020-11-27T10:21:40.3813472-06:00:Thread#0: Test #28/0 is started on thread #0
+2020-11-27T10:21:40.3849844-06:00:2020-11-27T10:21:40.3845949-06:00:Thread#0:B:Given ingresar el modelo null
+2020-11-27T10:21:40.3865613-06:00:2020-11-27T10:21:40.3862192-06:00:Thread#0:T:done: ModelSteps.GivenIngresarElModeloNull() (0,0s)
+2020-11-27T10:21:40.3929794-06:00:2020-11-27T10:21:40.3869093-06:00:Thread#0:B:When buscar el modelo
+2020-11-27T10:21:40.3960507-06:00:2020-11-27T10:21:40.3955257-06:00:Thread#0:T:done: ModelSteps.WhenBuscarElModelo() (0,0s)
+2020-11-27T10:21:40.3967059-06:00:2020-11-27T10:21:40.3963881-06:00:Thread#0:B:Then muestra el modelo "No se encuentra el Modelo"
+2020-11-27T10:21:40.3982533-06:00:2020-11-27T10:21:40.3978911-06:00:Thread#0:T:done: ModelSteps.ThenMuestraElModelo("No se encuentra e...") (0,0s)
+2020-11-27T10:21:40.3997652-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:40.3997861-06:00:Thread#:Scheduler: testitem #29 from normal test queue 
+2020-11-27T10:21:40.3997901-06:00:Thread#0:Scheduler: considering testitem #29 for thread 0
+2020-11-27T10:21:40.3998460-06:00:Thread#0:TestItem#29:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:40.3998513-06:00:Thread#0:TestItem#29:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:40.3998542-06:00:Thread#0:TestItem#29:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:40.3998577-06:00:Thread#0:Scheduler: using testitem #29 for thread 0
+2020-11-27T10:21:40.3998793-06:00:Thread#0:Scheduler: Test #29 is scheduled for thread
+2020-11-27T10:21:40.3998942-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:40.4015065-06:00:Thread#0: Test #28/0 is finished on thread #0 as Succeeded within 0,0201115 seconds
+2020-11-27T10:21:40.4021456-06:00:Thread#0: Test #29/0 is started on thread #0
+2020-11-27T10:21:40.4042468-06:00:2020-11-27T10:21:40.4038827-06:00:Thread#0:B:Given ingresar el modelo null
+2020-11-27T10:21:40.4049396-06:00:2020-11-27T10:21:40.4046473-06:00:Thread#0:T:done: ModelSteps.GivenIngresarElModeloNull() (0,0s)
+2020-11-27T10:21:40.4054742-06:00:2020-11-27T10:21:40.4052500-06:00:Thread#0:B:When actualizar el modelo
+2020-11-27T10:21:40.4072384-06:00:2020-11-27T10:21:40.4068740-06:00:Thread#0:T:done: ModelSteps.WhenActualizarElModelo() (0,0s)
+2020-11-27T10:21:40.4078503-06:00:2020-11-27T10:21:40.4075725-06:00:Thread#0:B:Then muestra el modelo "No se encuentra el Modelo"
+2020-11-27T10:21:40.4085239-06:00:2020-11-27T10:21:40.4082893-06:00:Thread#0:T:done: ModelSteps.ThenMuestraElModelo("No se encuentra e...") (0,0s)
+2020-11-27T10:21:40.4098087-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:40.4098395-06:00:Thread#:Scheduler: testitem #30 from normal test queue 
+2020-11-27T10:21:40.4098448-06:00:Thread#0:Scheduler: considering testitem #30 for thread 0
+2020-11-27T10:21:40.4098839-06:00:Thread#0:TestItem#30:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:40.4098868-06:00:Thread#0:TestItem#30:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:40.4098905-06:00:Thread#0:TestItem#30:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:40.4098931-06:00:Thread#0:Scheduler: using testitem #30 for thread 0
+2020-11-27T10:21:40.4099119-06:00:Thread#0:Scheduler: Test #30 is scheduled for thread
+2020-11-27T10:21:40.4099225-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:40.4118933-06:00:Thread#0: Test #29/0 is finished on thread #0 as Succeeded within 0,0097184 seconds
+2020-11-27T10:21:40.4125991-06:00:Thread#0: Test #30/0 is started on thread #0
+2020-11-27T10:21:40.4146486-06:00:2020-11-27T10:21:40.4142643-06:00:Thread#0:B:Given ingresar en el modelo la marca null
+2020-11-27T10:21:40.4161831-06:00:2020-11-27T10:21:40.4155656-06:00:Thread#0:T:done: ModelSteps.GivenIngresarEnElModeloLaMarcaNull() (0,0s)
+2020-11-27T10:21:40.4169361-06:00:2020-11-27T10:21:40.4166456-06:00:Thread#0:B:When actualizar la marca null
+2020-11-27T10:21:40.4184094-06:00:2020-11-27T10:21:40.4180481-06:00:Thread#0:T:done: ModelSteps.WhenActualizarLaMarcaNull() (0,0s)
+2020-11-27T10:21:40.4190299-06:00:2020-11-27T10:21:40.4187637-06:00:Thread#0:B:Then muestra el modelo "No se encuentra la Marca"
+2020-11-27T10:21:40.4196748-06:00:2020-11-27T10:21:40.4194363-06:00:Thread#0:T:done: ModelSteps.ThenMuestraElModelo("No se encuentra l...") (0,0s)
+2020-11-27T10:21:40.4209284-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:40.4209408-06:00:Thread#:Scheduler: testitem #31 from normal test queue 
+2020-11-27T10:21:40.4209425-06:00:Thread#0:Scheduler: considering testitem #31 for thread 0
+2020-11-27T10:21:40.4209573-06:00:Thread#0:TestItem#31:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:40.4209589-06:00:Thread#0:TestItem#31:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:40.4209608-06:00:Thread#0:TestItem#31:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:40.4209620-06:00:Thread#0:Scheduler: using testitem #31 for thread 0
+2020-11-27T10:21:40.4209738-06:00:Thread#0:Scheduler: Test #31 is scheduled for thread
+2020-11-27T10:21:40.4209808-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:40.4222784-06:00:Thread#0: Test #30/0 is finished on thread #0 as Succeeded within 0,0096507 seconds
+2020-11-27T10:21:40.4229877-06:00:Thread#0: Test #31/0 is started on thread #0
+2020-11-27T10:21:40.4251500-06:00:2020-11-27T10:21:40.4247602-06:00:Thread#0:B:Given ingresar marca vacia
+2020-11-27T10:21:40.4267435-06:00:2020-11-27T10:21:40.4262393-06:00:Thread#0:T:done: ModelSteps.GivenIngresarMarcaVacia() (0,0s)
+2020-11-27T10:21:40.4281264-06:00:2020-11-27T10:21:40.4277476-06:00:Thread#0:B:When postear el modelo
+2020-11-27T10:21:40.4297893-06:00:2020-11-27T10:21:40.4294192-06:00:Thread#0:T:done: ModelSteps.WhenPostearElModelo() (0,0s)
+2020-11-27T10:21:40.4303882-06:00:2020-11-27T10:21:40.4300753-06:00:Thread#0:B:Then muestra el modelo "No se encuentra la Marca"
+2020-11-27T10:21:40.4309977-06:00:2020-11-27T10:21:40.4307609-06:00:Thread#0:T:done: ModelSteps.ThenMuestraElModelo("No se encuentra l...") (0,0s)
+2020-11-27T10:21:40.4322459-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:40.4322582-06:00:Thread#:Scheduler: testitem #32 from normal test queue 
+2020-11-27T10:21:40.4322600-06:00:Thread#0:Scheduler: considering testitem #32 for thread 0
+2020-11-27T10:21:40.4322754-06:00:Thread#0:TestItem#32:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:40.4322775-06:00:Thread#0:TestItem#32:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:40.4322795-06:00:Thread#0:TestItem#32:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:40.4322807-06:00:Thread#0:Scheduler: using testitem #32 for thread 0
+2020-11-27T10:21:40.4322927-06:00:Thread#0:Scheduler: Test #32 is scheduled for thread
+2020-11-27T10:21:40.4322996-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:40.4335940-06:00:Thread#0: Test #31/0 is finished on thread #0 as Succeeded within 0,0105721 seconds
+2020-11-27T10:21:40.4342723-06:00:Thread#0: Test #32/0 is started on thread #0
+2020-11-27T10:21:40.4364996-06:00:2020-11-27T10:21:40.4361638-06:00:Thread#0:B:Given ingresar el modelo null
+2020-11-27T10:21:40.4372017-06:00:2020-11-27T10:21:40.4369440-06:00:Thread#0:T:done: ModelSteps.GivenIngresarElModeloNull() (0,0s)
+2020-11-27T10:21:40.4382523-06:00:2020-11-27T10:21:40.4374386-06:00:Thread#0:B:When eliminar el modelo
+2020-11-27T10:21:40.4402358-06:00:2020-11-27T10:21:40.4398563-06:00:Thread#0:T:done: ModelSteps.WhenEliminarElModelo() (0,0s)
+2020-11-27T10:21:40.4408883-06:00:2020-11-27T10:21:40.4405604-06:00:Thread#0:B:Then muestra el modelo "No se encuentra el Modelo"
+2020-11-27T10:21:40.4418177-06:00:2020-11-27T10:21:40.4415028-06:00:Thread#0:T:done: ModelSteps.ThenMuestraElModelo("No se encuentra e...") (0,0s)
+2020-11-27T10:21:40.4431540-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:40.4431704-06:00:Thread#:Scheduler: testitem #34 from normal test queue 
+2020-11-27T10:21:40.4431738-06:00:Thread#0:Scheduler: considering testitem #34 for thread 0
+2020-11-27T10:21:40.4432040-06:00:Thread#0:TestItem#34:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:40.4432077-06:00:Thread#0:TestItem#34:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:40.4432101-06:00:Thread#0:TestItem#34:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:40.4432129-06:00:Thread#0:Scheduler: using testitem #34 for thread 0
+2020-11-27T10:21:40.4432356-06:00:Thread#0:Scheduler: Test #34 is scheduled for thread
+2020-11-27T10:21:40.4432542-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:40.4456608-06:00:Thread#0: Test #32/0 is finished on thread #0 as Succeeded within 0,0113542 seconds
+2020-11-27T10:21:40.4464476-06:00:Thread#0: Test #34/0 is started on thread #0
+2020-11-27T10:21:40.4498971-06:00:2020-11-27T10:21:40.4495327-06:00:Thread#0:B:Given ingresar la fotografia null
+2020-11-27T10:21:40.4513434-06:00:2020-11-27T10:21:40.4510085-06:00:Thread#0:T:done: PhotoSteps.GivenIngresarLaFotografiaNull() (0,0s)
+2020-11-27T10:21:40.4519601-06:00:2020-11-27T10:21:40.4516412-06:00:Thread#0:B:When buscar la fotografia
+2020-11-27T10:21:40.4534503-06:00:2020-11-27T10:21:40.4530773-06:00:Thread#0:T:done: PhotoSteps.WhenBuscarLaFotografia() (0,0s)
+2020-11-27T10:21:40.4540026-06:00:2020-11-27T10:21:40.4537751-06:00:Thread#0:B:Then lo que muestra "No se encontraron las Fotografias"
+2020-11-27T10:21:40.4553313-06:00:2020-11-27T10:21:40.4549777-06:00:Thread#0:T:done: PhotoSteps.ThenLoQueMuestra("No se encontraron...") (0,0s)
+2020-11-27T10:21:40.4567953-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:40.4568178-06:00:Thread#:Scheduler: testitem #35 from normal test queue 
+2020-11-27T10:21:40.4568246-06:00:Thread#0:Scheduler: considering testitem #35 for thread 0
+2020-11-27T10:21:40.4568570-06:00:Thread#0:TestItem#35:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:40.4568640-06:00:Thread#0:TestItem#35:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:40.4568696-06:00:Thread#0:TestItem#35:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:40.4568741-06:00:Thread#0:Scheduler: using testitem #35 for thread 0
+2020-11-27T10:21:40.4569046-06:00:Thread#0:Scheduler: Test #35 is scheduled for thread
+2020-11-27T10:21:40.4569315-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:40.4585875-06:00:Thread#0: Test #34/0 is finished on thread #0 as Succeeded within 0,0120986 seconds
+2020-11-27T10:21:40.4600427-06:00:Thread#0: Test #35/0 is started on thread #0
+2020-11-27T10:21:40.4626680-06:00:2020-11-27T10:21:40.4621996-06:00:Thread#0:B:Given postear la fotografia null
+2020-11-27T10:21:40.4639497-06:00:2020-11-27T10:21:40.4635773-06:00:Thread#0:T:done: PhotoSteps.GivenPostearLaFotografiaNull() (0,0s)
+2020-11-27T10:21:40.4645428-06:00:2020-11-27T10:21:40.4642230-06:00:Thread#0:B:When ingresar la fotografia
+2020-11-27T10:21:40.4660077-06:00:2020-11-27T10:21:40.4656510-06:00:Thread#0:T:done: PhotoSteps.WhenIngresarLaFotografia() (0,0s)
+2020-11-27T10:21:40.4665544-06:00:2020-11-27T10:21:40.4662846-06:00:Thread#0:B:Then devuelve "No se encontraron las Fotografias"
+2020-11-27T10:21:40.4678921-06:00:2020-11-27T10:21:40.4675433-06:00:Thread#0:T:done: PhotoSteps.ThenDevuelve("No se encontraron...") (0,0s)
+2020-11-27T10:21:40.4690319-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:40.4690449-06:00:Thread#:Scheduler: testitem #36 from normal test queue 
+2020-11-27T10:21:40.4690468-06:00:Thread#0:Scheduler: considering testitem #36 for thread 0
+2020-11-27T10:21:40.4690635-06:00:Thread#0:TestItem#36:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:40.4690655-06:00:Thread#0:TestItem#36:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:40.4690667-06:00:Thread#0:TestItem#36:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:40.4690680-06:00:Thread#0:Scheduler: using testitem #36 for thread 0
+2020-11-27T10:21:40.4690801-06:00:Thread#0:Scheduler: Test #36 is scheduled for thread
+2020-11-27T10:21:40.4690887-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:40.4709199-06:00:Thread#0: Test #35/0 is finished on thread #0 as Succeeded within 0,0108516 seconds
+2020-11-27T10:21:40.4716484-06:00:Thread#0: Test #36/0 is started on thread #0
+2020-11-27T10:21:40.4737459-06:00:2020-11-27T10:21:40.4733776-06:00:Thread#0:B:Given ingresar la fotografia null
+2020-11-27T10:21:40.4744796-06:00:2020-11-27T10:21:40.4741487-06:00:Thread#0:T:done: PhotoSteps.GivenIngresarLaFotografiaNull() (0,0s)
+2020-11-27T10:21:40.4750375-06:00:2020-11-27T10:21:40.4748125-06:00:Thread#0:B:When eliminar la fotografia
+2020-11-27T10:21:40.4766590-06:00:2020-11-27T10:21:40.4761844-06:00:Thread#0:T:done: PhotoSteps.WhenEliminarLaFotografia() (0,0s)
+2020-11-27T10:21:40.4772637-06:00:2020-11-27T10:21:40.4769763-06:00:Thread#0:B:Then devuelve "No se encontraron las Fotografias"
+2020-11-27T10:21:40.4783381-06:00:2020-11-27T10:21:40.4778510-06:00:Thread#0:T:done: PhotoSteps.ThenDevuelve("No se encontraron...") (0,0s)
+2020-11-27T10:21:40.4795647-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:40.4795776-06:00:Thread#:Scheduler: testitem #38 from normal test queue 
+2020-11-27T10:21:40.4795794-06:00:Thread#0:Scheduler: considering testitem #38 for thread 0
+2020-11-27T10:21:40.4795957-06:00:Thread#0:TestItem#38:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:40.4795975-06:00:Thread#0:TestItem#38:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:40.4795991-06:00:Thread#0:TestItem#38:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:40.4796004-06:00:Thread#0:Scheduler: using testitem #38 for thread 0
+2020-11-27T10:21:40.4796134-06:00:Thread#0:Scheduler: Test #38 is scheduled for thread
+2020-11-27T10:21:40.4796219-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:40.4812732-06:00:Thread#0: Test #36/0 is finished on thread #0 as Succeeded within 0,0095965 seconds
+2020-11-27T10:21:40.4819030-06:00:Thread#0: Test #38/0 is started on thread #0
+2020-11-27T10:21:40.4849771-06:00:2020-11-27T10:21:40.4846009-06:00:Thread#0:B:Given ingresar el vendedor null
+2020-11-27T10:21:40.4864254-06:00:2020-11-27T10:21:40.4860783-06:00:Thread#0:T:done: SellerSteps.GivenIngresarElVendedorNull() (0,0s)
+2020-11-27T10:21:40.4869902-06:00:2020-11-27T10:21:40.4867600-06:00:Thread#0:B:When buscar vendedor
+2020-11-27T10:21:40.4885312-06:00:2020-11-27T10:21:40.4881414-06:00:Thread#0:T:done: SellerSteps.WhenBuscarVendedor() (0,0s)
+2020-11-27T10:21:40.4891681-06:00:2020-11-27T10:21:40.4888561-06:00:Thread#0:B:Then lo que encuentra "No se encontro el Vendedor"
+2020-11-27T10:21:40.4904935-06:00:2020-11-27T10:21:40.4901388-06:00:Thread#0:T:done: SellerSteps.ThenLoQueEncuentra("No se encontro el...") (0,0s)
+2020-11-27T10:21:40.4921807-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:40.4922002-06:00:Thread#:Scheduler: testitem #39 from normal test queue 
+2020-11-27T10:21:40.4922040-06:00:Thread#0:Scheduler: considering testitem #39 for thread 0
+2020-11-27T10:21:40.4922308-06:00:Thread#0:TestItem#39:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:40.4922339-06:00:Thread#0:TestItem#39:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:40.4922350-06:00:Thread#0:TestItem#39:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:40.4922365-06:00:Thread#0:Scheduler: using testitem #39 for thread 0
+2020-11-27T10:21:40.4922495-06:00:Thread#0:Scheduler: Test #39 is scheduled for thread
+2020-11-27T10:21:40.4922579-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:40.4942657-06:00:Thread#0: Test #38/0 is finished on thread #0 as Succeeded within 0,0123296 seconds
+2020-11-27T10:21:40.4953958-06:00:Thread#0: Test #39/0 is started on thread #0
+2020-11-27T10:21:40.4975560-06:00:2020-11-27T10:21:40.4971964-06:00:Thread#0:B:Given ingresar el vendedor null
+2020-11-27T10:21:40.4982000-06:00:2020-11-27T10:21:40.4979633-06:00:Thread#0:T:done: SellerSteps.GivenIngresarElVendedorNull() (0,0s)
+2020-11-27T10:21:40.4987606-06:00:2020-11-27T10:21:40.4984799-06:00:Thread#0:B:When actualizar vendedor
+2020-11-27T10:21:40.5001575-06:00:2020-11-27T10:21:40.4998036-06:00:Thread#0:T:done: SellerSteps.WhenActualizarVendedor() (0,0s)
+2020-11-27T10:21:40.5007450-06:00:2020-11-27T10:21:40.5005160-06:00:Thread#0:B:Then lo que encuentra "No se encontro el Vendedor"
+2020-11-27T10:21:40.5013829-06:00:2020-11-27T10:21:40.5011410-06:00:Thread#0:T:done: SellerSteps.ThenLoQueEncuentra("No se encontro el...") (0,0s)
+2020-11-27T10:21:40.5041498-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:40.5041683-06:00:Thread#:Scheduler: testitem #40 from normal test queue 
+2020-11-27T10:21:40.5041725-06:00:Thread#0:Scheduler: considering testitem #40 for thread 0
+2020-11-27T10:21:40.5041942-06:00:Thread#0:TestItem#40:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:40.5041980-06:00:Thread#0:TestItem#40:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:40.5042006-06:00:Thread#0:TestItem#40:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:40.5042039-06:00:Thread#0:Scheduler: using testitem #40 for thread 0
+2020-11-27T10:21:40.5042247-06:00:Thread#0:Scheduler: Test #40 is scheduled for thread
+2020-11-27T10:21:40.5042431-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:40.5058670-06:00:Thread#0: Test #39/0 is finished on thread #0 as Succeeded within 0,010445 seconds
+2020-11-27T10:21:40.5067232-06:00:Thread#0: Test #40/0 is started on thread #0
+2020-11-27T10:21:40.5090442-06:00:2020-11-27T10:21:40.5086132-06:00:Thread#0:B:Given ingresar el vendedor null
+2020-11-27T10:21:40.5099545-06:00:2020-11-27T10:21:40.5095936-06:00:Thread#0:T:done: SellerSteps.GivenIngresarElVendedorNull() (0,0s)
+2020-11-27T10:21:40.5105145-06:00:2020-11-27T10:21:40.5102291-06:00:Thread#0:B:When eliminar vendedor
+2020-11-27T10:21:40.5125897-06:00:2020-11-27T10:21:40.5121818-06:00:Thread#0:T:done: SellerSteps.WhenEliminarVendedor() (0,0s)
+2020-11-27T10:21:40.5132364-06:00:2020-11-27T10:21:40.5129627-06:00:Thread#0:B:Then lo que encuentra "No se encontro el Vendedor"
+2020-11-27T10:21:40.5140358-06:00:2020-11-27T10:21:40.5137023-06:00:Thread#0:T:done: SellerSteps.ThenLoQueEncuentra("No se encontro el...") (0,0s)
+2020-11-27T10:21:40.5152772-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:40.5153499-06:00:Thread#:Scheduler: testitem #42 from normal test queue 
+2020-11-27T10:21:40.5153559-06:00:Thread#0:Scheduler: considering testitem #42 for thread 0
+2020-11-27T10:21:40.5153833-06:00:Thread#0:TestItem#42:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:40.5153892-06:00:Thread#0:TestItem#42:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:40.5153920-06:00:Thread#0:TestItem#42:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:40.5153955-06:00:Thread#0:Scheduler: using testitem #42 for thread 0
+2020-11-27T10:21:40.5154202-06:00:Thread#0:Scheduler: Test #42 is scheduled for thread
+2020-11-27T10:21:40.5154409-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:40.5174969-06:00:Thread#0: Test #40/0 is finished on thread #0 as Succeeded within 0,0107344 seconds
+2020-11-27T10:21:40.5181721-06:00:Thread#0: Test #42/0 is started on thread #0
+2020-11-27T10:21:40.5216940-06:00:2020-11-27T10:21:40.5213008-06:00:Thread#0:B:Given ingresar el estado null
+2020-11-27T10:21:40.5230723-06:00:2020-11-27T10:21:40.5227096-06:00:Thread#0:T:done: StatusSteps.GivenIngresarElEstadoNull() (0,0s)
+2020-11-27T10:21:40.5236856-06:00:2020-11-27T10:21:40.5233754-06:00:Thread#0:B:When buscar el estado
+2020-11-27T10:21:40.5255290-06:00:2020-11-27T10:21:40.5251437-06:00:Thread#0:T:done: StatusSteps.WhenBuscarElEstado() (0,0s)
+2020-11-27T10:21:40.5260897-06:00:2020-11-27T10:21:40.5258618-06:00:Thread#0:B:Then muestra el estado "No se encontro este Estado"
+2020-11-27T10:21:40.5277564-06:00:2020-11-27T10:21:40.5272929-06:00:Thread#0:T:done: StatusSteps.ThenMuestraElEstado("No se encontro es...") (0,0s)
+2020-11-27T10:21:40.5292198-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:40.5292436-06:00:Thread#:Scheduler: testitem #43 from normal test queue 
+2020-11-27T10:21:40.5292479-06:00:Thread#0:Scheduler: considering testitem #43 for thread 0
+2020-11-27T10:21:40.5292735-06:00:Thread#0:TestItem#43:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:40.5292768-06:00:Thread#0:TestItem#43:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:40.5292780-06:00:Thread#0:TestItem#43:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:40.5292796-06:00:Thread#0:Scheduler: using testitem #43 for thread 0
+2020-11-27T10:21:40.5292932-06:00:Thread#0:Scheduler: Test #43 is scheduled for thread
+2020-11-27T10:21:40.5293014-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:40.5308662-06:00:Thread#0: Test #42/0 is finished on thread #0 as Succeeded within 0,0126685 seconds
+2020-11-27T10:21:40.5315575-06:00:Thread#0: Test #43/0 is started on thread #0
+2020-11-27T10:21:40.5337036-06:00:2020-11-27T10:21:40.5333304-06:00:Thread#0:B:Given ingresar el estado null
+2020-11-27T10:21:40.5343922-06:00:2020-11-27T10:21:40.5340936-06:00:Thread#0:T:done: StatusSteps.GivenIngresarElEstadoNull() (0,0s)
+2020-11-27T10:21:40.5349945-06:00:2020-11-27T10:21:40.5347330-06:00:Thread#0:B:When actualizar el estado
+2020-11-27T10:21:40.5366105-06:00:2020-11-27T10:21:40.5362609-06:00:Thread#0:T:done: StatusSteps.WhenActualizarElEstado() (0,0s)
+2020-11-27T10:21:40.5371608-06:00:2020-11-27T10:21:40.5369398-06:00:Thread#0:B:Then muestra el estado "No se encontro este Estado"
+2020-11-27T10:21:40.5377977-06:00:2020-11-27T10:21:40.5375630-06:00:Thread#0:T:done: StatusSteps.ThenMuestraElEstado("No se encontro es...") (0,0s)
+2020-11-27T10:21:40.5390573-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:40.5390702-06:00:Thread#:Scheduler: testitem #44 from normal test queue 
+2020-11-27T10:21:40.5390721-06:00:Thread#0:Scheduler: considering testitem #44 for thread 0
+2020-11-27T10:21:40.5390883-06:00:Thread#0:TestItem#44:testItemMatchesCurrentTestThread:UnSpecific
+2020-11-27T10:21:40.5390901-06:00:Thread#0:TestItem#44:runsOnOneOtherThreadSpecific:False
+2020-11-27T10:21:40.5390914-06:00:Thread#0:TestItem#44:runsOnOneOtherThreadUnspecific:False
+2020-11-27T10:21:40.5390930-06:00:Thread#0:Scheduler: using testitem #44 for thread 0
+2020-11-27T10:21:40.5391060-06:00:Thread#0:Scheduler: Test #44 is scheduled for thread
+2020-11-27T10:21:40.5391148-06:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2020-11-27T10:21:40.5403693-06:00:Thread#0: Test #43/0 is finished on thread #0 as Succeeded within 0,0087831 seconds
+2020-11-27T10:21:40.5410543-06:00:Thread#0: Test #44/0 is started on thread #0
+2020-11-27T10:21:40.5436654-06:00:2020-11-27T10:21:40.5432391-06:00:Thread#0:B:Given ingresar el estado null
+2020-11-27T10:21:40.5447996-06:00:2020-11-27T10:21:40.5442783-06:00:Thread#0:T:done: StatusSteps.GivenIngresarElEstadoNull() (0,0s)
+2020-11-27T10:21:40.5456005-06:00:2020-11-27T10:21:40.5452832-06:00:Thread#0:B:When eliminar el estado
+2020-11-27T10:21:40.5473397-06:00:2020-11-27T10:21:40.5469230-06:00:Thread#0:T:done: StatusSteps.WhenEliminarElEstado() (0,0s)
+2020-11-27T10:21:40.5479488-06:00:2020-11-27T10:21:40.5476555-06:00:Thread#0:B:Then muestra el estado "No se encontro este Estado"
+2020-11-27T10:21:40.5487438-06:00:2020-11-27T10:21:40.5484148-06:00:Thread#0:T:done: StatusSteps.ThenMuestraElEstado("No se encontro es...") (0,0s)
+2020-11-27T10:21:40.5499531-06:00:Thread#0:Scheduler: get next test for thread 0
+2020-11-27T10:21:40.5499769-06:00:Thread#:Scheduler: at the end of normal test queue
+2020-11-27T10:21:40.5499808-06:00:Thread#0:Scheduler: enumerator for thread is at end
+2020-11-27T10:21:40.5499840-06:00:Thread#0:Scheduler: No more tests for thread
+2020-11-27T10:21:40.5542061-06:00:Thread#0: Test #44/0 is finished on thread #0 as Succeeded within 0,0131127 seconds
+2020-11-27T10:21:40.5621453-06:00:2020-11-27T10:21:40.5618084-06:00:Got Deinitialize Signal
+2020-11-27T10:21:40.5667051-06:00:RPC Client disconnected, because 'Disposed'. 
+LastMessage: 
+Description:Stream has been disposed
+Exception:<none>
+2020-11-27T10:21:40.5678397-06:00:RPC Server disconnected, because 'Disposed'. 
+LastMessage: 
+Description:Reached end of stream.
+Exception:<none>
+2020-11-27T10:21:40.5700772-06:00:RPC Server disconnected, because 'Disposed'. 
+LastMessage: 
+Description:Reached end of stream.
+Exception:<none>
+2020-11-27T10:21:40.5724432-06:00:Assembly resolving System.Diagnostics.Process.resources, Version=4.2.2.0, Culture=es-MX, PublicKeyToken=b03f5f7f11d50a3a
+2020-11-27T10:21:40.5724706-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' from .deps.json file
+2020-11-27T10:21:40.5724805-06:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' from .deps.json
+2020-11-27T10:21:40.5724885-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-27T10:21:40.5724935-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\System.Diagnostics.Process.resources.dll'
+2020-11-27T10:21:40.5725545-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\System.Diagnostics.Process.resources.exe'
+2020-11-27T10:21:40.5726038-06:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1'
+2020-11-27T10:21:40.5726146-06:00:TargetFramework: .NETCoreApp,Version=v3.1
+2020-11-27T10:21:40.5727084-06:00:Tfm: netcoreapp3.1
+2020-11-27T10:21:40.5727136-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1'
+2020-11-27T10:21:40.5727171-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\System.Diagnostics.Process.resources.dll'
+2020-11-27T10:21:40.5727743-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1\System.Diagnostics.Process.resources.exe'
+2020-11-27T10:21:40.5728343-06:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowPlusRunner\netcoreapp3.1'
+2020-11-27T10:21:40.5736337-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.9'
+2020-11-27T10:21:40.5736451-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.9\System.Diagnostics.Process.resources.dll'
+2020-11-27T10:21:40.5736996-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.9\System.Diagnostics.Process.resources.exe'
+2020-11-27T10:21:40.5737519-06:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\3.1.9'
+2020-11-27T10:21:40.5739175-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.9'
+2020-11-27T10:21:40.5739247-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.9\System.Diagnostics.Process.resources.dll'
+2020-11-27T10:21:40.5739815-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.9\System.Diagnostics.Process.resources.exe'
+2020-11-27T10:21:40.5740334-06:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\3.1.9'
+2020-11-27T10:21:40.5742273-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.9'
+2020-11-27T10:21:40.5742363-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.9\System.Diagnostics.Process.resources.dll'
+2020-11-27T10:21:40.5742978-06:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.9\System.Diagnostics.Process.resources.exe'
+2020-11-27T10:21:40.5743391-06:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.9'
+2020-11-27T10:21:40.5748763-06:00:Assembly resolving System.Diagnostics.Process.resources, Version=4.2.2.0, Culture=es, PublicKeyToken=b03f5f7f11d50a3a
+2020-11-27T10:21:40.5848455-06:00:Thread#-1:Scheduler: get next test for thread -1
+2020-11-27T10:21:40.5848634-06:00:Thread#:Scheduler: at the end of normal test queue
+2020-11-27T10:21:40.5848659-06:00:Thread#-1:Scheduler: enumerator for thread is at end
+2020-11-27T10:21:40.5913416-06:00;Thread#12;Info;test run finished
+2020-11-27T10:21:40.5915453-06:00;Thread#12;Info;publishing test results
+2020-11-27T10:21:40.5917806-06:00;Thread#12;Info;Not publishing results.
+2020-11-27T10:21:40.5919079-06:00;Thread#12;Info;test results published
+2020-11-27T10:21:40.5919850-06:00;Thread#12;Info;generating reports
+2020-11-27T10:21:40.7125186-06:00;Thread#12;Info;Starting external report generation process
+2020-11-27T10:21:42.3980326-06:00;Thread#12;Info;Successfully generated reports.
+2020-11-27T10:21:42.4008780-06:00;Thread#12;Info;Successfully generated reports
+2020-11-27T10:21:42.4089068-06:00:Total: 35 (test executions: 37)
+2020-11-27T10:21:42.4117679-06:00:Succeeded: 34
+2020-11-27T10:21:42.4121773-06:00:Ignored: 0
+2020-11-27T10:21:42.4124436-06:00:Pending: 0
+2020-11-27T10:21:42.4124496-06:00:Skipped: 0
+2020-11-27T10:21:42.4126921-06:00:Failed: 1
+2020-11-27T10:21:42.4186931-06:00;VSTestExecutionThread;Info;Adding attachments to VSTest
+2020-11-27T10:21:42.4187620-06:00;VSTestExecutionThread;Info;adding Test Execution Report 'C:\Users\user\Desktop\CarToGo\Car-To-Go\TestResults\Unnamed project__2020-11-27T102134.html'
+========== End of log file ==========

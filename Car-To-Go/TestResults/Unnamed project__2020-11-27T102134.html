@@ -1,0 +1,4442 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<title>Unnamed project Test Execution Report</title>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+        <script type="text/javascript">
+            /**
+            * jQuery.fn.sortElements
+            * --------------
+            * #author James Padolsey (http://james.padolsey.com)
+            * #version 0.11
+            * #updated 18-MAR-2010
+            * #url https://raw.github.com/jamespadolsey/jQuery-Plugins/master/sortElements/jquery.sortElements.js
+            * --------------
+            * #param Function comparator:
+            *   Exactly the same behaviour as [1,2,3].sort(comparator)
+            *   
+            * #param Function getSortable
+            *   A function that should return the element that is
+            *   to be sorted. The comparator will run on the
+            *   current collection, but you may want the actual
+            *   resulting sort to occur on a parent or another
+            *   associated element.
+            *   
+            *   E.g. $('td').sortElements(comparator, function(){
+            *      return this.parentNode; 
+            *   })
+            *   
+            *   The <td>'s parent (<tr>) will be sorted instead
+            *   of the <td> itself.
+            */
+            jQuery.fn.sortElements = (function () {
+
+                var sort = [].sort;
+
+                return function (comparator, getSortable) {
+
+                    getSortable = getSortable || function () { return this; };
+
+                    var placements = this.map(function () {
+
+                        var sortElement = getSortable.call(this),
+                parentNode = sortElement.parentNode,
+
+                        // Since the element itself will change position, we have
+                        // to have some way of storing it's original position in
+                        // the DOM. The easiest way is to have a 'flag' node:
+                nextSibling = parentNode.insertBefore(
+                    document.createTextNode(''),
+                    sortElement.nextSibling
+                );
+
+                        return function () {
+
+                            if (parentNode === this) {
+                                throw new Error(
+                        "You can't sort elements if any one is a descendant of another."
+                    );
+                            }
+
+                            // Insert before flag:
+                            parentNode.insertBefore(this, nextSibling);
+                            // Remove flag:
+                            parentNode.removeChild(nextSibling);
+
+                        };
+
+                    });
+
+                    return sort.call(this, comparator).each(function (i) {
+                        placements[i].call(getSortable.call(this));
+                    });
+
+                };
+
+            })();
+        </script>
+        <script type="text/javascript">
+            jQuery.fn.setBarSizes = (function () {
+                return function (metricName, maxBarSize, min) {
+                    var max = Math.max.apply(Math, $.makeArray($(this).map(function () { return Number($(this).attr('data-sr-' + metricName)); })));
+                    var scale = 1.0;
+                    while (max > 0.0 && max <= 10.0) {
+                        scale = scale * 10.0;
+                        max = max * 10.0;
+                    }
+                    max = (Math.ceil(max / 2) * 2) / scale;
+
+                    this.each(function () {
+                        var barAnchor = $(this).find('a');
+                        var actual = $(this).attr('data-sr-' + metricName);
+                        var newHeight = Math.max(Math.round(maxBarSize * (actual - min) / (max - min)), 2);
+                        barAnchor.css({ height: newHeight });
+                    });
+
+                    var unit = "";
+                    if (metricName.substr(metricName.length - 4, 4) === "time")
+                        unit = "s";
+
+                    $('#testview .scale-min-label').each(function () {
+                        $(this).text(min.toString() + unit);
+                    });
+                    $('#testview .scale-max-label').each(function () {
+                        $(this).text(max.toString() + unit);
+                    });
+                    var mid = max / 2;
+                    $('#testview .scale-mid-label').each(function () {
+                        $(this).text(mid.toString() + unit);
+                    });
+                };
+            })();
+
+            function getComparer(metricName, isDesc) {
+                return function (a, b) {
+                    var aNumber = Number($(a).attr('data-sr-' + metricName));
+                    var bNumber = Number($(b).attr('data-sr-' + metricName));
+                    var result = aNumber > bNumber ? 1 : (aNumber < bNumber ? -1 : 0);
+                    if (isDesc)
+                        result = -1 * result;
+
+                    if (result == 0 && metricName != "order")
+                        result = getComparer("order", false)(a, b);
+
+                    return result;
+                };
+            }
+
+            var currentSort = "";
+            function doSort(allowToggleDesc) {
+                var newSort = $("input[name='barSortOrder']:checked").val();
+                if (allowToggleDesc && currentSort == newSort) {
+                    $('#barSortDesc').click();
+                    doSort(false);
+                    return;
+                }
+                currentSort = newSort;
+                $('#testview td.testview-item').sortElements(getComparer(newSort, $('#barSortDesc').is(':checked')));
+            }
+
+
+            function doSetHeights(allowSort) {
+                var selectedMetric = $("input[name='barHeight']:checked").val();
+                $('#testview td.testview-item').setBarSizes(selectedMetric, 60, 0.0);
+
+                if (allowSort && currentSort != selectedMetric) {
+                    var $radios = $("input[name='barSortOrder']");
+                    $radios.filter('[value=' + selectedMetric + ']').attr('checked', true);
+                    $("#barSortDesc").attr("checked", [true]);
+                    doSort(false);
+                }
+            }
+
+            $(document).ready(function () {
+                $("input[name='barSortOrder']").click(function () { doSort(true); return true; });
+                $("input[name='barSortDesc']").change(function () { doSort(false); });
+                $("input[name='barHeight']").change(function () { doSetHeights(true); });
+
+                doSort(false);
+                doSetHeights(false);
+
+                $("div.scrollable").css({ 'overflow': 'auto' });
+            });
+        </script>
+
+        <style type="text/css">
+            body 
+            {
+                color: #000000;
+                font-family: Arial,Liberation Sans,DejaVu Sans,sans-serif;
+                line-height: 130%;
+            }
+            h1 {
+                font-family: Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;
+                font-size: 170%;
+                font-weight: bold;
+            }            
+            h2 {
+                font-family: Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;
+                font-size: 130%;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }            
+            h3 {
+                font-family: Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;
+                font-size: 120%;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }            
+            a.bar
+            {
+                text-decoration: none;
+                display: block;
+                line-height: 1px;
+            }
+            .description
+            {
+                font-style: italic;
+            }
+            .log 
+            {
+                width: 600px;
+                white-space: pre-wrap;
+                display: block;
+                margin: 0px;
+            }
+            .errorMessage 
+            {
+                width: 600px;
+                color: Red;
+                font-weight: bold;
+            }
+            .stackTrace 
+            {
+                width: 600px;
+                white-space: pre-wrap;
+                font-style: italic;
+                color: Red;
+                display: block;
+            }
+            table.testEvents
+            {
+                border: solid 1px #e8eef4;
+                border-collapse: collapse;
+            }
+            table.testEvents td
+            {
+                vertical-align: top;
+                padding: 5px;
+                border: solid 1px #e8eef4;
+            }
+            table.testEvents th
+            {
+                padding: 6px 5px;
+                text-align: left;
+                background-color: #e8eef4;
+                border: solid 1px #e8eef4;                
+            }
+            .comment
+            {
+                font-style: italic;
+                font-size: smaller;
+            }
+            .startupBar
+            {
+                background-color: #EEEEEE;
+                cursor: default;
+            }
+            
+            .colorSucceeded
+            {
+                background-color: #90ED7B;
+            }
+            .colorIgnored
+            {
+                background-color: #FFFF85;
+            }
+            .colorPending
+            {
+                background-color: #D47BED;
+            }
+            .colorNothingToRun
+            {
+                background-color: #CCCCFF;
+            }
+            .colorSkipped
+            {
+                background-color: #CCCCFF;
+            }
+            .colorInconclusive
+            {
+                background-color: #7BEDED;
+            }
+            .colorCleanupFailed
+            {
+                background-color: #FFCCCC;
+            }
+            .colorRandomlyFailed
+            {
+                background-color: #EDB07B;
+            }
+            .colorFailed
+            {
+                background-color: #ED5F5F;
+            }
+            .colorInitializationFailed
+            {
+                background-color: #FF0000;
+            }
+            .colorFrameworkError
+            {
+                background-color: #FF0000;
+            }
+            ul.subNodeLinks
+            {
+                padding-left: 20px;
+                margin: 0px;
+            }
+            ul.subNodeLinks li
+            {
+                list-style: none;
+            }
+            
+            /* views general */
+            div.scrollable
+            {
+                /*overflow: auto; - thsi has to be set from js, because of an IE9 bug */
+            }
+            div.viewbox
+            {
+                position: relative;
+                border: 3px solid #e8eef4;
+            }
+            div.viewbox table
+            {
+                border: 0px;
+            }
+                        
+            /* testview */
+            #testview
+            {
+                padding-top: 23px;
+            }
+            
+            table.testview-items td
+            {
+                vertical-align: bottom;
+                padding: 0px 1px 0px 1px;
+            }
+            td.right-padding, td.left-padding
+            {
+                width: 25px;
+                min-width: 25px;
+            }
+            table.testview-items a.bar
+            {
+                width: 5px;
+            }
+            table.testview-items tr.testview-items-row
+            {
+                height: 60px;
+            }
+            
+            /* scale */
+            table.vertical-scale 
+            {
+                position: absolute;
+                top: 23px;
+                left: 0px;
+                width: 100%;
+                z-index: -100;
+            }
+            table.vertical-scale td, tr.horizontal-scale td
+            {
+                font-size: 60%;
+                line-height: normal;
+            }
+            table.vertical-scale tr.scale-max, table.vertical-scale tr.scale-mid 
+            {
+                height: 30px;
+            }
+            tr.horizontal-scale, table.vertical-scale tr.scale-min 
+            {
+                height: 12px;
+            }
+            
+            td.scale-max-label, td.scale-mid-label, td.scale-min-label
+            {
+                border-top: solid 1px #E6E6E6;
+                text-align: left;
+                vertical-align: top;
+            }
+            td.scale-10-label
+            {
+                border-left: solid 1px #E6E6E6;
+                text-align: left;
+                vertical-align: bottom;
+                padding-left: 1px;
+            }
+            tr.scale-mid td, tr.scale-min td, tr.scale-max td
+            {
+                border-top: solid 1px #E6E6E6;
+            }
+           
+            
+            /* bar-control */
+            #bar-control
+            {
+                font-size: 60%;
+                line-height: normal;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+            }
+            #bar-control label
+            {
+                font-weight: bold;
+                vertical-align: middle;
+            }
+            #bar-control .option
+            {
+                vertical-align: middle;
+                text-transform: lowercase;
+            }
+            #bar-control input[type="checkbox"]
+            {
+                padding: 0 2px 0 3px;
+            }
+            #bar-control input
+            {
+                vertical-align: top;
+                height: 12px;
+                margin: 0px;
+                padding: 0px;
+            }
+            #bar-control div
+            {
+                float: right;
+                margin: 3px 5px 3px 5px;
+            }
+
+            /* timeline view */
+            #timelineview
+            {
+                padding-top: 5px;
+            }
+            table.timelineview a
+            {
+                height: 20px;
+            }
+            table.timelineview td
+            {
+                vertical-align: bottom;
+                padding: 0px 1px 0px 0px;
+                border: 0px;
+            }
+            tr.thread-items-row
+            {
+                height: 25px;
+            }
+            tr.thread-items-row td
+            {
+                vertical-align: bottom;
+            }
+            td.thread-label
+            {
+                padding: 0px 6px 0px 6px;
+                text-align: right;
+                line-height: 18px;
+                vertical-align: bottom;
+            }
+            th.thread-label
+            {
+                padding: 3px 6px 0px 6px;
+                line-height: 18px;
+                text-align: left;
+                vertical-align: bottom;
+            }
+        </style>
+	</head>
+	<body>
+        <h1>Unnamed project Test Execution Report</h1>
+        
+    <ul>
+        <li>Project: Unnamed project</li>
+        <li>Configuration: </li>
+        <li>Test Assemblies: C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\bin\Debug\netcoreapp3.1\SpecFlowCarToGo.dll</li>
+        <li>Start Time: 27/11/2020 10:21:35</li>
+        <li>Duration: 00:00:05.4546321</li>
+        <li>Test Threads: 1</li>
+    </ul>
+
+
+        <h2>Result: 1 failed</h2>
+        <table class="testEvents">
+                <tr>
+        <th colspan="2">Success rate</th>
+        <th>Tests</th>
+        <th>Succeeded</th>
+        <th>Failed</th>
+        <th>Pending</th>
+        <th>Ignored</th>
+        <th>Skipped</th>
+    </tr>
+
+                <td>
+            97%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 193px;" 
+           title="34 succeeded" 
+                   ></a>
+    </td>
+    <td>
+        <a class="bar colorFailed" 
+           style="width: 5px;" 
+           title="1 failed" 
+                          href="#error_summary"
+        ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>35 (test executions: 37)</td>
+    <td>34</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+
+        </table>
+        
+        <h2>Test Timeline Summary</h2>
+
+        <div id="timelineview" class="viewbox">
+            <div class="scrollable">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th class="thread-label" colspan="2">thread</th>
+                    </tr>
+                        <tr class="thread-items-row">
+                            <td class="thread-label" title="Machine: KEVIN-PC">#0</td>
+                            <td colspan="3">
+                                <table class="timelineview" cellpadding="0" cellspacing="0">
+                                    <tr>
+
+                                            <td>
+        <a
+            class="bar startupBar" 
+            style="width: 7px;" 
+                title="test thread startup" 
+        >&nbsp;</a>
+    </td>
+
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 166px;" 
+                title="Validar que se encuentra una marca (in Marca de CarToGo)" 
+                href="#t-2135013496.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Validar que se encuentra una marca para actualizar (in Marca de CarToGo)" 
+                href="#t1324217668.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Validar que se encuentra una marca para eliminar (in Marca de CarToGo)" 
+                href="#t2000999985.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorFailed" 
+            style="width: 3px;" 
+                title="Validar que se encuentra el carro (in Car de CarToGo)" 
+                href="#t834068468.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorFailed" 
+            style="width: 3px;" 
+                title="Validar que se encuentra el carro (in Car de CarToGo) retry #1" 
+                href="#t834068468.1"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorFailed" 
+            style="width: 3px;" 
+                title="Validar que se encuentra el carro (in Car de CarToGo) retry #2" 
+                href="#t834068468.2"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Postear un carro cuando el modelo no existe (in Car de CarToGo)" 
+                href="#t-467536315.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Postear un carro cuando no existen fotografias (in Car de CarToGo)" 
+                href="#t1371058815.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Postear un carro cuando el estado no existe (in Car de CarToGo)" 
+                href="#t-2111399795.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Postear un carro cuando el vendedor no existe (in Car de CarToGo)" 
+                href="#t-256071070.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Postear un carro cuando la condicion no existe (in Car de CarToGo)" 
+                href="#t-1134491259.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Postear un carro cuando el anio sea 1990 o inferior (in Car de CarToGo)" 
+                href="#t1496470570.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Actualizar cuando el carro no existe (in Car de CarToGo)" 
+                href="#t-993372152.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Actualizar cuando el modelo del carro no existe (in Car de CarToGo)" 
+                href="#t-279983957.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Actualizar cuando el carro no tiene fotografias registradas (in Car de CarToGo)" 
+                href="#t1686156899.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Actualizar cuando el carro no tiene estado (in Car de CarToGo)" 
+                href="#t-127746149.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Actualizar el carro cuando no existe el vendedor (in Car de CarToGo)" 
+                href="#t-646212076.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Actualizar el carro cuando no existe condicion (in Car de CarToGo)" 
+                href="#t1157551032.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Actualizar un carro cuando el anio sea 1990 o inferior (in Car de CarToGo)" 
+                href="#t493478754.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Validar que se encuentra el carro para eliminarlo (in Car de CarToGo)" 
+                href="#t826738044.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Validar que se encuentra una condicion (in Condicion de CarToGo)" 
+                href="#t1838700718.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Validar que se encuentra una condicion para actualizar (in Condicion de CarToGo)" 
+                href="#t-969614014.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Validar que se encuentra una condicion para eliminar (in Condicion de CarToGo)" 
+                href="#t-1895093935.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Validar que se encuentra el modelo (in Modelos de CarToGo)" 
+                href="#t-606396710.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Validar que se encuentra el modelo para actualizar (in Modelos de CarToGo)" 
+                href="#t-514015466.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Validar en el modelo la marca vacia para actualizar (in Modelos de CarToGo)" 
+                href="#t-725613634.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Postear un modelo con marca vacia (in Modelos de CarToGo)" 
+                href="#t-1010666189.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Validar que se encuentra el modelo para eliminar (in Modelos de CarToGo)" 
+                href="#t1056711237.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Validar que se encuentra una fotografia (in Fotografias de CarToGo)" 
+                href="#t-584392623.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Validar que se encuentra una fotografia para actualizar (in Fotografias de CarToGo)" 
+                href="#t-1745690995.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Validar que se encuentra una fotografia para eliminar (in Fotografias de CarToGo)" 
+                href="#t1060168768.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Validar que se encuentra un vendedor (in Vendedor de CarToGo)" 
+                href="#t1408834155.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Validar que se encuentra un vendedor para actualizar (in Vendedor de CarToGo)" 
+                href="#t11942455.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Validar que se encuentra un vendedor eliminar (in Vendedor de CarToGo)" 
+                href="#t-100772014.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Validar que se encuentra un estado (in Estados de CarToGo)" 
+                href="#t655304972.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Validar que se encuentra un estado para actualizar (in Estados de CarToGo)" 
+                href="#t-2032890280.0"
+        >&nbsp;</a>
+    </td>
+    <td>
+        <a
+            class="bar colorSucceeded" 
+            style="width: 3px;" 
+                title="Validar que se encuentra un estado para eliminar (in Estados de CarToGo)" 
+                href="#t-366552521.0"
+        >&nbsp;</a>
+    </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    <tr class="horizontal-scale">
+                        <td>&nbsp;</td>
+                            <td class="scale-10-label" style="width: 95px;min-width: 95px;">0s</td>
+                            <td class="scale-10-label" style="width: 95px;min-width: 95px;">2s</td>
+                        <td class="scale-10-label">4s</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        
+    <h2>Test Result View</h2>
+    <div id="testview" class="viewbox">
+        <div id="bar-control">
+            <div id="bar-control-sort">
+                <label>sort by:</label>
+                <span class="option"><input type="radio" name="barSortOrder" value="exectime" />Time</span>
+                <span class="option"><input type="radio" name="barSortOrder" value="acttime" />Act Time</span>
+                <span class="option"><input type="radio" name="barSortOrder" value="order" />Execution</span>
+                <span class="option"><input type="radio" name="barSortOrder" value="rescode" checked="checked" />Result</span>
+                <span class="option"><input type="checkbox" name="barSortDesc" id="barSortDesc" checked="checked" />desc</span>
+            </div>
+            <div id="bar-control-heights">
+                <label>heights:</label>
+                <span class="option"><input type="radio" checked="checked" name="barHeight" value="exectime" />Time</span>
+                <span class="option"><input type="radio" name="barHeight" value="acttime" />Act Time</span>
+            </div>
+        </div>
+        <table class="vertical-scale" cellpadding="0" cellspacing="0">
+            <tr class="scale-max">
+                <td class="left-padding scale-max-label">&nbsp;</td>
+                <td colspan="37">&nbsp;</td>
+                <td class="right-padding">&nbsp;</td>
+            </tr>
+            <tr class="scale-mid">
+                <td class="left-padding scale-mid-label">&nbsp;</td>
+                <td colspan="37">&nbsp;</td>
+                <td class="right-padding">&nbsp;</td>
+            </tr>
+            <tr class="scale-min">
+                <td class="left-padding scale-min-label">&nbsp;</td>
+                <td colspan="37">&nbsp;</td>
+                <td class="right-padding">&nbsp;</td>
+            </tr>
+        </table>
+        <div class="scrollable">
+            <table class="testview-items" cellpadding="0" cellspacing="0">
+                <tr class="testview-items-row">
+                    <td class="left-padding">&nbsp;</td>
+    <td class="testview-item" 
+        data-sr-exectime="1.1830708" data-sr-rescode="110" data-sr-order="0" data-sr-acttime="0.006">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 60px;"
+            title="Validar que se encuentra una marca (in Marca de CarToGo)"
+            href="#t-2135013496.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.013689" data-sr-rescode="110" data-sr-order="1" data-sr-acttime="0.004">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Validar que se encuentra una marca para actualizar (in Marca de CarToGo)"
+            href="#t1324217668.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0122737" data-sr-rescode="110" data-sr-order="2" data-sr-acttime="0.003">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Validar que se encuentra una marca para eliminar (in Marca de CarToGo)"
+            href="#t2000999985.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0137857" data-sr-rescode="110" data-sr-order="6" data-sr-acttime="0.004">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Postear un carro cuando el modelo no existe (in Car de CarToGo)"
+            href="#t-467536315.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0109712" data-sr-rescode="110" data-sr-order="7" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Postear un carro cuando no existen fotografias (in Car de CarToGo)"
+            href="#t1371058815.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0129582" data-sr-rescode="110" data-sr-order="8" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Postear un carro cuando el estado no existe (in Car de CarToGo)"
+            href="#t-2111399795.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0132992" data-sr-rescode="110" data-sr-order="9" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Postear un carro cuando el vendedor no existe (in Car de CarToGo)"
+            href="#t-256071070.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0112292" data-sr-rescode="110" data-sr-order="10" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Postear un carro cuando la condicion no existe (in Car de CarToGo)"
+            href="#t-1134491259.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0322888" data-sr-rescode="110" data-sr-order="11" data-sr-acttime="0.003">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Postear un carro cuando el anio sea 1990 o inferior (in Car de CarToGo)"
+            href="#t1496470570.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.025838" data-sr-rescode="110" data-sr-order="12" data-sr-acttime="0.007">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Actualizar cuando el carro no existe (in Car de CarToGo)"
+            href="#t-993372152.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0190032" data-sr-rescode="110" data-sr-order="13" data-sr-acttime="0.005">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Actualizar cuando el modelo del carro no existe (in Car de CarToGo)"
+            href="#t-279983957.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0102946" data-sr-rescode="110" data-sr-order="14" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Actualizar cuando el carro no tiene fotografias registradas (in Car de CarToGo)"
+            href="#t1686156899.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0101334" data-sr-rescode="110" data-sr-order="15" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Actualizar cuando el carro no tiene estado (in Car de CarToGo)"
+            href="#t-127746149.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0098989" data-sr-rescode="110" data-sr-order="16" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Actualizar el carro cuando no existe el vendedor (in Car de CarToGo)"
+            href="#t-646212076.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0121495" data-sr-rescode="110" data-sr-order="17" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Actualizar el carro cuando no existe condicion (in Car de CarToGo)"
+            href="#t1157551032.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="1.0083833" data-sr-rescode="110" data-sr-order="18" data-sr-acttime="0.003">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 51px;"
+            title="Actualizar un carro cuando el anio sea 1990 o inferior (in Car de CarToGo)"
+            href="#t493478754.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0435336" data-sr-rescode="110" data-sr-order="19" data-sr-acttime="0.003">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Validar que se encuentra el carro para eliminarlo (in Car de CarToGo)"
+            href="#t826738044.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0114734" data-sr-rescode="110" data-sr-order="20" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Validar que se encuentra una condicion (in Condicion de CarToGo)"
+            href="#t1838700718.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0118298" data-sr-rescode="110" data-sr-order="21" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Validar que se encuentra una condicion para actualizar (in Condicion de CarToGo)"
+            href="#t-969614014.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0096134" data-sr-rescode="110" data-sr-order="22" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Validar que se encuentra una condicion para eliminar (in Condicion de CarToGo)"
+            href="#t-1895093935.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0201115" data-sr-rescode="110" data-sr-order="23" data-sr-acttime="0.009">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Validar que se encuentra el modelo (in Modelos de CarToGo)"
+            href="#t-606396710.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0097184" data-sr-rescode="110" data-sr-order="24" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Validar que se encuentra el modelo para actualizar (in Modelos de CarToGo)"
+            href="#t-514015466.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0096507" data-sr-rescode="110" data-sr-order="25" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Validar en el modelo la marca vacia para actualizar (in Modelos de CarToGo)"
+            href="#t-725613634.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0105721" data-sr-rescode="110" data-sr-order="26" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Postear un modelo con marca vacia (in Modelos de CarToGo)"
+            href="#t-1010666189.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0113542" data-sr-rescode="110" data-sr-order="27" data-sr-acttime="0.003">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Validar que se encuentra el modelo para eliminar (in Modelos de CarToGo)"
+            href="#t1056711237.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0120986" data-sr-rescode="110" data-sr-order="28" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Validar que se encuentra una fotografia (in Fotografias de CarToGo)"
+            href="#t-584392623.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0108516" data-sr-rescode="110" data-sr-order="29" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Validar que se encuentra una fotografia para actualizar (in Fotografias de CarToGo)"
+            href="#t-1745690995.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0095965" data-sr-rescode="110" data-sr-order="30" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Validar que se encuentra una fotografia para eliminar (in Fotografias de CarToGo)"
+            href="#t1060168768.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0123296" data-sr-rescode="110" data-sr-order="31" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Validar que se encuentra un vendedor (in Vendedor de CarToGo)"
+            href="#t1408834155.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.010445" data-sr-rescode="110" data-sr-order="32" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Validar que se encuentra un vendedor para actualizar (in Vendedor de CarToGo)"
+            href="#t11942455.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0107344" data-sr-rescode="110" data-sr-order="33" data-sr-acttime="0.003">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Validar que se encuentra un vendedor eliminar (in Vendedor de CarToGo)"
+            href="#t-100772014.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0126685" data-sr-rescode="110" data-sr-order="34" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Validar que se encuentra un estado (in Estados de CarToGo)"
+            href="#t655304972.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0087831" data-sr-rescode="110" data-sr-order="35" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Validar que se encuentra un estado para actualizar (in Estados de CarToGo)"
+            href="#t-2032890280.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0131127" data-sr-rescode="110" data-sr-order="36" data-sr-acttime="0.002">
+        <a
+            class="bar colorSucceeded" 
+            style="height: 2px;"
+            title="Validar que se encuentra un estado para eliminar (in Estados de CarToGo)"
+            href="#t-366552521.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.1861801" data-sr-rescode="540" data-sr-order="3" data-sr-acttime="0.002">
+        <a
+            class="bar colorFailed" 
+            style="height: 9px;"
+            title="Validar que se encuentra el carro (in Car de CarToGo)"
+            href="#t834068468.0">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0153527" data-sr-rescode="540" data-sr-order="4" data-sr-acttime="0.003">
+        <a
+            class="bar colorFailed" 
+            style="height: 2px;"
+            title="Validar que se encuentra el carro (in Car de CarToGo) retry #1"
+            href="#t834068468.1">&nbsp;</a>
+    </td>
+    <td class="testview-item" 
+        data-sr-exectime="0.0188811" data-sr-rescode="540" data-sr-order="5" data-sr-acttime="0.001">
+        <a
+            class="bar colorFailed" 
+            style="height: 2px;"
+            title="Validar que se encuentra el carro (in Car de CarToGo) retry #2"
+            href="#t834068468.2">&nbsp;</a>
+    </td>
+                    <td class="right-padding">&nbsp;</td>
+                </tr>
+                <tr class="horizontal-scale">
+                    <td class="left-padding">&nbsp;</td>
+                    <td colspan="10">&nbsp;</td>
+                        <td class="scale-10-label" colspan="10">10</td>
+                        <td class="scale-10-label" colspan="10">20</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+        
+        
+    <h2>Feature Summary</h2>
+    <table class="testEvents">
+            <tr>
+            <th>Feature</th>
+        <th colspan="2">Success rate</th>
+        <th>Tests</th>
+        <th>Succeeded</th>
+        <th>Failed</th>
+        <th>Pending</th>
+        <th>Ignored</th>
+        <th>Skipped</th>
+            <th>Duration</th>
+    </tr>
+
+
+            <tr>
+                <td><a href="#f-742149229">Car de CarToGo</a></td>
+                    <td>
+            82%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 186px;" 
+           title="14 succeeded" 
+                   ></a>
+    </td>
+    <td>
+        <a class="bar colorFailed" 
+           style="width: 39px;" 
+           title="1 failed" 
+                          href="#error_summary"
+        ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>15 (test executions: 17)</td>
+    <td>14</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:01.4541807</td>
+
+            </tr>
+            <tr>
+                <td><a href="#f968310271">Condicion de CarToGo</a></td>
+                    <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="3 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0329166</td>
+
+            </tr>
+            <tr>
+                <td><a href="#f1472266704">Estados de CarToGo</a></td>
+                    <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="3 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0345643</td>
+
+            </tr>
+            <tr>
+                <td><a href="#f1746920592">Fotografias de CarToGo</a></td>
+                    <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="3 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0325467</td>
+
+            </tr>
+            <tr>
+                <td><a href="#f-1654953811">Marca de CarToGo</a></td>
+                    <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="3 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:01.2090335</td>
+
+            </tr>
+            <tr>
+                <td><a href="#f1507800936">Modelos de CarToGo</a></td>
+                    <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="5 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>5</td>
+    <td>5</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0614069</td>
+
+            </tr>
+            <tr>
+                <td><a href="#f781944438">Vendedor de CarToGo</a></td>
+                    <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="3 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0335090</td>
+
+            </tr>
+    </table>
+
+
+        <a name="error_summary" />
+        <h2>Error Summary</h2>
+        <table class="testEvents">
+                <tr>
+            <th>Test</th>
+        <th colspan="2">Success rate</th>
+        <th>Tests</th>
+        <th>Succeeded</th>
+        <th>Failed</th>
+        <th>Pending</th>
+        <th>Ignored</th>
+        <th>Skipped</th>
+    </tr>
+
+                <tr>
+                    <td>
+                        <a href="#t834068468.0">Validar que se encuentra el carro (in SpecFlowCarToGo, Car de CarToGo)</a>
+                            <a href="#t834068468.1">retry #1</a>
+                            <a href="#t834068468.2">retry #2</a>
+                    </td>
+                        <td>
+            0%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorFailed" 
+           style="width: 599px;" 
+           title="1 failed" 
+                          href="#error_summary"
+        ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1 (test executions: 3)</td>
+    <td>0</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+
+                </tr>
+                <tr>
+                    <td colspan="9" style="padding-left: 20px;"><div class="errorMessage">Error: Expected _resultado to be &quot;No se Encontro el Vehiculo&quot;, but found &lt;null&gt;.</div></td>
+                </tr>
+        </table>
+
+        <h2>Scenario Summary</h2>
+            <a name="f-742149229" />
+            <h3>Feature: Car de CarToGo</h3>
+            <table class="testEvents">
+                    <tr>
+            <th>Test</th>
+        <th colspan="2">Success rate</th>
+        <th>Tests</th>
+        <th>Succeeded</th>
+        <th>Failed</th>
+        <th>Pending</th>
+        <th>Ignored</th>
+        <th>Skipped</th>
+            <th>Duration</th>
+    </tr>
+
+                    <tr>
+                        <td>
+                                    <a href="#t834068468.0">Scenario: Validar que se encuentra el carro</a>
+            <a href="#t834068468.1">retry #1</a>
+            <a href="#t834068468.2">retry #2</a>
+
+                        </td>
+                        
+                            <td>
+            0%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorFailed" 
+           style="width: 599px;" 
+           title="1 failed" 
+                          href="#error_summary"
+        ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1 (test executions: 3)</td>
+    <td>0</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.2204139</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t-467536315.0">Scenario: Postear un carro cuando el modelo no existe</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0137857</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t1371058815.0">Scenario: Postear un carro cuando no existen fotografias</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0109712</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t-2111399795.0">Scenario: Postear un carro cuando el estado no existe</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0129582</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t-256071070.0">Scenario: Postear un carro cuando el vendedor no existe</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0132992</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t-1134491259.0">Scenario: Postear un carro cuando la condicion no existe</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0112292</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t1496470570.0">Scenario: Postear un carro cuando el anio sea 1990 o inferior</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0322888</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t-993372152.0">Scenario: Actualizar cuando el carro no existe</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0258380</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t-279983957.0">Scenario: Actualizar cuando el modelo del carro no existe</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0190032</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t1686156899.0">Scenario: Actualizar cuando el carro no tiene fotografias registradas</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0102946</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t-127746149.0">Scenario: Actualizar cuando el carro no tiene estado</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0101334</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t-646212076.0">Scenario: Actualizar el carro cuando no existe el vendedor</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0098989</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t1157551032.0">Scenario: Actualizar el carro cuando no existe condicion</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0121495</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t493478754.0">Scenario: Actualizar un carro cuando el anio sea 1990 o inferior</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:01.0083833</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t826738044.0">Scenario: Validar que se encuentra el carro para eliminarlo</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0435336</td>
+
+                        
+                    </tr>
+            </table>
+            <a name="f968310271" />
+            <h3>Feature: Condicion de CarToGo</h3>
+            <table class="testEvents">
+                    <tr>
+            <th>Test</th>
+        <th colspan="2">Success rate</th>
+        <th>Tests</th>
+        <th>Succeeded</th>
+        <th>Failed</th>
+        <th>Pending</th>
+        <th>Ignored</th>
+        <th>Skipped</th>
+            <th>Duration</th>
+    </tr>
+
+                    <tr>
+                        <td>
+                                    <a href="#t1838700718.0">Scenario: Validar que se encuentra una condicion</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0114734</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t-969614014.0">Scenario: Validar que se encuentra una condicion para actualizar</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0118298</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t-1895093935.0">Scenario: Validar que se encuentra una condicion para eliminar</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0096134</td>
+
+                        
+                    </tr>
+            </table>
+            <a name="f1472266704" />
+            <h3>Feature: Estados de CarToGo</h3>
+            <table class="testEvents">
+                    <tr>
+            <th>Test</th>
+        <th colspan="2">Success rate</th>
+        <th>Tests</th>
+        <th>Succeeded</th>
+        <th>Failed</th>
+        <th>Pending</th>
+        <th>Ignored</th>
+        <th>Skipped</th>
+            <th>Duration</th>
+    </tr>
+
+                    <tr>
+                        <td>
+                                    <a href="#t655304972.0">Scenario: Validar que se encuentra un estado</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0126685</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t-2032890280.0">Scenario: Validar que se encuentra un estado para actualizar</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0087831</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t-366552521.0">Scenario: Validar que se encuentra un estado para eliminar</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0131127</td>
+
+                        
+                    </tr>
+            </table>
+            <a name="f1746920592" />
+            <h3>Feature: Fotografias de CarToGo</h3>
+            <table class="testEvents">
+                    <tr>
+            <th>Test</th>
+        <th colspan="2">Success rate</th>
+        <th>Tests</th>
+        <th>Succeeded</th>
+        <th>Failed</th>
+        <th>Pending</th>
+        <th>Ignored</th>
+        <th>Skipped</th>
+            <th>Duration</th>
+    </tr>
+
+                    <tr>
+                        <td>
+                                    <a href="#t-584392623.0">Scenario: Validar que se encuentra una fotografia</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0120986</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t-1745690995.0">Scenario: Validar que se encuentra una fotografia para actualizar</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0108516</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t1060168768.0">Scenario: Validar que se encuentra una fotografia para eliminar</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0095965</td>
+
+                        
+                    </tr>
+            </table>
+            <a name="f-1654953811" />
+            <h3>Feature: Marca de CarToGo</h3>
+            <table class="testEvents">
+                    <tr>
+            <th>Test</th>
+        <th colspan="2">Success rate</th>
+        <th>Tests</th>
+        <th>Succeeded</th>
+        <th>Failed</th>
+        <th>Pending</th>
+        <th>Ignored</th>
+        <th>Skipped</th>
+            <th>Duration</th>
+    </tr>
+
+                    <tr>
+                        <td>
+                                    <a href="#t-2135013496.0">Scenario: Validar que se encuentra una marca</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:01.1830708</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t1324217668.0">Scenario: Validar que se encuentra una marca para actualizar</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0136890</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t2000999985.0">Scenario: Validar que se encuentra una marca para eliminar</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0122737</td>
+
+                        
+                    </tr>
+            </table>
+            <a name="f1507800936" />
+            <h3>Feature: Modelos de CarToGo</h3>
+            <table class="testEvents">
+                    <tr>
+            <th>Test</th>
+        <th colspan="2">Success rate</th>
+        <th>Tests</th>
+        <th>Succeeded</th>
+        <th>Failed</th>
+        <th>Pending</th>
+        <th>Ignored</th>
+        <th>Skipped</th>
+            <th>Duration</th>
+    </tr>
+
+                    <tr>
+                        <td>
+                                    <a href="#t-606396710.0">Scenario: Validar que se encuentra el modelo</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0201115</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t-514015466.0">Scenario: Validar que se encuentra el modelo para actualizar</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0097184</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t-725613634.0">Scenario: Validar en el modelo la marca vacia para actualizar</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0096507</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t-1010666189.0">Scenario: Postear un modelo con marca vacia</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0105721</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t1056711237.0">Scenario: Validar que se encuentra el modelo para eliminar</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0113542</td>
+
+                        
+                    </tr>
+            </table>
+            <a name="f781944438" />
+            <h3>Feature: Vendedor de CarToGo</h3>
+            <table class="testEvents">
+                    <tr>
+            <th>Test</th>
+        <th colspan="2">Success rate</th>
+        <th>Tests</th>
+        <th>Succeeded</th>
+        <th>Failed</th>
+        <th>Pending</th>
+        <th>Ignored</th>
+        <th>Skipped</th>
+            <th>Duration</th>
+    </tr>
+
+                    <tr>
+                        <td>
+                                    <a href="#t1408834155.0">Scenario: Validar que se encuentra un vendedor</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0123296</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t11942455.0">Scenario: Validar que se encuentra un vendedor para actualizar</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0104450</td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t-100772014.0">Scenario: Validar que se encuentra un vendedor eliminar</a>
+
+                        </td>
+                        
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded" 
+           style="width: 199px;" 
+           title="1 succeeded" 
+                   ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:00.0107344</td>
+
+                        
+                    </tr>
+            </table>
+
+        <h2>Execution Details</h2>
+            <a name="t-2135013496.0" />
+            <h3>Scenario: Validar que se encuentra una marca (in SpecFlowCarToGo, Marca de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:37</li>
+                <li>Execution time (sec): 1,1830708</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar la marca null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra una marca] -->
+                            <pre class="log">done: BrandSteps.GivenIngresarLaMarcaNull() (1,0s)</pre>
+                        </td>
+                        <td>Succeeded in 1.074s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When busca la marca</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra una marca] -->
+                            <pre class="log">done: BrandSteps.WhenBuscaLaMarca() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.006s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then el resultado debe ser &quot;No se encontro la Marca&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra una marca] -->
+                            <pre class="log">done: BrandSteps.ThenElResultadoDebeSer(&quot;No se encontro la...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.018s</td>
+                    </tr>
+            </table>
+            <a name="t1324217668.0" />
+            <h3>Scenario: Validar que se encuentra una marca para actualizar (in SpecFlowCarToGo, Marca de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:38</li>
+                <li>Execution time (sec): 0,013689</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar la marca null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra una marca para actualizar] -->
+                            <pre class="log">done: BrandSteps.GivenIngresarLaMarcaNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When actualizar la marca</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra una marca para actualizar] -->
+                            <pre class="log">done: BrandSteps.WhenActualizarLaMarca() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.004s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then el resultado debe ser &quot;No se encontro la Marca&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra una marca para actualizar] -->
+                            <pre class="log">done: BrandSteps.ThenElResultadoDebeSer(&quot;No se encontro la...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+            </table>
+            <a name="t2000999985.0" />
+            <h3>Scenario: Validar que se encuentra una marca para eliminar (in SpecFlowCarToGo, Marca de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:38</li>
+                <li>Execution time (sec): 0,0122737</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar la marca null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra una marca para eliminar] -->
+                            <pre class="log">done: BrandSteps.GivenIngresarLaMarcaNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.004s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When eliminar la marca</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra una marca para eliminar] -->
+                            <pre class="log">done: BrandSteps.WhenEliminarLaMarca() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then el resultado debe ser &quot;No se encontro la Marca&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra una marca para eliminar] -->
+                            <pre class="log">done: BrandSteps.ThenElResultadoDebeSer(&quot;No se encontro la...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+            </table>
+            <a name="t834068468.0" />
+            <h3>Scenario: Validar que se encuentra el carro (in SpecFlowCarToGo, Car de CarToGo)</h3>
+            <ul>
+                <li>Status: Failed</li>
+                <li>Start time: 27/11/2020 10:21:38</li>
+                <li>Execution time (sec): 0,1861801</li>
+                <li>Thread: #0</li>
+                <li>Error: Expected _resultado to be &quot;No se Encontro el Vehiculo&quot;, but found &lt;null&gt;.</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar el carro null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra el carro] -->
+                            <pre class="log">done: CarSteps.GivenIngresarElCarroNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When buscar el carro</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra el carro] -->
+                            <pre class="log">done: CarSteps.WhenBuscarElCarro() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then debe mostrar &quot;No se Encontro el Vehiculo&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra el carro] -->
+                            <pre class="log">error: Expected _resultado to be &quot;No se Encontro el Vehiculo&quot;, but found &lt;null&gt;.</pre>
+                                <div class="errorMessage">Expected _resultado to be &quot;No se Encontro el Vehiculo&quot;, but found &lt;null&gt;.</div>
+                                <pre class="stackTrace">FluentAssertions.Execution.AssertionFailedException: Expected _resultado to be &quot;No se Encontro el Vehiculo&quot;, but found &lt;null&gt;.
+   at FluentAssertions.Execution.FallbackTestFramework.Throw(String message) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Execution\FallbackTestFramework.cs:line 18
+   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Execution\TestFrameworkProvider.cs:line 41
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Execution\DefaultAssertionStrategy.cs:line 30
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Execution\AssertionScope.cs:line 225
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Execution\AssertionScope.cs:line 196
+   at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Execution\AssertionScope.cs:line 238
+   at FluentAssertions.Primitives.StringValidator.ValidateAgainstNulls() in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Primitives\StringValidator.cs:line 55
+   at FluentAssertions.Primitives.StringValidator.Validate() in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Primitives\StringValidator.cs:line 32
+   at FluentAssertions.Primitives.StringAssertions.Be(String expected, String because, Object[] becauseArgs) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Primitives\StringAssertions.cs:line 41
+   at SpecFlowCarToGo.Steps.CarSteps.ThenDebeMostrar(String respuesta) in C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\Steps\CarSteps.cs:line 312
+   at TechTalk.SpecFlow.Bindings.BindingInvoker.InvokeBinding(IBinding binding, IContextManager contextManager, Object[] arguments, ITestTracer testTracer, TimeSpan&amp; duration) in D:\a\1\s\TechTalk.SpecFlow\Bindings\BindingInvoker.cs:line 69
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments) in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 514
+   at TechTalk.SpecRun.SpecFlowPlugin.Runtime.RunnerTestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStep(IContextManager contextManager, StepInstance stepInstance) in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 435
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnAfterLastStep() in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 260
+   at TechTalk.SpecRun.SpecFlowPlugin.Runtime.RunnerTestExecutionEngine.OnAfterLastStep()
+   at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors() in D:\a\1\s\TechTalk.SpecFlow\TestRunner.cs:line 60
+   at SpecFlowCarToGo.Features.CarDeCarToGoFeature.ScenarioCleanup()
+   at SpecFlowCarToGo.Features.CarDeCarToGoFeature.ValidarQueSeEncuentraElCarro() in C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\Features\Car.feature:line 6
+   at TechTalk.SpecRun.Framework.TaskExecutors.StaticOrInstanceMethodExecutor.ExecuteInternal(ITestThreadExecutionContext testThreadExecutionContext)
+   at TechTalk.SpecRun.Framework.TaskExecutors.StaticOrInstanceMethodExecutor.Execute(ITestThreadExecutionContext testThreadExecutionContext)
+   at TechTalk.SpecRun.Framework.TestNodeTask.Execute()</pre>
+                        </td>
+                        <td>Failed in 0.175s</td>
+                    </tr>
+            </table>
+            <a name="t834068468.1" />
+            <h3>Scenario: Validar que se encuentra el carro (in SpecFlowCarToGo, Car de CarToGo) retry #1</h3>
+            <ul>
+                <li>Status: Failed</li>
+                <li>Start time: 27/11/2020 10:21:39</li>
+                <li>Execution time (sec): 0,0153527</li>
+                <li>Thread: #0</li>
+                <li>Error: Expected _resultado to be &quot;No se Encontro el Vehiculo&quot;, but found &lt;null&gt;.</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar el carro null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra el carro] -->
+                            <pre class="log">done: CarSteps.GivenIngresarElCarroNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When buscar el carro</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra el carro] -->
+                            <pre class="log">done: CarSteps.WhenBuscarElCarro() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then debe mostrar &quot;No se Encontro el Vehiculo&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra el carro] -->
+                            <pre class="log">error: Expected _resultado to be &quot;No se Encontro el Vehiculo&quot;, but found &lt;null&gt;.</pre>
+                                <div class="errorMessage">Expected _resultado to be &quot;No se Encontro el Vehiculo&quot;, but found &lt;null&gt;.</div>
+                                <pre class="stackTrace">FluentAssertions.Execution.AssertionFailedException: Expected _resultado to be &quot;No se Encontro el Vehiculo&quot;, but found &lt;null&gt;.
+   at FluentAssertions.Execution.FallbackTestFramework.Throw(String message) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Execution\FallbackTestFramework.cs:line 18
+   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Execution\TestFrameworkProvider.cs:line 41
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Execution\DefaultAssertionStrategy.cs:line 30
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Execution\AssertionScope.cs:line 225
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Execution\AssertionScope.cs:line 196
+   at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Execution\AssertionScope.cs:line 238
+   at FluentAssertions.Primitives.StringValidator.ValidateAgainstNulls() in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Primitives\StringValidator.cs:line 55
+   at FluentAssertions.Primitives.StringValidator.Validate() in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Primitives\StringValidator.cs:line 32
+   at FluentAssertions.Primitives.StringAssertions.Be(String expected, String because, Object[] becauseArgs) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Primitives\StringAssertions.cs:line 41
+   at SpecFlowCarToGo.Steps.CarSteps.ThenDebeMostrar(String respuesta) in C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\Steps\CarSteps.cs:line 312
+   at TechTalk.SpecFlow.Bindings.BindingInvoker.InvokeBinding(IBinding binding, IContextManager contextManager, Object[] arguments, ITestTracer testTracer, TimeSpan&amp; duration) in D:\a\1\s\TechTalk.SpecFlow\Bindings\BindingInvoker.cs:line 69
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments) in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 514
+   at TechTalk.SpecRun.SpecFlowPlugin.Runtime.RunnerTestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStep(IContextManager contextManager, StepInstance stepInstance) in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 435
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnAfterLastStep() in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 260
+   at TechTalk.SpecRun.SpecFlowPlugin.Runtime.RunnerTestExecutionEngine.OnAfterLastStep()
+   at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors() in D:\a\1\s\TechTalk.SpecFlow\TestRunner.cs:line 60
+   at SpecFlowCarToGo.Features.CarDeCarToGoFeature.ScenarioCleanup()
+   at SpecFlowCarToGo.Features.CarDeCarToGoFeature.ValidarQueSeEncuentraElCarro() in C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\Features\Car.feature:line 6
+   at TechTalk.SpecRun.Framework.TaskExecutors.StaticOrInstanceMethodExecutor.ExecuteInternal(ITestThreadExecutionContext testThreadExecutionContext)
+   at TechTalk.SpecRun.Framework.TaskExecutors.StaticOrInstanceMethodExecutor.Execute(ITestThreadExecutionContext testThreadExecutionContext)
+   at TechTalk.SpecRun.Framework.TestNodeTask.Execute()</pre>
+                        </td>
+                        <td>Failed in 0.005s</td>
+                    </tr>
+            </table>
+            <a name="t834068468.2" />
+            <h3>Scenario: Validar que se encuentra el carro (in SpecFlowCarToGo, Car de CarToGo) retry #2</h3>
+            <ul>
+                <li>Status: Failed</li>
+                <li>Start time: 27/11/2020 10:21:39</li>
+                <li>Execution time (sec): 0,0188811</li>
+                <li>Thread: #0</li>
+                <li>Error: Expected _resultado to be &quot;No se Encontro el Vehiculo&quot;, but found &lt;null&gt;.</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar el carro null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra el carro] -->
+                            <pre class="log">done: CarSteps.GivenIngresarElCarroNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When buscar el carro</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra el carro] -->
+                            <pre class="log">done: CarSteps.WhenBuscarElCarro() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.001s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then debe mostrar &quot;No se Encontro el Vehiculo&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra el carro] -->
+                            <pre class="log">error: Expected _resultado to be &quot;No se Encontro el Vehiculo&quot;, but found &lt;null&gt;.</pre>
+                                <div class="errorMessage">Expected _resultado to be &quot;No se Encontro el Vehiculo&quot;, but found &lt;null&gt;.</div>
+                                <pre class="stackTrace">FluentAssertions.Execution.AssertionFailedException: Expected _resultado to be &quot;No se Encontro el Vehiculo&quot;, but found &lt;null&gt;.
+   at FluentAssertions.Execution.FallbackTestFramework.Throw(String message) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Execution\FallbackTestFramework.cs:line 18
+   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Execution\TestFrameworkProvider.cs:line 41
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Execution\DefaultAssertionStrategy.cs:line 30
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Execution\AssertionScope.cs:line 225
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Execution\AssertionScope.cs:line 196
+   at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Execution\AssertionScope.cs:line 238
+   at FluentAssertions.Primitives.StringValidator.ValidateAgainstNulls() in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Primitives\StringValidator.cs:line 55
+   at FluentAssertions.Primitives.StringValidator.Validate() in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Primitives\StringValidator.cs:line 32
+   at FluentAssertions.Primitives.StringAssertions.Be(String expected, String because, Object[] becauseArgs) in C:\projects\fluentassertions-vf06b\Src\FluentAssertions\Primitives\StringAssertions.cs:line 41
+   at SpecFlowCarToGo.Steps.CarSteps.ThenDebeMostrar(String respuesta) in C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\Steps\CarSteps.cs:line 312
+   at TechTalk.SpecFlow.Bindings.BindingInvoker.InvokeBinding(IBinding binding, IContextManager contextManager, Object[] arguments, ITestTracer testTracer, TimeSpan&amp; duration) in D:\a\1\s\TechTalk.SpecFlow\Bindings\BindingInvoker.cs:line 69
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments) in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 514
+   at TechTalk.SpecRun.SpecFlowPlugin.Runtime.RunnerTestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments)
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStep(IContextManager contextManager, StepInstance stepInstance) in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 435
+   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.OnAfterLastStep() in D:\a\1\s\TechTalk.SpecFlow\Infrastructure\TestExecutionEngine.cs:line 260
+   at TechTalk.SpecRun.SpecFlowPlugin.Runtime.RunnerTestExecutionEngine.OnAfterLastStep()
+   at TechTalk.SpecFlow.TestRunner.CollectScenarioErrors() in D:\a\1\s\TechTalk.SpecFlow\TestRunner.cs:line 60
+   at SpecFlowCarToGo.Features.CarDeCarToGoFeature.ScenarioCleanup()
+   at SpecFlowCarToGo.Features.CarDeCarToGoFeature.ValidarQueSeEncuentraElCarro() in C:\Users\user\Desktop\CarToGo\Car-To-Go\SpecFlowCarToGo\Features\Car.feature:line 6
+   at TechTalk.SpecRun.Framework.TaskExecutors.StaticOrInstanceMethodExecutor.ExecuteInternal(ITestThreadExecutionContext testThreadExecutionContext)
+   at TechTalk.SpecRun.Framework.TaskExecutors.StaticOrInstanceMethodExecutor.Execute(ITestThreadExecutionContext testThreadExecutionContext)
+   at TechTalk.SpecRun.Framework.TestNodeTask.Execute()</pre>
+                        </td>
+                        <td>Failed in 0.012s</td>
+                    </tr>
+            </table>
+            <a name="t-467536315.0" />
+            <h3>Scenario: Postear un carro cuando el modelo no existe (in SpecFlowCarToGo, Car de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:39</li>
+                <li>Execution time (sec): 0,0137857</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar el carro con modelo vacio</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Postear un carro cuando el modelo no existe] -->
+                            <pre class="log">done: CarSteps.GivenIngresarElCarroConModeloVacio() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.005s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When postear el carro con modelo vacio</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Postear un carro cuando el modelo no existe] -->
+                            <pre class="log">done: CarSteps.WhenPostearElCarroConModeloVacio() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.004s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then debe mostrar &quot;El Modelo no existe&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Postear un carro cuando el modelo no existe] -->
+                            <pre class="log">done: CarSteps.ThenDebeMostrar(&quot;El Modelo no existe&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.001s</td>
+                    </tr>
+            </table>
+            <a name="t1371058815.0" />
+            <h3>Scenario: Postear un carro cuando no existen fotografias (in SpecFlowCarToGo, Car de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:39</li>
+                <li>Execution time (sec): 0,0109712</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar el carro sin fotografias</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Postear un carro cuando no existen fotografias] -->
+                            <pre class="log">done: CarSteps.GivenIngresarElCarroSinFotografias() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.004s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When postear el carro sin fotografias</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Postear un carro cuando no existen fotografias] -->
+                            <pre class="log">done: CarSteps.WhenPostearElCarroSinFotografias() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then debe mostrar &quot;Estas fotografias no estan registradas&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Postear un carro cuando no existen fotografias] -->
+                            <pre class="log">done: CarSteps.ThenDebeMostrar(&quot;Estas fotografias...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.001s</td>
+                    </tr>
+            </table>
+            <a name="t-2111399795.0" />
+            <h3>Scenario: Postear un carro cuando el estado no existe (in SpecFlowCarToGo, Car de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:39</li>
+                <li>Execution time (sec): 0,0129582</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar el carro sin estado</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Postear un carro cuando el estado no existe] -->
+                            <pre class="log">done: CarSteps.GivenIngresarElCarroSinEstado() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.004s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When postear el carro sin estado</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Postear un carro cuando el estado no existe] -->
+                            <pre class="log">done: CarSteps.WhenPostearElCarroSinEstado() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then debe mostrar &quot;El Estado no existe&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Postear un carro cuando el estado no existe] -->
+                            <pre class="log">done: CarSteps.ThenDebeMostrar(&quot;El Estado no existe&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+            </table>
+            <a name="t-256071070.0" />
+            <h3>Scenario: Postear un carro cuando el vendedor no existe (in SpecFlowCarToGo, Car de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:39</li>
+                <li>Execution time (sec): 0,0132992</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar el carro sin vendedor</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Postear un carro cuando el vendedor no existe] -->
+                            <pre class="log">done: CarSteps.GivenIngresarElCarroSinVendedor() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.004s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When postear el carro sin vendedor</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Postear un carro cuando el vendedor no existe] -->
+                            <pre class="log">done: CarSteps.WhenPostearElCarroSinVendedor() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then debe mostrar &quot;El Vendedor no existe&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Postear un carro cuando el vendedor no existe] -->
+                            <pre class="log">done: CarSteps.ThenDebeMostrar(&quot;El Vendedor no ex...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+            </table>
+            <a name="t-1134491259.0" />
+            <h3>Scenario: Postear un carro cuando la condicion no existe (in SpecFlowCarToGo, Car de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:39</li>
+                <li>Execution time (sec): 0,0112292</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar el carro sin condicion</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Postear un carro cuando la condicion no existe] -->
+                            <pre class="log">done: CarSteps.GivenIngresarElCarroSinCondicion() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When postear el carro sin condicion</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Postear un carro cuando la condicion no existe] -->
+                            <pre class="log">done: CarSteps.WhenPostearElCarroSinCondicion() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then debe mostrar &quot;La Condicion no existe&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Postear un carro cuando la condicion no existe] -->
+                            <pre class="log">done: CarSteps.ThenDebeMostrar(&quot;La Condicion no e...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+            </table>
+            <a name="t1496470570.0" />
+            <h3>Scenario: Postear un carro cuando el anio sea 1990 o inferior (in SpecFlowCarToGo, Car de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:39</li>
+                <li>Execution time (sec): 0,0322888</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar el carro con anio 1990</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Postear un carro cuando el anio sea 1990 o inferior] -->
+                            <pre class="log">done: CarSteps.GivenIngresarElCarroConAnio(1990) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.018s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When postear con anio inferior</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Postear un carro cuando el anio sea 1990 o inferior] -->
+                            <pre class="log">done: CarSteps.WhenPostearConAnioInferior() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then debe mostrar &quot;El vehiculo debe ser a&#241;o 1990 en adelante&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Postear un carro cuando el anio sea 1990 o inferior] -->
+                            <pre class="log">done: CarSteps.ThenDebeMostrar(&quot;El vehiculo debe ...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+            </table>
+            <a name="t-993372152.0" />
+            <h3>Scenario: Actualizar cuando el carro no existe (in SpecFlowCarToGo, Car de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:39</li>
+                <li>Execution time (sec): 0,025838</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given actualizar cuando el carro no existe</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Actualizar cuando el carro no existe] -->
+                            <pre class="log">done: CarSteps.GivenActualizarCuandoElCarroNoExiste() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.013s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When actualizar el carro</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Actualizar cuando el carro no existe] -->
+                            <pre class="log">done: CarSteps.WhenActualizarElCarro() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.007s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then debe mostrar &quot;No se encuentra el Vehiculo&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Actualizar cuando el carro no existe] -->
+                            <pre class="log">done: CarSteps.ThenDebeMostrar(&quot;No se encuentra e...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+            </table>
+            <a name="t-279983957.0" />
+            <h3>Scenario: Actualizar cuando el modelo del carro no existe (in SpecFlowCarToGo, Car de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:39</li>
+                <li>Execution time (sec): 0,0190032</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given actualizar modelo del carro</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Actualizar cuando el modelo del carro no existe] -->
+                            <pre class="log">done: CarSteps.GivenActualizarModeloDelCarro() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.004s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When actualizar el modelo no encontrado</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Actualizar cuando el modelo del carro no existe] -->
+                            <pre class="log">done: CarSteps.WhenActualizarElModeloNoEncontrado() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.005s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then debe mostrar &quot;El Modelo no existe&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Actualizar cuando el modelo del carro no existe] -->
+                            <pre class="log">done: CarSteps.ThenDebeMostrar(&quot;El Modelo no existe&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+            </table>
+            <a name="t1686156899.0" />
+            <h3>Scenario: Actualizar cuando el carro no tiene fotografias registradas (in SpecFlowCarToGo, Car de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:39</li>
+                <li>Execution time (sec): 0,0102946</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given un carro sin fotografias</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Actualizar cuando el carro no tiene fotografias registradas] -->
+                            <pre class="log">done: CarSteps.GivenUnCarroSinFotografias() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.004s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When actualizar carro sin fotografias</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Actualizar cuando el carro no tiene fotografias registradas] -->
+                            <pre class="log">done: CarSteps.WhenActualizarCarroSinFotografias() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then debe mostrar &quot;Estas fotografias no estan registradas&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Actualizar cuando el carro no tiene fotografias registradas] -->
+                            <pre class="log">done: CarSteps.ThenDebeMostrar(&quot;Estas fotografias...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.001s</td>
+                    </tr>
+            </table>
+            <a name="t-127746149.0" />
+            <h3>Scenario: Actualizar cuando el carro no tiene estado (in SpecFlowCarToGo, Car de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:39</li>
+                <li>Execution time (sec): 0,0101334</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given un carro sin estado</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Actualizar cuando el carro no tiene estado] -->
+                            <pre class="log">done: CarSteps.GivenUnCarroSinEstado() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When actualizar carro sin estado</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Actualizar cuando el carro no tiene estado] -->
+                            <pre class="log">done: CarSteps.WhenActualizarCarroSinEstado() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then debe mostrar &quot;El Estado no existe&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Actualizar cuando el carro no tiene estado] -->
+                            <pre class="log">done: CarSteps.ThenDebeMostrar(&quot;El Estado no existe&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+            </table>
+            <a name="t-646212076.0" />
+            <h3>Scenario: Actualizar el carro cuando no existe el vendedor (in SpecFlowCarToGo, Car de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:39</li>
+                <li>Execution time (sec): 0,0098989</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given un carro sin vendedor</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Actualizar el carro cuando no existe el vendedor] -->
+                            <pre class="log">done: CarSteps.GivenUnCarroSinVendedor() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.004s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When actualizar carro sin vendedor</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Actualizar el carro cuando no existe el vendedor] -->
+                            <pre class="log">done: CarSteps.WhenActualizarCarroSinVendedor() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then debe mostrar &quot;El Vendedor no existe&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Actualizar el carro cuando no existe el vendedor] -->
+                            <pre class="log">done: CarSteps.ThenDebeMostrar(&quot;El Vendedor no ex...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.001s</td>
+                    </tr>
+            </table>
+            <a name="t1157551032.0" />
+            <h3>Scenario: Actualizar el carro cuando no existe condicion (in SpecFlowCarToGo, Car de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:39</li>
+                <li>Execution time (sec): 0,0121495</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given un carro sin condicion</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Actualizar el carro cuando no existe condicion] -->
+                            <pre class="log">done: CarSteps.GivenUnCarroSinCondicion() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.004s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When actualizar carro sin condicion</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Actualizar el carro cuando no existe condicion] -->
+                            <pre class="log">done: CarSteps.WhenActualizarCarroSinCondicion() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then debe mostrar &quot;La Condicion no existe&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Actualizar el carro cuando no existe condicion] -->
+                            <pre class="log">done: CarSteps.ThenDebeMostrar(&quot;La Condicion no e...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.001s</td>
+                    </tr>
+            </table>
+            <a name="t493478754.0" />
+            <h3>Scenario: Actualizar un carro cuando el anio sea 1990 o inferior (in SpecFlowCarToGo, Car de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:39</li>
+                <li>Execution time (sec): 1,0083833</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given actualizar el carro con anio 1990</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Actualizar un carro cuando el anio sea 1990 o inferior] -->
+                            <pre class="log">done: CarSteps.GivenActualizarElCarroConAnio(1990) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.004s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When actualizar con anio inferior</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Actualizar un carro cuando el anio sea 1990 o inferior] -->
+                            <pre class="log">done: CarSteps.WhenActualizarConAnioInferior() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then debe mostrar &quot;El vehiculo debe ser a&#241;o 1990 en adelante&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Actualizar un carro cuando el anio sea 1990 o inferior] -->
+                            <pre class="log">done: CarSteps.ThenDebeMostrar(&quot;El vehiculo debe ...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+            </table>
+            <a name="t826738044.0" />
+            <h3>Scenario: Validar que se encuentra el carro para eliminarlo (in SpecFlowCarToGo, Car de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:40</li>
+                <li>Execution time (sec): 0,0435336</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar el carro null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra el carro para eliminarlo] -->
+                            <pre class="log">done: CarSteps.GivenIngresarElCarroNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.034s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When eliminar el carro</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra el carro para eliminarlo] -->
+                            <pre class="log">done: CarSteps.WhenEliminarElCarro() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then debe mostrar &quot;No se encuentra el Vehiculo&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra el carro para eliminarlo] -->
+                            <pre class="log">done: CarSteps.ThenDebeMostrar(&quot;No se encuentra e...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.001s</td>
+                    </tr>
+            </table>
+            <a name="t1838700718.0" />
+            <h3>Scenario: Validar que se encuentra una condicion (in SpecFlowCarToGo, Condicion de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:40</li>
+                <li>Execution time (sec): 0,0114734</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar la condicion null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra una condicion] -->
+                            <pre class="log">done: ConditionSteps.GivenIngresarLaCondicionNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When busca la condicion</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra una condicion] -->
+                            <pre class="log">done: ConditionSteps.WhenBuscaLaCondicion() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then la respuesta es &quot;No se encontro la Condicion&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra una condicion] -->
+                            <pre class="log">done: ConditionSteps.ThenLaRespuestoEs(&quot;No se encontro la...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+            </table>
+            <a name="t-969614014.0" />
+            <h3>Scenario: Validar que se encuentra una condicion para actualizar (in SpecFlowCarToGo, Condicion de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:40</li>
+                <li>Execution time (sec): 0,0118298</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar la condicion null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra una condicion para actualizar] -->
+                            <pre class="log">done: ConditionSteps.GivenIngresarLaCondicionNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.006s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When actualizar la condicion</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra una condicion para actualizar] -->
+                            <pre class="log">done: ConditionSteps.WhenActualizarLaCondicion() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then la respuesta es &quot;No se encontro la Condicion&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra una condicion para actualizar] -->
+                            <pre class="log">done: ConditionSteps.ThenLaRespuestoEs(&quot;No se encontro la...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.001s</td>
+                    </tr>
+            </table>
+            <a name="t-1895093935.0" />
+            <h3>Scenario: Validar que se encuentra una condicion para eliminar (in SpecFlowCarToGo, Condicion de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:40</li>
+                <li>Execution time (sec): 0,0096134</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar la condicion null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra una condicion para eliminar] -->
+                            <pre class="log">done: ConditionSteps.GivenIngresarLaCondicionNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When eliminar la condicion</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra una condicion para eliminar] -->
+                            <pre class="log">done: ConditionSteps.WhenEliminarLaCondicion() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then la respuesta es &quot;No se encontro la Condicion&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra una condicion para eliminar] -->
+                            <pre class="log">done: ConditionSteps.ThenLaRespuestoEs(&quot;No se encontro la...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+            </table>
+            <a name="t-606396710.0" />
+            <h3>Scenario: Validar que se encuentra el modelo (in SpecFlowCarToGo, Modelos de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:40</li>
+                <li>Execution time (sec): 0,0201115</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar el modelo null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra el modelo] -->
+                            <pre class="log">done: ModelSteps.GivenIngresarElModeloNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.004s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When buscar el modelo</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra el modelo] -->
+                            <pre class="log">done: ModelSteps.WhenBuscarElModelo() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.009s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then muestra el modelo &quot;No se encuentra el Modelo&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra el modelo] -->
+                            <pre class="log">done: ModelSteps.ThenMuestraElModelo(&quot;No se encuentra e...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+            </table>
+            <a name="t-514015466.0" />
+            <h3>Scenario: Validar que se encuentra el modelo para actualizar (in SpecFlowCarToGo, Modelos de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:40</li>
+                <li>Execution time (sec): 0,0097184</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar el modelo null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra el modelo para actualizar] -->
+                            <pre class="log">done: ModelSteps.GivenIngresarElModeloNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When actualizar el modelo</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra el modelo para actualizar] -->
+                            <pre class="log">done: ModelSteps.WhenActualizarElModelo() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then muestra el modelo &quot;No se encuentra el Modelo&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra el modelo para actualizar] -->
+                            <pre class="log">done: ModelSteps.ThenMuestraElModelo(&quot;No se encuentra e...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.001s</td>
+                    </tr>
+            </table>
+            <a name="t-725613634.0" />
+            <h3>Scenario: Validar en el modelo la marca vacia para actualizar (in SpecFlowCarToGo, Modelos de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:40</li>
+                <li>Execution time (sec): 0,0096507</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar en el modelo la marca null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar en el modelo la marca vacia para actualizar] -->
+                            <pre class="log">done: ModelSteps.GivenIngresarEnElModeloLaMarcaNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.004s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When actualizar la marca null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar en el modelo la marca vacia para actualizar] -->
+                            <pre class="log">done: ModelSteps.WhenActualizarLaMarcaNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then muestra el modelo &quot;No se encuentra la Marca&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar en el modelo la marca vacia para actualizar] -->
+                            <pre class="log">done: ModelSteps.ThenMuestraElModelo(&quot;No se encuentra l...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.001s</td>
+                    </tr>
+            </table>
+            <a name="t-1010666189.0" />
+            <h3>Scenario: Postear un modelo con marca vacia (in SpecFlowCarToGo, Modelos de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:40</li>
+                <li>Execution time (sec): 0,0105721</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar marca vacia</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Postear un modelo con marca vacia] -->
+                            <pre class="log">done: ModelSteps.GivenIngresarMarcaVacia() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.004s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When postear el modelo</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Postear un modelo con marca vacia] -->
+                            <pre class="log">done: ModelSteps.WhenPostearElModelo() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then muestra el modelo &quot;No se encuentra la Marca&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Postear un modelo con marca vacia] -->
+                            <pre class="log">done: ModelSteps.ThenMuestraElModelo(&quot;No se encuentra l...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.001s</td>
+                    </tr>
+            </table>
+            <a name="t1056711237.0" />
+            <h3>Scenario: Validar que se encuentra el modelo para eliminar (in SpecFlowCarToGo, Modelos de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:40</li>
+                <li>Execution time (sec): 0,0113542</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar el modelo null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra el modelo para eliminar] -->
+                            <pre class="log">done: ModelSteps.GivenIngresarElModeloNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When eliminar el modelo</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra el modelo para eliminar] -->
+                            <pre class="log">done: ModelSteps.WhenEliminarElModelo() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then muestra el modelo &quot;No se encuentra el Modelo&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra el modelo para eliminar] -->
+                            <pre class="log">done: ModelSteps.ThenMuestraElModelo(&quot;No se encuentra e...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+            </table>
+            <a name="t-584392623.0" />
+            <h3>Scenario: Validar que se encuentra una fotografia (in SpecFlowCarToGo, Fotografias de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:40</li>
+                <li>Execution time (sec): 0,0120986</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar la fotografia null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra una fotografia] -->
+                            <pre class="log">done: PhotoSteps.GivenIngresarLaFotografiaNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.004s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When buscar la fotografia</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra una fotografia] -->
+                            <pre class="log">done: PhotoSteps.WhenBuscarLaFotografia() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then lo que muestra &quot;No se encontraron las Fotografias&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra una fotografia] -->
+                            <pre class="log">done: PhotoSteps.ThenLoQueMuestra(&quot;No se encontraron...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+            </table>
+            <a name="t-1745690995.0" />
+            <h3>Scenario: Validar que se encuentra una fotografia para actualizar (in SpecFlowCarToGo, Fotografias de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:40</li>
+                <li>Execution time (sec): 0,0108516</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given postear la fotografia null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra una fotografia para actualizar] -->
+                            <pre class="log">done: PhotoSteps.GivenPostearLaFotografiaNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.004s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When ingresar la fotografia</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra una fotografia para actualizar] -->
+                            <pre class="log">done: PhotoSteps.WhenIngresarLaFotografia() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then devuelve &quot;No se encontraron las Fotografias&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra una fotografia para actualizar] -->
+                            <pre class="log">done: PhotoSteps.ThenDevuelve(&quot;No se encontraron...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+            </table>
+            <a name="t1060168768.0" />
+            <h3>Scenario: Validar que se encuentra una fotografia para eliminar (in SpecFlowCarToGo, Fotografias de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:40</li>
+                <li>Execution time (sec): 0,0095965</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar la fotografia null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra una fotografia para eliminar] -->
+                            <pre class="log">done: PhotoSteps.GivenIngresarLaFotografiaNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When eliminar la fotografia</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra una fotografia para eliminar] -->
+                            <pre class="log">done: PhotoSteps.WhenEliminarLaFotografia() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then devuelve &quot;No se encontraron las Fotografias&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra una fotografia para eliminar] -->
+                            <pre class="log">done: PhotoSteps.ThenDevuelve(&quot;No se encontraron...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+            </table>
+            <a name="t1408834155.0" />
+            <h3>Scenario: Validar que se encuentra un vendedor (in SpecFlowCarToGo, Vendedor de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:40</li>
+                <li>Execution time (sec): 0,0123296</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar el vendedor null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra un vendedor] -->
+                            <pre class="log">done: SellerSteps.GivenIngresarElVendedorNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.004s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When buscar vendedor</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra un vendedor] -->
+                            <pre class="log">done: SellerSteps.WhenBuscarVendedor() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then lo que encuentra &quot;No se encontro el Vendedor&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra un vendedor] -->
+                            <pre class="log">done: SellerSteps.ThenLoQueEncuentra(&quot;No se encontro el...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+            </table>
+            <a name="t11942455.0" />
+            <h3>Scenario: Validar que se encuentra un vendedor para actualizar (in SpecFlowCarToGo, Vendedor de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:40</li>
+                <li>Execution time (sec): 0,010445</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar el vendedor null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra un vendedor para actualizar] -->
+                            <pre class="log">done: SellerSteps.GivenIngresarElVendedorNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When actualizar vendedor</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra un vendedor para actualizar] -->
+                            <pre class="log">done: SellerSteps.WhenActualizarVendedor() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then lo que encuentra &quot;No se encontro el Vendedor&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra un vendedor para actualizar] -->
+                            <pre class="log">done: SellerSteps.ThenLoQueEncuentra(&quot;No se encontro el...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+            </table>
+            <a name="t-100772014.0" />
+            <h3>Scenario: Validar que se encuentra un vendedor eliminar (in SpecFlowCarToGo, Vendedor de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:40</li>
+                <li>Execution time (sec): 0,0107344</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar el vendedor null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra un vendedor eliminar] -->
+                            <pre class="log">done: SellerSteps.GivenIngresarElVendedorNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When eliminar vendedor</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra un vendedor eliminar] -->
+                            <pre class="log">done: SellerSteps.WhenEliminarVendedor() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then lo que encuentra &quot;No se encontro el Vendedor&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra un vendedor eliminar] -->
+                            <pre class="log">done: SellerSteps.ThenLoQueEncuentra(&quot;No se encontro el...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.001s</td>
+                    </tr>
+            </table>
+            <a name="t655304972.0" />
+            <h3>Scenario: Validar que se encuentra un estado (in SpecFlowCarToGo, Estados de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:40</li>
+                <li>Execution time (sec): 0,0126685</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar el estado null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra un estado] -->
+                            <pre class="log">done: StatusSteps.GivenIngresarElEstadoNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.004s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When buscar el estado</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra un estado] -->
+                            <pre class="log">done: StatusSteps.WhenBuscarElEstado() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then muestra el estado &quot;No se encontro este Estado&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra un estado] -->
+                            <pre class="log">done: StatusSteps.ThenMuestraElEstado(&quot;No se encontro es...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+            </table>
+            <a name="t-2032890280.0" />
+            <h3>Scenario: Validar que se encuentra un estado para actualizar (in SpecFlowCarToGo, Estados de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:40</li>
+                <li>Execution time (sec): 0,0087831</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar el estado null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra un estado para actualizar] -->
+                            <pre class="log">done: StatusSteps.GivenIngresarElEstadoNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.003s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When actualizar el estado</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra un estado para actualizar] -->
+                            <pre class="log">done: StatusSteps.WhenActualizarElEstado() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then muestra el estado &quot;No se encontro este Estado&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra un estado para actualizar] -->
+                            <pre class="log">done: StatusSteps.ThenMuestraElEstado(&quot;No se encontro es...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.001s</td>
+                    </tr>
+            </table>
+            <a name="t-366552521.0" />
+            <h3>Scenario: Validar que se encuentra un estado para eliminar (in SpecFlowCarToGo, Estados de CarToGo)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 27/11/2020 10:21:40</li>
+                <li>Execution time (sec): 0,0131127</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given ingresar el estado null</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Validar que se encuentra un estado para eliminar] -->
+                            <pre class="log">done: StatusSteps.GivenIngresarElEstadoNull() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.004s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When eliminar el estado</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Validar que se encuentra un estado para eliminar] -->
+                            <pre class="log">done: StatusSteps.WhenEliminarElEstado() (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.002s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then muestra el estado &quot;No se encontro este Estado&quot;</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Validar que se encuentra un estado para eliminar] -->
+                            <pre class="log">done: StatusSteps.ThenMuestraElEstado(&quot;No se encontro es...&quot;) (0,0s)</pre>
+                        </td>
+                        <td>Succeeded in 0.001s</td>
+                    </tr>
+            </table>
+	</body>
+</html>

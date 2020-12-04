@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
       icon: 'archive'
     },
     {
-      title: 'Empty',
+      title: 'Comprar por Marca',
       url: '/folder/Trash',
       icon: 'trash'
     },
