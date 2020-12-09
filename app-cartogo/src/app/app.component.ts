@@ -23,8 +23,8 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Carros usados',
-      url: '/folder/Outbox',
-      icon: 'paper-plane'
+      url: 'carro-usado',
+      icon: 'car'
     },
     {
       title: 'Concesionarias',
