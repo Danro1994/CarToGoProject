@@ -13,23 +13,23 @@ export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'Home',
+      title: 'Inicio',
       url: '',
       icon: 'home'
     },{
       title: 'Carros nuevos',
       url: 'carro-nuevo',
-      icon: 'car'
+      icon: 'car-sport'
     },
     {
       title: 'Carros usados',
       url: 'carro-usado',
-      icon: 'cash'
+      icon: 'car'
     },
     {
       title: 'Concesionarias',
       url: 'concesionaria',
-      icon: 'at'
+      icon: 'person'
     },
     {
       title: 'Videos instructivos',
@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
     {
       title: 'Comprar por Marca',
       url: 'comprar-marca',
-      icon: 'trash'
+      icon: 'pricetag'
     }
   ];
  
