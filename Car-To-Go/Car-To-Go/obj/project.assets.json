@@ -12164,11 +12164,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\user\\Desktop\\CarToGo\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj",
       "projectName": "Car-To-Go",
       "projectPath": "C:\\Users\\user\\Desktop\\CarToGo\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\user\\Desktop\\CarToGo\\Car-To-Go\\Car-To-Go\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj",
+      "projectName": "Car-To-Go",
+      "projectPath": "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\Car-To-Go\\obj\\",
+>>>>>>> 5a084b88d99677f63ab0cdfe61768790e92b1295
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12238,7 +12246,11 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+>>>>>>> 5a084b88d99677f63ab0cdfe61768790e92b1295
       }
     }
   }

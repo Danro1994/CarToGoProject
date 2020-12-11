@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\user\\Desktop\\CarToGo\\Car-To-Go\\SpecFlowCarToGo\\SpecFlowCarToGo.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "C:\\Users\\user\\Desktop\\CarToGo\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\user\\Desktop\\CarToGo\\Car-To-Go\\Car-To-Go\\obj\\",
+=======
+    "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\SpecFlowCarToGo\\SpecFlowCarToGo.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj",
+        "projectName": "Car-To-Go",
+        "projectPath": "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\Car-To-Go\\obj\\",
+>>>>>>> 5a084b88d99677f63ab0cdfe61768790e92b1295
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -81,6 +95,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
@@ -93,6 +108,20 @@
         "projectPath": "C:\\Users\\user\\Desktop\\CarToGo\\Car-To-Go\\SpecFlowCarToGo\\SpecFlowCarToGo.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\user\\Desktop\\CarToGo\\Car-To-Go\\SpecFlowCarToGo\\obj\\",
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\SpecFlowCarToGo\\SpecFlowCarToGo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\SpecFlowCarToGo\\SpecFlowCarToGo.csproj",
+        "projectName": "SpecFlowCarToGo",
+        "projectPath": "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\SpecFlowCarToGo\\SpecFlowCarToGo.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\SpecFlowCarToGo\\obj\\",
+>>>>>>> 5a084b88d99677f63ab0cdfe61768790e92b1295
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -112,8 +141,13 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
+<<<<<<< HEAD
               "C:\\Users\\user\\Desktop\\CarToGo\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj": {
                 "projectPath": "C:\\Users\\user\\Desktop\\CarToGo\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj"
+=======
+              "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj": {
+                "projectPath": "C:\\Users\\user\\Desktop\\CarToGo Project\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj"
+>>>>>>> 5a084b88d99677f63ab0cdfe61768790e92b1295
               }
             }
           }
@@ -160,7 +194,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+>>>>>>> 5a084b88d99677f63ab0cdfe61768790e92b1295
         }
       }
     }
