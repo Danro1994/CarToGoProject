@@ -20,7 +20,7 @@ export class ModelsPage implements OnInit {
   ) { }
 
   ngOnInit() {}
-  xx
+  
   ionViewWillEnter(){
     this.obtenerModels();
 

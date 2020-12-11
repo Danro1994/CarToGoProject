@@ -1,5 +1,7 @@
 {
   "name": "app-cartogo",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

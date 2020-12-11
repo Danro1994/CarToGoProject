@@ -6,7 +6,7 @@ import { HttpClient} from '@angular/common/http'
   providedIn: 'root'
 })
 export class ModelsService {
-  apiURL = "https://localhost:44363/api/Model";
+  apiURL = "https://localhost:44363/api/model";
 
   constructor(private http : HttpClient) { }
 

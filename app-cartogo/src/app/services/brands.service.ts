@@ -6,7 +6,7 @@ import { Brand } from '../modelos/brand'
   providedIn: 'root'
 })
 export class BrandsService {
-  apiURL = "https://localhost:44363/api/Brand"
+  apiURL = "https://localhost:44363/api/brand"
 
   constructor(private http : HttpClient) { }
   
