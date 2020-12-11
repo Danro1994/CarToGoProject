@@ -1,9 +1,52 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>editar-model</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Editar Modelos
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <form>
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input
+      name="Name"
+      type="text"
+      [(ngModel)]="model.Name"
+      name="title"></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label>BrandId</ion-label>
+      <ion-select
+      name="brand"
+      placeholder="Seleccione un brand"
+      [(ngModel)]="model.BrandId">
+      <ion-select-option *ngFor="let brand of  brands" [value]="brand.Id">
+        {{ brand.Name}}
+      </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button 
+          color="primary" 
+          expand="block" 
+          (click)="actualizarModel()">
+            Actualizar</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button color="secondary" expand="block" (click)="cancelar()">
+            Cancelar</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>
+

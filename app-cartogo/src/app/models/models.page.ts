@@ -30,8 +30,9 @@ export class ModelsPage implements OnInit {
     }
 
     editarModel(id: Number){
-      this.router.navigate([`/models/editar/${id}`])
+      this.router.navigate([`models/editar/${id}`])
     }
+    
     obtenerModels(event= null)
     {
       this._modelsService.obtenerModels().subscribe(data =>{

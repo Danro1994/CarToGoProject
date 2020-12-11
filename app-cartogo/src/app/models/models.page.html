@@ -16,7 +16,7 @@
   </ion-refresher>
   <ion-list>
 
-    <ion-item-sliding [id]="item.id" *ngFor="let item of models">
+    <ion-item-sliding [id]="item.Id" *ngFor="let item of models">
       <ion-item href="#">
         <ion-label>
           <h2>{{ item.Name }}</h2>
@@ -27,10 +27,10 @@
       </ion-item>
 
       <ion-item-options side="end">
-      <ion-item-option (click)="editarModel(item.Id)">
+      <ion-item-option (click)="editarModel(item.id)">
         <ion-icon slot="icon-only" name="create"></ion-icon>
       </ion-item-option>
-      <ion-item-option color="danger" (click)="eliminarModel(item.Id)">
+      <ion-item-option color="danger" (click)="eliminarModel(item.id)">
         <ion-icon slot="icon-only" name="trash"></ion-icon>
       </ion-item-option>
     </ion-item-options>
