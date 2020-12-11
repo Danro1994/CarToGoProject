@@ -8,32 +8,52 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
+  {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
   },
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },  {
-    path: 'carro-usado',
-    loadChildren: () => import('./carro-usado/carro-usado.module').then( m => m.CarroUsadoPageModule)
+    path: 'carro/crear',
+    loadChildren: () => import('./crear-carro/crear-carro.module').then( m => m.CrearCarroPageModule)
   },
   {
-    path: 'carro-nuevo',
-    loadChildren: () => import('./carro-nuevo/carro-nuevo.module').then( m => m.CarroNuevoPageModule)
+    path: 'carro/editar',
+    loadChildren: () => import('./editar-carro/editar-carro.module').then( m => m.EditarCarroPageModule)
   },
   {
-    path: 'concesionaria',
-    loadChildren: () => import('./concesionaria/concesionaria.module').then( m => m.ConcesionariaPageModule)
+    path: 'carros',
+    loadChildren: () => import('./carros/carros.module').then( m => m.CarrosPageModule)
   },
   {
-    path: 'videos-instructivos',
-    loadChildren: () => import('./videos-instructivos/videos-instructivos.module').then( m => m.VideosInstructivosPageModule)
+    path: 'models',
+    loadChildren: () => import('./models/models.module').then( m => m.ModelsPageModule)
   },
   {
-    path: 'comprar-marca',
-    loadChildren: () => import('./comprar-marca/comprar-marca.module').then( m => m.ComprarMarcaPageModule)
+    path: 'models/crear',
+    loadChildren: () => import('./crear-model/crear-model.module').then( m => m.CrearModelPageModule)
+  },
+  {
+    path: 'models/editar',
+    loadChildren: () => import('./editar-model/editar-model.module').then( m => m.EditarModelPageModule)
+  },
+  {
+    path: 'brands',
+    loadChildren: () => import('./brands/brands.module').then( m => m.BrandsPageModule)
+  },
+  {
+    path: 'brands/editar',
+    loadChildren: () => import('./editar-brand/editar-brand.module').then( m => m.EditarBrandPageModule)
+  },
+  {
+    path: 'brands/crear',
+    loadChildren: () => import('./crear-brand/crear-brand.module').then( m => m.CrearBrandPageModule)
   }
+
+
+  
 
 ];
 
