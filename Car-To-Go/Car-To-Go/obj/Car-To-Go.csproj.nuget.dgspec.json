@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\PROYECTO_VANGUARDIA\\CarToGoProject\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj": {}
+    "C:\\Users\\user\\Desktop\\CarToGo\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj": {}
   },
   "projects": {
-    "D:\\PROYECTO_VANGUARDIA\\CarToGoProject\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj": {
+    "C:\\Users\\user\\Desktop\\CarToGo\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PROYECTO_VANGUARDIA\\CarToGoProject\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Desktop\\CarToGo\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj",
         "projectName": "Car-To-Go",
-        "projectPath": "D:\\PROYECTO_VANGUARDIA\\CarToGoProject\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj",
-        "packagesPath": "C:\\Users\\Elizabeth Ordoñez\\.nuget\\packages\\",
-        "outputPath": "D:\\PROYECTO_VANGUARDIA\\CarToGoProject\\Car-To-Go\\Car-To-Go\\obj\\",
+        "projectPath": "C:\\Users\\user\\Desktop\\CarToGo\\Car-To-Go\\Car-To-Go\\Car-To-Go.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\Desktop\\CarToGo\\Car-To-Go\\Car-To-Go\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Elizabeth Ordoñez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -29,6 +29,7 @@
         },
         "frameworks": {
           "netcoreapp2.2": {
+            "targetAlias": "netcoreapp2.2",
             "projectReferences": {}
           }
         },
@@ -40,6 +41,7 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
+          "targetAlias": "netcoreapp2.2",
           "dependencies": {
             "Microsoft.AspNetCore.App": {
               "suppressParent": "All",
@@ -79,7 +81,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

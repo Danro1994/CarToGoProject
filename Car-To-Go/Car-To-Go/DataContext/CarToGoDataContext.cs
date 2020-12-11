@@ -21,7 +21,7 @@ namespace Car_To_Go.DataContext
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-P1J30VH;DataBase=CarToGoDB;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=KEVIN-PC;DataBase=CarToGoDB;Trusted_Connection=True;");
         }
         /*
         protected override void OnModelCreating(ModelBuilder modelBuilder)

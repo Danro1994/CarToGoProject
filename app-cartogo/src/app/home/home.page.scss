@@ -2,18 +2,24 @@
 padding: 0;
 margin: 0;
 }
-
+.ion-content.background{
+    --background: url(https://i.postimg.cc/6pRWcQ1y/Whats-App-Image-2020-12-04-at-5-51-38-PM.jpg) 0 0/100% 100% no-repeat;
+}
 .imagen-catalogo img {
     border-radius: 5%;
     box-shadow: 0 0 5px gray;
 }
 
 .fondo-titulo {
-    --ion-toolbar-background: #62ceff;
-    font-family: 'Oswald', sans-serif;
+    --ion-toolbar-background: #101b5a;
+    font-family: 'Corbel', sans-serif;
 }
 
 ion-content{
-    --background: linear-gradient(#4786ef, #f4f5f8);
-    font-family: 'Oswald', sans-serif;
+    --background: linear-gradient(url(https://i.postimg.cc/6pRWcQ1y/Whats-App-Image-2020-12-04-at-5-51-38-PM.jpg) 0 0/100% 100% no-repeat,url(https://i.postimg.cc/6pRWcQ1y/Whats-App-Image-2020-12-04-at-5-51-38-PM.jpg) 0 0/100% 100% no-repeat);
+    font-family: 'Corbel', sans-serif;
 }
+.md .centered-p {
+    text-align: center;
+    margin-left: -15%
+  }

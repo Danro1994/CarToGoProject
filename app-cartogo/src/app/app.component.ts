@@ -13,13 +13,13 @@ export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'Home',
+      title: 'Inicio',
       url: '',
       icon: 'home'
     },{
       title: 'Carros nuevos',
-      url: '/folder/Inbox',
-      icon: 'mail'
+      url: 'carro-nuevo',
+      icon: 'car-sport'
     },
     {
       title: 'Carros usados',
@@ -28,26 +28,21 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Concesionarias',
-      url: '/folder/Favorites',
-      icon: 'heart'
+      url: 'concesionaria',
+      icon: 'person'
     },
     {
       title: 'Videos instructivos',
-      url: '/folder/Archived',
-      icon: 'archive'
+      url: 'videos-instructivos',
+      icon: 'videocam'
     },
     {
       title: 'Comprar por Marca',
-      url: '/folder/Trash',
-      icon: 'trash'
-    },
-    {
-      title: 'Empty',
-      url: '/folder/Spam',
-      icon: 'warning'
+      url: 'comprar-marca',
+      icon: 'pricetag'
     }
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+ 
 
   constructor(
     private platform: Platform,

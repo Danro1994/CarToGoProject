@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Car_To_Go.Migrations
 {
     [DbContext(typeof(CarToGoDataContext))]
-    [Migration("20201126170605_CrearDb")]
+    [Migration("20201211050331_CrearDb")]
     partial class CrearDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
