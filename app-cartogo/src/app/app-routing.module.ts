@@ -17,6 +17,22 @@ const routes: Routes = [
   },  {
     path: 'carro-usado',
     loadChildren: () => import('./carro-usado/carro-usado.module').then( m => m.CarroUsadoPageModule)
+  },
+  {
+    path: 'carro-nuevo',
+    loadChildren: () => import('./carro-nuevo/carro-nuevo.module').then( m => m.CarroNuevoPageModule)
+  },
+  {
+    path: 'concesionaria',
+    loadChildren: () => import('./concesionaria/concesionaria.module').then( m => m.ConcesionariaPageModule)
+  },
+  {
+    path: 'videos-instructivos',
+    loadChildren: () => import('./videos-instructivos/videos-instructivos.module').then( m => m.VideosInstructivosPageModule)
+  },
+  {
+    path: 'comprar-marca',
+    loadChildren: () => import('./comprar-marca/comprar-marca.module').then( m => m.ComprarMarcaPageModule)
   }
 
 ];

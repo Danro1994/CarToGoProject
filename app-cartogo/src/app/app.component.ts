@@ -18,36 +18,31 @@ export class AppComponent implements OnInit {
       icon: 'home'
     },{
       title: 'Carros nuevos',
-      url: '/folder/Inbox',
-      icon: 'mail'
+      url: 'carro-nuevo',
+      icon: 'car'
     },
     {
       title: 'Carros usados',
       url: 'carro-usado',
-      icon: 'car'
+      icon: 'cash'
     },
     {
       title: 'Concesionarias',
-      url: '/folder/Favorites',
-      icon: 'heart'
+      url: 'concesionaria',
+      icon: 'at'
     },
     {
       title: 'Videos instructivos',
-      url: '/folder/Archived',
-      icon: 'archive'
+      url: 'videos-instructivos',
+      icon: 'videocam'
     },
     {
       title: 'Comprar por Marca',
-      url: '/folder/Trash',
+      url: 'comprar-marca',
       icon: 'trash'
-    },
-    {
-      title: 'Empty',
-      url: '/folder/Spam',
-      icon: 'warning'
     }
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+ 
 
   constructor(
     private platform: Platform,
