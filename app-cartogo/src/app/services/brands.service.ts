@@ -10,7 +10,22 @@ export class BrandsService {
 
   constructor(private http : HttpClient) { }
   
-  obtenerBrand(){
+  obtenerBrand(id:Number){
+    return this.http.get<Brand>(this.apiURL + "/" + id);
+  }
+  obtenerBrands(){
     return this.http.get<Brand[]>(this.apiURL);
+  }
+  eliminarBrand(id:Number){
+    return this.http.delete(this.apiURL + "/" + id);
+  }
+  crearBrand(model: Brand){
+    return this.http.post<Brand>(this.apiURL, model);
+  }
+  editarBrand(brand: Brand){
+    return this.http.put<Brand>(
+      this.apiURL + "/" + brand.Id, 
+      brand
+    );
   }
 }

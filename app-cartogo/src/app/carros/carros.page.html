@@ -1,9 +1,77 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>carros</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Carros
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
+<ion-content>
+ <ion-refresher slot="fixed" (ionRefresh)="obtenerCars($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+
+    <ion-item-sliding [id]="item.Id" *ngFor="let item of cars">
+      <ion-item href="#">
+        <ion-note slot="end">
+          {{ item.brandId }}
+        </ion-note>
+        <ion-label>
+          <h2>{{ item.color }}</h2>
+        </ion-label>
+        <ion-label>
+          <h2>{{ item.year }}</h2>
+        </ion-label>
+        <ion-label>
+          <h2>{{ item.engine }}</h2>
+        </ion-label>
+        <ion-label>
+          <h2>{{ item.transmission }}</h2>
+        </ion-label>
+        <ion-label>
+          <h2>{{ item.traction }}</h2>
+        </ion-label>
+        <ion-label>
+          <h2>{{ item.price }}</h2>
+        </ion-label>
+        <ion-label>
+          <h2>{{ item.mileage }}</h2>
+        </ion-label>
+        <ion-label>
+          <h2>{{ item.fuel }}</h2>
+        </ion-label>
+        <ion-label>
+          <h2>{{ item.airCondition }}</h2>
+        </ion-label>
+        
+        <ion-note slot="end">
+          {{ item.sellerId }}
+        </ion-note>
+      </ion-item>
+      
+      <ion-item-options side="end">
+      <ion-item-option (click)="editarCar(item.id)">
+        <ion-icon slot="icon-only" name="create"></ion-icon>
+      </ion-item-option>
+      <ion-item-option color="danger" (click)="eliminarCar(item.id)">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-fab 
+  vertical="bottom"
+  horizontal="end"
+  slot="fixed"
+  (click)="crearCarro()"
+  >
+  <ion-fab-button>
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+  </ion-fab>
 </ion-content>

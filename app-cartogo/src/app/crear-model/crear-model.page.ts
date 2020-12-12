@@ -21,7 +21,7 @@ export class CrearModelPage implements OnInit {
     } 
 
   ngOnInit() {
-    this._brandsService.obtenerBrand().subscribe(res =>{
+    this._brandsService.obtenerBrands().subscribe(res =>{
       this.brands = res;
     })
   }

@@ -25,7 +25,7 @@ export class EditarModelPage implements OnInit {
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get("id");
 
-    this._brandsService.obtenerBrand().subscribe(res =>{
+    this._brandsService.obtenerBrands().subscribe(res =>{
       this.brands = res;
     })
 

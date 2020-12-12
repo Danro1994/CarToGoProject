@@ -16,11 +16,11 @@ const routes: Routes = [
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
   },
   {
-    path: 'carro/crear',
+    path: 'carros/crear',
     loadChildren: () => import('./crear-carro/crear-carro.module').then( m => m.CrearCarroPageModule)
   },
   {
-    path: 'carro/editar',
+    path: 'carros/editar',
     loadChildren: () => import('./editar-carro/editar-carro.module').then( m => m.EditarCarroPageModule)
   },
   {
